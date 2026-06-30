@@ -266,14 +266,32 @@
                             <option>Real Estate</option>
                         </select>
                     </div>
-                    <div class="space-y-sm">
-                        <label class="block font-label-md text-label-md text-on-surface-variant">Assigned To</label>
-                        <select
-                            class="w-full p-md bg-surface border border-outline-variant rounded-lg text-body-sm font-body-sm">
-                            <option>Sarah Johnson (Sales Lead)</option>
-                            <option>Michael Chen (Account Manager)</option>
-                            <option>David Miller (Consultant)</option>
-                        </select>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-on-surface-variant">
+                            Assigned To
+                        </label>
+
+                        <div class="relative">
+                            <select
+                                class="w-full appearance-none bg-surface px-4 py-3 pr-10 rounded-xl border border-outline-variant text-sm text-on-surface shadow-sm hover:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 cursor-pointer">
+
+                                <option selected disabled>Select Team Member</option>
+                                <option>Sarah Johnson (Sales Lead)</option>
+                                <option>Michael Chen (Account Manager)</option>
+                                <option>David Miller (Consultant)</option>
+                                <option>Emily Brown (Support Executive)</option>
+                            </select>
+
+                            <!-- Dropdown Icon -->
+                            <span
+                                class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline-variant pointer-events-none">
+                                keyboard_arrow_down
+                            </span>
+                        </div>
+
+                        <p class="text-xs text-on-surface-variant">
+                            Select the team member responsible for this lead.
+                        </p>
                     </div>
                 </div>
             </section>

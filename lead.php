@@ -16,6 +16,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
+
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script id="tailwind-config">
     tailwind.config = {
         darkMode: "class",
@@ -220,19 +223,32 @@
                         <option>Referral</option>
                         <option>Social Media</option>
                     </select>
-                    <button
+                    <!-- <button
                         class="flex items-center gap-2 px-md py-2 border border-outline-variant rounded-lg text-label-md text-on-surface hover:bg-surface-container-low transition-colors">
                         <span class="material-symbols-outlined text-[18px]">calendar_today</span>
                         Date Added
-                    </button>
+                    </button> -->
+
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-gray-500">
+                            calendar_today
+                        </span>
+
+                        <input
+                            type="text"
+                            id="dateRange"
+                            placeholder="Select Date Range"
+                            class="pl-10 pr-4 py-2 border border-outline-variant rounded-lg text-label-md bg-white w-72 focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                            readonly>
+                    </div>
                 </div>
             </div>
             <div class="flex items-center gap-md">
-                <button
+                <!-- <button
                     class="flex items-center gap-2 px-md py-2 border border-outline-variant rounded-lg text-label-md text-on-surface hover:bg-surface-container-low transition-colors">
                     <span class="material-symbols-outlined text-[18px]">file_download</span>
                     Export
-                </button>
+                </button> -->
                 <a href="createlead.php"
                     class="flex items-center gap-2 px-xl py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:shadow-lg transition-all active:scale-95">
                     <span class="material-symbols-outlined text-[18px]">add</span>
@@ -242,8 +258,8 @@
         </div>
         <!-- Data Table Section -->
         <div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
-            <div class="overflow-x-auto custom-scrollbar">
-                <table class="w-full text-left border-collapse min-w-[1000px]">
+            <div class="w-full overflow-x-auto rounded-xl border border-outline-variant bg-white shadow-sm">
+                <table class="w-full min-w-[1150px] border-collapse">
                     <thead>
                         <tr class="bg-surface-container border-b border-outline-variant">
                             <th class="px-md py-4 w-12">
@@ -264,7 +280,7 @@
                                 Phone</th>
                             <th
                                 class="px-md py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
-                                Date Added</th>
+                                Asign by</th>
                             <th
                                 class="px-md py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
                                 Status</th>
@@ -303,7 +319,7 @@
                             </td>
                             <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">+1 (555) 012-3456
                             </td>
-                            <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">Oct 12, 2023</td>
+                            <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">BOD</td>
                             <td class="px-md py-4">
                                 <span
                                     class="px-3 py-1 bg-[#10B9811A] text-[#047857] rounded-full font-label-sm text-label-sm border border-[#10B98133]">Qualified</span>
@@ -352,7 +368,7 @@
                             </td>
                             <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">+1 (555) 098-7654
                             </td>
-                            <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">Oct 14, 2023</td>
+                            <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">Admin</td>
                             <td class="px-md py-4">
                                 <span
                                     class="px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant rounded-full font-label-sm text-label-sm border border-primary/10">New
@@ -404,7 +420,7 @@
                             </td>
                             <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">+44 20 7946 0123
                             </td>
-                            <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">Oct 15, 2023</td>
+                            <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">Manager</td>
                             <td class="px-md py-4">
                                 <span
                                     class="px-3 py-1 bg-[#F59E0B1A] text-[#B45309] rounded-full font-label-sm text-label-sm border border-[#F59E0B33]">Nurturing</span>
@@ -452,7 +468,7 @@
                             </td>
                             <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">+1 (555) 246-8102
                             </td>
-                            <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">Oct 18, 2023</td>
+                            <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">Admin</td>
                             <td class="px-md py-4">
                                 <span
                                     class="px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full font-label-sm text-label-sm border border-outline-variant">Closed</span>
@@ -517,6 +533,17 @@
             </div>
         </footer>
     </main>
+    <!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+flatpickr("#dateRange", {
+    mode: "range",
+    dateFormat: "d M Y",
+    minDate: "today",      // Disable past dates
+    allowInput: false
+});
+</script>
     <script>
     // Simple JavaScript for interaction simulations
     document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {

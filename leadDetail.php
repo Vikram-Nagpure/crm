@@ -238,12 +238,12 @@
                 </div>
             </div>
             <!-- Bento Layout / Content Grid -->
-            <div
+            <!-- <div
                 class="mb-lg p-lg bg-tertiary-container/20 border border-tertiary-container rounded-xl flex items-center gap-md">
                 <span class="material-symbols-outlined text-tertiary">check_circle</span>
                 <p class="font-body-md text-on-tertiary-container font-semibold">Lead successfully converted to
                     Customer!</p>
-            </div>
+            </div> -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
                 <!-- Main Content (Left/Center) -->
                 <div class="lg:col-span-2 space-y-lg">

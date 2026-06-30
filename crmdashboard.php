@@ -189,16 +189,16 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-sm">
-                    <button
+                    <!-- <button
                         class="flex items-center gap-sm px-md py-2 bg-white border border-outline-variant rounded-lg text-secondary font-label-md text-label-md hover:bg-surface-container transition-colors">
                         <span class="material-symbols-outlined text-sm">download</span>
                         Export
-                    </button>
-                    <button
+                    </button> -->
+                    <a href="lead.php"
                         class="flex items-center gap-sm px-md py-2 bg-primary text-white rounded-lg font-label-md text-label-md hover:opacity-90 transition-all">
                         <span class="material-symbols-outlined text-sm">add</span>
                         New Deal
-                    </button>
+                    </a>
                 </div>
             </div>
             <!-- Dashboard Grid -->
@@ -213,13 +213,12 @@
                             <div class="flex justify-between items-start mb-2">
                                 <span class="p-1.5 bg-primary/10 text-primary rounded-lg"><span
                                         class="material-symbols-outlined text-xl">group</span></span>
-                                <svg class="sparkline" viewbox="0 0 64 32">
-                                    <path d="M0 32 L10 20 L20 25 L30 10 L40 18 L50 5 L64 15" fill="none"
-                                        stroke="#2563eb" stroke-width="2"></path>
-                                </svg>
-                            </div>
-                            <p class="text-xs text-on-surface-variant">Total Leads</p>
+                                <div class="con">
+                                    <p class="text-xs text-on-surface-variant">Total Leads</p>
                             <p class="font-headline-sm text-headline-sm text-on-surface">1,240</p>
+                                </div>
+                            </div>
+                            
                             <span class="text-[10px] text-tertiary font-bold">+12.5% vs LW</span>
                         </div>
                         <!-- Qualified -->
@@ -228,13 +227,12 @@
                             <div class="flex justify-between items-start mb-2">
                                 <span class="p-1.5 bg-tertiary/10 text-tertiary rounded-lg"><span
                                         class="material-symbols-outlined text-xl">verified</span></span>
-                                <svg class="sparkline" viewbox="0 0 64 32">
-                                    <path d="M0 25 L15 28 L30 20 L45 22 L64 5" fill="none" stroke="#007d55"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </div>
-                            <p class="text-xs text-on-surface-variant">Qualified</p>
+                                <div class="con">
+                                    <p class="text-xs text-on-surface-variant">Qualified</p>
                             <p class="font-headline-sm text-headline-sm text-on-surface">450</p>
+                                </div>
+                            </div>
+                            
                             <span class="text-[10px] text-tertiary font-bold">+5.2% vs LW</span>
                         </div>
                         <!-- Deals -->
@@ -243,13 +241,12 @@
                             <div class="flex justify-between items-start mb-2">
                                 <span class="p-1.5 bg-secondary-container/10 text-secondary rounded-lg"><span
                                         class="material-symbols-outlined text-xl">handshake</span></span>
-                                <svg class="sparkline" viewbox="0 0 64 32">
-                                    <path d="M0 30 L10 25 L20 28 L30 10 L40 5 L50 8 L64 2" fill="none" stroke="#505f76"
-                                        stroke-width="2"></path>
-                                </svg>
-                            </div>
-                            <p class="text-xs text-on-surface-variant">Won Deals</p>
+                                <div class="con">
+                                    <p class="text-xs text-on-surface-variant">Won Deals</p>
                             <p class="font-headline-sm text-headline-sm text-on-surface">82</p>
+                                </div>
+                            </div>
+                            
                             <span class="text-[10px] text-tertiary font-bold">+18.3% vs LW</span>
                         </div>
                         <!-- Avg Deal Size -->
@@ -258,13 +255,12 @@
                             <div class="flex justify-between items-start mb-2">
                                 <span class="p-1.5 bg-primary-container/10 text-primary-container rounded-lg"><span
                                         class="material-symbols-outlined text-xl">attach_money</span></span>
-                                <svg class="sparkline" viewbox="0 0 64 32">
-                                    <path d="M0 20 L20 20 L40 10 L64 5" fill="none" stroke="#2563eb" stroke-width="2">
-                                    </path>
-                                </svg>
-                            </div>
-                            <p class="text-xs text-on-surface-variant">Avg. Deal Size</p>
+                                <div class="con">
+                                    <p class="text-xs text-on-surface-variant">Avg. Deal Size</p>
                             <p class="font-headline-sm text-headline-sm text-on-surface">$12,400</p>
+                                </div>
+                            </div>
+                            
                             <span class="text-[10px] text-tertiary font-bold">+2.4% vs LW</span>
                         </div>
                         <!-- Follow-ups -->
@@ -273,13 +269,12 @@
                             <div class="flex justify-between items-start mb-2">
                                 <span class="p-1.5 bg-error-container/20 text-error rounded-lg"><span
                                         class="material-symbols-outlined text-xl">schedule</span></span>
-                                <svg class="sparkline" viewbox="0 0 64 32">
-                                    <path d="M0 5 L20 15 L40 25 L64 30" fill="none" stroke="#ba1a1a" stroke-width="2">
-                                    </path>
-                                </svg>
-                            </div>
-                            <p class="text-xs text-on-surface-variant">Pending</p>
+                                <div class="con">
+                                    <p class="text-xs text-on-surface-variant">Pending</p>
                             <p class="font-headline-sm text-headline-sm text-on-surface">24</p>
+                                </div>
+                            </div>
+                            
                             <span class="text-[10px] text-error font-bold">Action Needed</span>
                         </div>
                     </div>
