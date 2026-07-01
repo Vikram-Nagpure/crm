@@ -265,7 +265,7 @@
                 class="module-card group bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col items-center text-center hover:border-primary transition-all cursor-pointer">
                 <div
                     class="module-icon w-16 h-16 rounded-2xl bg-secondary-container flex items-center justify-center text-on-secondary-container mb-md shadow-lg transition-transform">
-                    <span class="material-symbols-outlined text-[32px]">contacts</span>
+                    <span class="material-symbols-outlined text-[32px]">Contacts</span>
                 </div>
                 <h3 class="font-headline-sm text-headline-sm font-semibold mb-sm">Contacts</h3>
                 <p class="font-body-sm text-body-sm text-on-surface-variant flex-1">Manage people and communication
