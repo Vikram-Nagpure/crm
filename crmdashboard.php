@@ -279,43 +279,91 @@
                         </div>
                     </div>
                     <!-- Main Sales Performance Chart -->
-                    <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
-                        <div class="flex justify-between items-center mb-xl">
-                            <div>
-                                <h3 class="font-headline-sm text-headline-sm text-on-surface">Sales Performance</h3>
-                                <p class="text-sm text-on-surface-variant">Closed Deals vs. Revenue Targets</p>
-                            </div>
-                            <div class="flex items-center gap-md">
-                                <div class="flex items-center gap-xs">
-                                    <span class="w-3 h-3 rounded-full bg-primary"></span>
-                                    <span class="text-xs font-medium">Actual</span>
-                                </div>
-                                <div class="flex items-center gap-xs">
-                                    <span
-                                        class="w-3 h-3 rounded-full bg-surface-container-high border border-outline"></span>
-                                    <span class="text-xs font-medium">Target</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="h-64 w-full relative">
-                            <!-- Mock Line Chart -->
-                            <svg class="w-full h-full overflow-visible" preserveaspectratio="none"
-                                viewbox="0 0 1000 200">
-                                <path
-                                    d="M0 180 L100 160 L200 170 L300 120 L400 140 L500 80 L600 100 L700 40 L800 60 L900 20 L1000 30"
-                                    fill="none" stroke="#2563eb" stroke-linecap="round" stroke-width="3"></path>
-                                <path
-                                    d="M0 170 L100 150 L200 130 L300 110 L400 90 L500 70 L600 50 L700 30 L800 20 L900 10 L1000 5"
-                                    fill="none" stroke="#737686" stroke-dasharray="8 4" stroke-opacity="0.3"
-                                    stroke-width="2"></path>
-                            </svg>
-                            <div
-                                class="absolute bottom-0 w-full flex justify-between pt-4 text-[10px] text-on-surface-variant font-medium border-t border-outline-variant">
-                                <span>OCT 12</span><span>OCT 19</span><span>OCT 26</span><span>NOV 02</span><span>NOV
-                                    11</span>
-                            </div>
-                        </div>
-                    </div>
+                   <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
+
+    <!-- Header -->
+    <div class="flex justify-between items-start mb-lg flex-wrap gap-md">
+        <div>
+            <h3 class="font-headline-sm text-headline-sm text-on-surface">Sales Performance</h3>
+            <p class="text-sm text-on-surface-variant">Closed Deals vs. Revenue Targets</p>
+        </div>
+
+        <div class="flex items-center gap-md">
+            <!-- Quick stat -->
+            <div class="text-right pr-md border-r border-outline-variant">
+                <p class="text-xs text-on-surface-variant">Current</p>
+                <p class="text-sm font-semibold text-on-surface">$30k <span class="text-green-600 font-medium">+18%</span></p>
+            </div>
+
+            <button id="actualBtn"
+                class="flex items-center gap-xs px-3 py-1.5 rounded-lg bg-primary text-white transition shadow-sm">
+                <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+                <span class="text-xs font-medium">Actual</span>
+            </button>
+
+            <button id="targetBtn"
+                class="flex items-center gap-xs px-3 py-1.5 rounded-lg bg-primary text-white transition shadow-sm">
+                <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+                <span class="text-xs font-medium">Target</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="h-64 w-full relative">
+        <svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 1000 200">
+            <defs>
+                <linearGradient id="actualFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2563eb" stop-opacity="0.25" />
+                    <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+                </linearGradient>
+            </defs>
+
+            <!-- Grid lines -->
+            <g stroke="currentColor" class="text-outline-variant" stroke-width="1" opacity="0.4">
+                <line x1="0" y1="40" x2="1000" y2="40" />
+                <line x1="0" y1="90" x2="1000" y2="90" />
+                <line x1="0" y1="140" x2="1000" y2="140" />
+                <line x1="0" y1="190" x2="1000" y2="190" />
+            </g>
+
+            <!-- Target line (dashed) -->
+            <path id="targetLine"
+                d="M0 170 L100 150 L200 130 L300 110 L400 90 L500 70 L600 50 L700 30 L800 20 L900 10 L1000 5"
+                fill="none" stroke="#737686" stroke-dasharray="8 4" stroke-opacity="0.5"
+                stroke-width="2" stroke-linecap="round" />
+
+            <!-- Actual area fill -->
+            <path id="actualFillArea"
+                d="M0 180 L100 160 L200 170 L300 120 L400 140 L500 80 L600 100 L700 40 L800 60 L900 20 L1000 30 L1000 200 L0 200 Z"
+                fill="url(#actualFill)" stroke="none" />
+
+            <!-- Actual line -->
+            <path id="actualLine"
+                d="M0 180 L100 160 L200 170 L300 120 L400 140 L500 80 L600 100 L700 40 L800 60 L900 20 L1000 30"
+                fill="none" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+
+            <!-- Actual data points -->
+            <g id="actualDots" fill="#2563eb">
+                <circle cx="0" cy="180" r="4" />
+                <circle cx="100" cy="160" r="4" />
+                <circle cx="200" cy="170" r="4" />
+                <circle cx="300" cy="120" r="4" />
+                <circle cx="400" cy="140" r="4" />
+                <circle cx="500" cy="80" r="4" />
+                <circle cx="600" cy="100" r="4" />
+                <circle cx="700" cy="40" r="4" />
+                <circle cx="800" cy="60" r="4" />
+                <circle cx="900" cy="20" r="4" />
+                <circle cx="1000" cy="30" r="4" />
+            </g>
+        </svg>
+
+        <div class="absolute bottom-0 w-full flex justify-between pt-4 text-[10px] text-on-surface-variant font-medium border-t border-outline-variant">
+            <span>OCT 12</span><span>OCT 19</span><span>OCT 26</span><span>NOV 02</span><span>NOV 11</span>
+        </div>
+    </div>
+</div>
                     <!-- Pipeline & Deals Table Combined Layout -->
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
                         <!-- Detailed Pipeline -->
@@ -577,20 +625,41 @@
             </div>
         </div>
     </main>
-    <script>
-    // Simple Chart Animation Trigger
-    window.addEventListener('DOMContentLoaded', () => {
-        const path = document.querySelector('svg path');
-        if (path) {
-            const length = path.getTotalLength();
-            path.style.strokeDasharray = length;
-            path.style.strokeDashoffset = length;
-            path.getBoundingClientRect(); // Trigger reflow
-            path.style.transition = 'stroke-dashoffset 2s ease-in-out';
-            path.style.strokeDashoffset = '0';
-        }
-    });
-    </script>
+   <script>
+const actualBtn = document.getElementById('actualBtn');
+const targetBtn = document.getElementById('targetBtn');
+
+const actualLine = document.getElementById('actualLine');
+const actualFillArea = document.getElementById('actualFillArea');
+const actualDots = document.getElementById('actualDots');
+const targetLine = document.getElementById('targetLine');
+
+let showActual = true;
+let showTarget = true;
+
+actualBtn.addEventListener('click', () => {
+    showActual = !showActual;
+
+    actualLine.style.display = showActual ? '' : 'none';
+    actualFillArea.style.display = showActual ? '' : 'none';
+    actualDots.style.display = showActual ? '' : 'none';
+
+    actualBtn.classList.toggle('bg-primary', showActual);
+    actualBtn.classList.toggle('text-white', showActual);
+    actualBtn.classList.toggle('shadow-sm', showActual);
+    actualBtn.classList.toggle('bg-surface-container-high', !showActual);
+    actualBtn.classList.toggle('border', !showActual);
+    actualBtn.classList.toggle('border-outline', !showActual);
+    actualBtn.classList.toggle('opacity-50', !showActual);
+});
+
+targetBtn.addEventListener('click', () => {
+    showTarget = !showTarget;
+
+    targetLine.style.display = showTarget ? '' : 'none';
+    targetBtn.classList.toggle('opacity-50', !showTarget);
+});
+</script>
 </body>
 
 </html>
