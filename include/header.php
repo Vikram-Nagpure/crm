@@ -62,6 +62,68 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </div>
 
         <div class="flex items-center gap-md relative">
+            <!-- Create Button -->
+            <div class="relative">
+                <button id="createBtn"
+                    class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white hover:bg-primary-700 transition">
+                    <span class="material-symbols-outlined">add</span>
+                </button>
+
+                <!-- Create Records Menu -->
+                <div id="createMenu"
+                    class="hidden absolute right-[-80px] mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 z-50 p-5">
+
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">
+                        Create Records
+                    </h3>
+
+                    <!-- Menu Items -->
+                    <div class="space-y-1">
+
+                        <a href="lead.php"
+                            class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
+                            <span class="text-lg">+</span>
+                            <span>Lead</span>
+                        </a>
+
+                        <a href="contact.php"
+                            class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
+                            <span class="text-lg">+</span>
+                            <span>Customer</span>
+                        </a>
+
+                        
+
+                        <a href="deal.php"
+                            class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
+                            <span class="text-lg">+</span>
+                            <span>Deal</span>
+                        </a>
+
+                        <a href="task.php"
+                            class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
+                            <span class="text-lg">+</span>
+                            <span>Task</span>
+                        </a>
+
+                        <a href="meeting.php"
+                            class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
+                            <span class="text-lg">+</span>
+                            <span>Meeting</span>
+                        </a>
+
+                        
+
+                        <a href="campaign.php"
+                            class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
+                            <span class="text-lg">+</span>
+                            <span>Campaign</span>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
             <!-- Search -->
             <div class="relative">
                 <button id="searchBtn"
@@ -356,6 +418,29 @@ document.addEventListener("click", (e) => {
             }
             if (!profileBtn.contains(e.target) && !profileMenu.contains(e.target)) {
                 profileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+
+    <script>
+        const createBtn = document.getElementById("createBtn");
+        const createMenu = document.getElementById("createMenu");
+
+        createBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+
+            createMenu.classList.toggle("hidden");
+
+            // Close other menus if open
+            searchMenu.classList.add("hidden");
+            notificationMenu.classList.add("hidden");
+            appsMenu.classList.add("hidden");
+            profileMenu.classList.add("hidden");
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!createMenu.contains(e.target) && !createBtn.contains(e.target)) {
+                createMenu.classList.add("hidden");
             }
         });
     </script>
