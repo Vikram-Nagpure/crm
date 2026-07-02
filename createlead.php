@@ -199,7 +199,7 @@
     <!-- Sidebar Navigation Shell -->
     <?php include "include/header.php"?>
     <!-- Main Content Wrapper -->
-    <main class="ml-64 flex flex-col h-screen relative bg-background">
+    <main class="lg:ml-0 mt-16 p-lg bg-background min-h-[calc(100vh-64px)]">
         <!-- Top Navigation Bar -->
         <header class="w-full h-16 bg-surface-container-lowest border-b border-surface-container-high z-20">
             <div class="flex items-center justify-between px-lg w-full h-full">

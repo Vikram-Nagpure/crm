@@ -188,7 +188,7 @@
     <!-- TopNavBar -->
    
     <!-- Main Content -->
-    <main class="ml-64 p-gutter pt-32 max-w-7xl mx-auto pb-2xl">
+    <main class="lg:ml-0 mt-16 p-lg bg-background min-h-[calc(100vh-64px)]">
         <!-- Header -->
         <div class="flex justify-between items-end mb-xl gap-xl">
             <div>

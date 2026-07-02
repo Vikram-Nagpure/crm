@@ -193,7 +193,7 @@
     <!-- SideNavBar (Authority: JSON & Context) -->
     <?php include "include/header.php"?>
     <!-- Main Content Area -->
-    <div class="ml-64 mt-16 p-lg min-h-screen">
+    <div class="lg:ml-0 mt-16 p-lg bg-background min-h-[calc(100vh-64px)]">
         
         <!-- Lead View Canvas -->
         <main class="flex-1 overflow-y-auto p-lg">

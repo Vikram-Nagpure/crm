@@ -177,7 +177,7 @@
     
     <?php include "include/header.php"?>
     <!-- Main Content Canvas -->
-    <main class="ml-64 pt-16 min-h-screen">
+    <main class="lg:ml-0 mt-16 p-lg bg-background min-h-[calc(100vh-64px)]">
         <div class="p-lg max-w-[1600px] mx-auto">
             <!-- Page Header -->
             <div class="flex flex-col md:flex-row md:items-center justify-between mb-lg gap-md">

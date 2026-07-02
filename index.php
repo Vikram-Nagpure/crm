@@ -183,7 +183,7 @@
     <!-- TopNavBar -->
    <?php include "include/header.php"?>
     <!-- Main Content Area -->
-    <main class="lg:ml-64 mt-16 p-lg bg-background min-h-[calc(100vh-64px)]">
+    <main class="lg:ml-0 mt-16 p-lg bg-background min-h-[calc(100vh-64px)]">
         <!-- Summary Strip -->
         <div class="mb-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
             <div

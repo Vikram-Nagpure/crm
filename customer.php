@@ -147,7 +147,7 @@
     <?php include "include/header.php"?>
 
     <!-- Main Content Canvas -->
-    <main class="ml-64 mt-16 p-lg min-h-screen">
+    <main class="lg:ml-0 mt-16 p-lg bg-background min-h-[calc(100vh-64px)]">
 
         <!-- Breadcrumb & Title Section -->
         <div class="mb-lg">
@@ -257,9 +257,7 @@
                             <td class="px-md py-4 font-code-sm text-code-sm text-on-surface-variant">#C-8210</td>
                             <td class="px-md py-4">
                                 <div class="flex items-center gap-md">
-                                    <img class="w-10 h-10 rounded-full object-cover"
-                                        data-alt="A portrait of a young woman with a sharp, professional appearance. She is wearing minimal geometric jewelry and a crisp white blouse."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU-R5Xe5-BMYi42sJW3xnQUdt07_stfMNScQLJSChY8OmyiIGz036wHkRhd5g8mGRiAoa8psawRIqXNViPIRvC-YdpjlvuOhSb6KzPxRYEZ6cDB6N7x5baN8YFihXhTnBe7eBcgUlpRge7ZNb7Sq3HATdmwI7EBOogg1RhTPgCTbcLO-oPv_le2f39FCUiQHYxrefg_IgF_JRa9W1TeGL7d1UN3SFyJ7NAjcbyQCr25Pnv-brjvsox6WjIqaaszeFBYah5hn7cMv4" />
+                                    
                                     <div>
                                         <div class="font-label-md text-label-md text-on-surface">Elena Richardson</div>
                                         <div class="font-body-sm text-body-sm text-on-surface-variant">elena.r@velox.com</div>
@@ -299,9 +297,7 @@
                             <td class="px-md py-4 font-code-sm text-code-sm text-on-surface-variant">#C-8211</td>
                             <td class="px-md py-4">
                                 <div class="flex items-center gap-md">
-                                    <img class="w-10 h-10 rounded-full object-cover"
-                                        data-alt="A profile of a middle-aged businessman with a distinguished look, featuring salt-and-pepper hair and a tailored charcoal gray suit."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4Uk57vCu1oqST4wNz4lKCkrZHfMM0hKar9JNd39WQO92A581gJIhGASLfgVjSVdE_PN5yRrxn-cyCQrqsFM15jTB4E_Sman1MbQSUGbIDKTJsVJn7cn8a89IGnJ8A7qanPT094byZ_WvB359ERxlG3kbJoxNqTTgN6JLXAiWE2lQsdVXjnuaLedjq1uZFtrKaxd75XcsaYvmOBnf-l9eYO0RIaHXnn-KLeDZqnjMSmfOSPOzdKh0hO_aPFlSCxqOIwuHMMk9Y4uk" />
+                                    
                                     <div>
                                         <div class="font-label-md text-label-md text-on-surface">Jonathan Sterling</div>
                                         <div class="font-body-sm text-body-sm text-on-surface-variant">j.sterling@nexus.io</div>
@@ -341,9 +337,7 @@
                             <td class="px-md py-4 font-code-sm text-code-sm text-on-surface-variant">#C-8212</td>
                             <td class="px-md py-4">
                                 <div class="flex items-center gap-md">
-                                    <img class="w-10 h-10 rounded-full object-cover"
-                                        data-alt="A portrait of a creative director in her early 30s with a modern, artistic style. She wears bold-framed black glasses and a minimalist black knit sweater."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHSAkqOIqDYnLGeO9qUJY2Sbh6V4x6sTwgdaj1ANDLO4Mlv_yxm-5oqp8zeeWQvM9mcFchA5n614GVwieREoPYtRq9UmsteIBd6gqFyZ_A9o5uwdlocRA7Cw0S6K1jGZZPBEPSW3g7ck0dCpSe_ADff3Hl3VnrU-WlRGZ3mmXoEKubmjuJz2u_cZy41yWc4mOnG3eqDQ_zOydNw2Y_uFSViKTrYxk2q5kh-PvpDuDcWkvaTtMqzo9EpD1uxmD9HbT2WdIicvSSaZg" />
+                                    
                                     <div>
                                         <div class="font-label-md text-label-md text-on-surface">Amara Okafor</div>
                                         <div class="font-body-sm text-body-sm text-on-surface-variant">amara@creative.co</div>
@@ -383,9 +377,7 @@
                             <td class="px-md py-4 font-code-sm text-code-sm text-on-surface-variant">#C-8213</td>
                             <td class="px-md py-4">
                                 <div class="flex items-center gap-md">
-                                    <img class="w-10 h-10 rounded-full object-cover"
-                                        data-alt="A portrait of a tech entrepreneur in a modern office, wearing a casual but expensive light blue button-down shirt."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp2LwfJAb2kHnxhvUAMYBCHixcddtUkat2QIsBmrsmwozoWo-iAnAsp5toL7tnjSbQyVDY3nowGMluAAYL21yqyVXuU5JEbVjFpJC3ZOvtBtABEBe1S649tOCUfYAvQWcZVvFspatoLuVbMy5EYfQG0WwRwniaj2ATaA4hxVA6BoAu8JynnJKRAJuQaPnN9YkoNwNhIZxOyycKaR0B1yQkWG0_rX1Hj5AgQhNwqswDGAaVGrkvpd4k4U7Fc6HMyJSBcmFdJjcIx_E" />
+                                    
                                     <div>
                                         <div class="font-label-md text-label-md text-on-surface">David Chen</div>
                                         <div class="font-body-sm text-body-sm text-on-surface-variant">d.chen@lumina.sg</div>
@@ -425,9 +417,7 @@
                             <td class="px-md py-4 font-code-sm text-code-sm text-on-surface-variant">#C-8214</td>
                             <td class="px-md py-4">
                                 <div class="flex items-center gap-md">
-                                    <img class="w-10 h-10 rounded-full object-cover"
-                                        data-alt="Close-up headshot of a senior executive woman with grey hair, styled in a modern bob. She wears a minimal silver necklace and a dark grey blazer."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVfgM90dWx_8MiE5_lWrR-KAahEVSTFGZY6y7N7o6D-8nghHfRpCWkQFBGr3S5oYtDlogs7Pwy-vmUkYHn0t2kOe1LRxtJfuOeI4fN6sr6XlsYor0T4DxaWWyOFLhEBf6anNlZNBc4MJOMxUnfVYxRBFRaE5gqRsBCh4Ciafd6VNRBn8K5677KbbPtMqRW2B6mI4cFkFNyUfSkiS7CathMX4fhcTsi4Pv54KYMBzR56UsLijR_X3LAInVxVBHXwngYN4tB-_1JQjA" />
+                                    
                                     <div>
                                         <div class="font-label-md text-label-md text-on-surface">Sophie Dubois</div>
                                         <div class="font-body-sm text-body-sm text-on-surface-variant">s.dubois@etoile.fr</div>
@@ -467,9 +457,7 @@
                             <td class="px-md py-4 font-code-sm text-code-sm text-on-surface-variant">#C-8215</td>
                             <td class="px-md py-4">
                                 <div class="flex items-center gap-md">
-                                    <img class="w-10 h-10 rounded-full object-cover"
-                                        data-alt="A portrait of a male engineer in his late 20s with a modern, focused look. He is wearing a dark navy polo shirt."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_6sgh2PCRB_5ry2ItFKrvi6xY59kcN2JodpW_RDxR5RMyw7TxAC-CuPe_bRBvo7XmkimxmmJEsLCLYuGHcLUNZvZCfcOr478uKEWthSFZbVldbZFs7ptmG2L73cV_FcDhRhlh4JGo-MkySqjvRA3L9Vbpin-PJcf0RywYSho_EI7_SelKlf_lXPbP87hOnLgNCgS_zMmjoqzNtQu54jbUgNEip97appKV1nnM7lB_nTcPFliGCWNQA3VD8UPPbCfgNI4h60aYx_g" />
+                                    
                                     <div>
                                         <div class="font-label-md text-label-md text-on-surface">Marco Rossi</div>
                                         <div class="font-body-sm text-body-sm text-on-surface-variant">m.rossi@veloce.it</div>

@@ -191,7 +191,7 @@
     <!-- TopNavBar -->
     <?php include "include/header.php"?>
     <!-- Main Content Canvas -->
-    <main class="md:pl-64 pt-20 min-h-screen">
+    <main class="lg:ml-0 mt-16 p-lg bg-background min-h-[calc(100vh-64px)]">
         <div class="max-w-[1440px] mx-auto px-margin">
             <!-- Header Section -->
             <header class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">

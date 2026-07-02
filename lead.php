@@ -185,7 +185,7 @@
     <!-- TopNavBar from Shared Components -->
     <?php include "include/header.php"?>
     <!-- Main Content Canvas -->
-    <main class="ml-64 mt-16 p-lg min-h-screen">
+    <main class="lg:ml-0 mt-16 p-lg bg-background min-h-[calc(100vh-64px)]">
         <!-- Breadcrumb & Title Section -->
         <div class="mb-lg">
             <nav class="flex items-center gap-2 text-on-surface-variant mb-2">
@@ -299,9 +299,7 @@
                             <td class="px-md py-4 font-code-sm text-code-sm text-on-surface-variant">LD-8821</td>
                             <td class="px-md py-4">
                                 <div class="flex items-center gap-md">
-                                    <img class="w-10 h-10 rounded-full object-cover"
-                                        data-alt="Corporate headshot of a smiling female marketing director, professional attire, soft daylight from a window, high-resolution aesthetic, business environment background."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSIZyEX5K1uYvk0fQBEIfYEnawUu-SeC0SJsLEutasWbDyoTaHrR7UKzKbKQhOIIQafsGXHOG6Q5peuwfC0MqlFvDUJ9KaalGS5MGaDwQIcIhiC4kiuv40MVlJn-jbI9Mepn3lWDz7Ll-slFUrGu0oYYQoqbAYzXKSeCkGo-1jYxSoreOSj8DSvb1UyMVvndHcsBRB_D8PbgwfCVSCLNL8PURMhBpA3jgMUANhbb2tVZz0kgv7b_fnBs4kyzcTekbkd0Yc-v2jI6k" />
+                                    
                                     <div>
                                         <div class="font-label-md text-label-md text-on-surface">Eleanor Vance</div>
                                         <div class="font-body-sm text-body-sm text-on-surface-variant">
@@ -350,9 +348,7 @@
                             <td class="px-md py-4 font-code-sm text-code-sm text-on-surface-variant">LD-8822</td>
                             <td class="px-md py-4">
                                 <div class="flex items-center gap-md">
-                                    <img class="w-10 h-10 rounded-full object-cover"
-                                        data-alt="Professional profile photo of a male operations manager, clean office setting, sharp focus, natural warm lighting, trustworthy and professional appearance."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC1Ocp2i7L_RZKlI3xd2mINFBoK5wIlr-NEbGNbfLjLqkHem7h6iFqq6CxsbC5B4QQ1zmHG2W7TmxNuaF-S_EnDfeHAmRNccfBUmaa9dKYDdJar0CWYu7dIDntCt51A65WRCz59Shb4GdOtiNDUH_50x3EkTKPfyHfvFxWxl8j2-HFHmspq9-6RqrFoX1I2M7Ve-8oMZeS4WpXfuJ0olKizKzCGQob1BH1PB7yDhCWAmp5DUnyR-PbdVm_7OcGUhRgBlSIxFRSvII" />
+                                    
                                     <div>
                                         <div class="font-label-md text-label-md text-on-surface">Julian Thorne</div>
                                         <div class="font-body-sm text-body-sm text-on-surface-variant">
@@ -399,9 +395,7 @@
                             <td class="px-md py-4 font-code-sm text-code-sm text-on-surface-variant">LD-8823</td>
                             <td class="px-md py-4">
                                 <div class="flex items-center gap-md">
-                                    <img class="w-10 h-10 rounded-full object-cover"
-                                        data-alt="Candid-style professional portrait of a tech startup founder, minimalist modern workspace, soft bokeh background, wearing high-end casual attire, creative yet professional mood."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuaAl7GezoMJ-b2vFz59HtYm8tyWu5jDt1_83S3wMI1ohSp372tKM2w23a_dvzgP2-sl_0PUojWvdE6IQ1Hw3PJh7mxWVlJpDWUuXbsPK_15G00Gb2ua6DZsIGRwTgvEJgbMKfGe_h1NQIEugCw1ivy8lJ3dichZQvfJvmWM_FErOUUWhAg8_jyOCQb-xOuK9_Cdzgp5jFOja285Yav4hM7dbRZX4OqUdIz8-CsRzT8FB2vrslEDHluTPfHQF2wNNEE7xOrk0q4No" />
+                                    
                                     <div>
                                         <div class="font-label-md text-label-md text-on-surface">Maya Sterling</div>
                                         <div class="font-body-sm text-body-sm text-on-surface-variant">
@@ -450,9 +444,7 @@
                             <td class="px-md py-4 font-code-sm text-code-sm text-on-surface-variant">LD-8824</td>
                             <td class="px-md py-4">
                                 <div class="flex items-center gap-md">
-                                    <img class="w-10 h-10 rounded-full object-cover"
-                                        data-alt="High-contrast studio headshot of a mature business leader, dark suit, authoritative but welcoming expression, luxury corporate aesthetic, high-quality lighting."
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpjDWqqDqR8RxQVNwmS_zjBfl3fxxgaY5o34-iSgz6z4rxRJkLCAOsGMvrm682llbhBysPkiVIUkmQOZycHoKXo8B4tCYs2qAQSEPZGp6peYCSpP6f80cz8mbePKVbm5jK4cX6hXloMxFUdUmjH3TH0Z9tXRpu4hjHiyGS0bZvyjX0Ytdqzb4jvpgkZyY6xJTn6URJqO4aYyDDL4l2JLvCq5ULDupTTNwdVQzdcACN-DQQh82knH_e6X4OhxA9degiobMdQFFO67I" />
+                                    
                                     <div>
                                         <div class="font-label-md text-label-md text-on-surface">Arthur Pendel</div>
                                         <div class="font-body-sm text-body-sm text-on-surface-variant">

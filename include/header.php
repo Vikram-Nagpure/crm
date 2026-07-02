@@ -1,3 +1,7 @@
+<?php
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,25 +21,73 @@
     <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-lg h-16 bg-surface border-b border-outline-variant">
         <div class="flex items-center gap-xl">
             <!-- Mobile Menu Button (Hamburger) -->
-            <button id="menuToggleBtn" 
-                class="material-symbols-outlined lg:hidden text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">
-                menu
+            <button id="menuToggleBtn"
+                class="lg:hidden p-2 rounded-full hover:bg-surface-container-low transition-colors">
+                <span class="material-symbols-outlined text-on-surface-variant">
+                    menu
+                </span>
             </button>
             
             <span class="font-headline-md text-headline-md font-bold text-primary">Business OS</span>
         </div>
 
-        <div class="relative w-full max-w-md">
-            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">
-                search
-            </span>
-            <input
-                type="text"
-                placeholder="Search modules or data..."
-                class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-body-sm focus:outline-none focus:ring-2 focus:ring-primary/20">
+        <div class="relative w-full max-w-md hidden lg:block">
+            <div class="flex items-center justify-center gap-6 px-5 py-2 bg-surface-container-low border border-outline-variant rounded-full">
+
+                <a href="crmdashboard.php"
+                    class="text-body-sm transition-colors duration-200
+                    <?= ($currentPage == 'crmdashboard.php') ? 'font-medium text-primary border-b-2 border-primary pb-1' : 'text-on-surface hover:text-primary'; ?>">
+                    Dashboard
+                </a>
+
+                <a href="lead.php"
+                    class="text-body-sm transition-colors duration-200
+                    <?= ($currentPage == 'lead.php') ? 'font-medium text-primary border-b-2 border-primary pb-1' : 'text-on-surface hover:text-primary'; ?>">
+                    Leads
+                </a>
+
+                <a href="customer.php"
+                    class="text-body-sm transition-colors duration-200
+                    <?= ($currentPage == 'customer.php') ? 'font-medium text-primary border-b-2 border-primary pb-1' : 'text-on-surface hover:text-primary'; ?>">
+                    Customers
+                </a>
+
+                <a href="deals.php"
+                    class="text-body-sm transition-colors duration-200
+                    <?= ($currentPage == 'deals.php') ? 'font-medium text-primary border-b-2 border-primary pb-1' : 'text-on-surface hover:text-primary'; ?>">
+                    Deals
+                </a>
+
+            </div>
         </div>
 
         <div class="flex items-center gap-md relative">
+            <!-- Search -->
+            <div class="relative">
+                <button id="searchBtn"
+                    class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors">
+                    search
+                </button>
+
+                <!-- Search Popup -->
+                <div id="searchMenu"
+                    class="hidden absolute right-[-60px] mt-2 w-72 bg-white rounded-xl shadow-xl border border-gray-200 z-50 p-4">
+
+                    <h3 class="text-sm font-semibold mb-3">Search</h3>
+
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">
+                            search
+                        </span>
+
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                </div>
+            </div>
             <!-- Notification Button -->
             <div class="relative">
                 <button id="notificationBtn"
@@ -155,9 +207,8 @@
 
     <!-- Sidebar -->
     <aside id="sidebar"
-        class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col p-md bg-surface-container-lowest border-r border-outline-variant hidden lg:flex lg:visible transition-all duration-300 z-40">
+    class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col p-md bg-surface-container-lowest border-r border-outline-variant flex lg:hidden transition-all duration-300 z-40">
         
-        <!-- Close button for mobile -->
         <button id="closeSidebarBtn" class="lg:hidden absolute top-4 right-4 p-2 hover:bg-surface-container-low rounded-full transition-colors">
             <span class="material-symbols-outlined text-on-surface-variant">close</span>
         </button>
@@ -189,11 +240,7 @@
                 <span class="material-symbols-outlined text-[20px]">groups</span>
                 <span class="font-label-md text-label-md">Customer</span>
             </a>
-            <!-- <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container text-on-surface-variant transition-all"
-                href="#">
-                <span class="material-symbols-outlined text-[20px]">assignment</span>
-                <span class="font-label-md text-label-md">Tasks</span>
-            </a> -->
+            
             <div class="text-label-sm text-outline px-md py-2 mt-lg uppercase tracking-wider">Quick Actions</div>
             <a class="flex items-center gap-md px-md py-sm rounded-lg hover:bg-surface-container text-on-surface-variant transition-all"
                 href="#">
@@ -222,6 +269,23 @@
         </div>
     </main> -->
 
+
+    <script>
+        const searchBtn = document.getElementById("searchBtn");
+const searchMenu = document.getElementById("searchMenu");
+
+searchBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    searchMenu.classList.toggle("hidden");
+});
+
+// Close when clicking outside
+document.addEventListener("click", (e) => {
+    if (!searchMenu.contains(e.target) && !searchBtn.contains(e.target)) {
+        searchMenu.classList.add("hidden");
+    }
+});
+    </script>
     <script>
         // Get elements
         const menuToggleBtn = document.getElementById('menuToggleBtn');
