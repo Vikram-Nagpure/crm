@@ -201,44 +201,7 @@
     <!-- Main Content Wrapper -->
     <main class="lg:ml-0 mt-16 p-lg bg-background min-h-[calc(100vh-64px)]">
         <!-- Top Navigation Bar -->
-        <header class="w-full h-16 bg-surface-container-lowest border-b border-surface-container-high z-20">
-            <div class="flex items-center justify-between px-lg w-full h-full">
-                <div class="flex items-center gap-xl">
-                    <span class="font-headline-md text-headline-md font-bold text-primary">Business OS</span>
-                    <nav class="hidden md:flex gap-lg items-center h-full">
-                        <a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md"
-                            href="#">Sales</a>
-                        <a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md"
-                            href="#">Marketing</a>
-                        <a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md"
-                            href="#">Support</a>
-                        <a class="text-on-surface-variant hover:text-on-surface transition-colors font-label-md text-label-md"
-                            href="#">Settings</a>
-                    </nav>
-                </div>
-                <div class="flex items-center gap-md">
-                    <div class="flex items-center gap-sm">
-                        <button
-                            class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
-                            <span class="material-symbols-outlined">notifications</span>
-                        </button>
-                        <button
-                            class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors">
-                            <span class="material-symbols-outlined">help</span>
-                        </button>
-                    </div>
-                    <div class="h-8 w-[1px] bg-outline-variant mx-xs"></div>
-                    <div
-                        class="flex items-center gap-md cursor-pointer hover:bg-surface-container-low p-xs rounded-lg transition-colors">
-                        <div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden">
-                            <img class="w-full h-full object-cover"
-                                data-alt="Corporate headshot of a smiling female executive with glasses, wearing a smart charcoal blazer, professional studio lighting with a soft neutral background."
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFNgBkovjL5QN_Z5XwWXDQp_ztz8fm6-JMM5kYr1XMkhvdRvwTXiyiprjcCLH0yYJwHW8dQnMFazLzjYcYWWMBR7830ZNNK68McS730qRrsEZUlkHs2PVvZBG9UbNSOPDKk1i5knLRBmJKnveDEYHWxs54emJWMVPMEeoJQihNwUz_QnbQchzyvpVnvzE8YzIVjIBVRVB9LW13Fun-2TRJRlCeganqk1XdbwjkYGQNFgfHTL6RHVq1rFTjQKQYVAKe_SRqzV7cWgk" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+       
         <!-- Page Content: Full Width -->
         <div class="flex-1 overflow-y-auto custom-scrollbar">
             <form class="flex flex-col min-h-full">

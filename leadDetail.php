@@ -262,6 +262,9 @@
                             <button
                                 class="py-md px-md font-label-md text-label-md text-secondary hover:text-on-surface transition-all whitespace-nowrap"
                                 id="tab-files" onclick="switchTab('files')">Files</button>
+                            <button
+                                class="py-md px-md font-label-md text-label-md text-secondary hover:text-on-surface transition-all whitespace-nowrap"
+                                id="tab-followup" onclick="switchTab('followup')">Follow Up</button>    
                         </div>
                         <div class="p-lg">
                             <!-- Overview Content (Shown by script logic) -->
@@ -369,6 +372,110 @@
                             <div class="hidden py-xl text-center" id="content-files">
                                 <span class="material-symbols-outlined text-outline text-4xl mb-2">folder_open</span>
                                 <p class="text-secondary font-body-md">No files uploaded. Drag and drop here.</p>
+                            </div>
+                            <div class="space-y-lg" id="content-followup">
+                                <div class="relative pl-8">
+
+                                    <!-- Timeline Line -->
+                                    <div class="absolute left-[11px] top-0 bottom-0 w-[2px] bg-gray-300"></div>
+
+                                    <!-- Today's Follow Up -->
+                                    <div class="relative mb-6">
+                                        <div
+                                            class="absolute -left-[33px] top-1 w-6 h-6 rounded-full bg-green-600 flex items-center justify-center border-4 border-white shadow">
+                                            <span class="material-symbols-outlined text-[12px] text-white">today</span>
+                                        </div>
+
+                                        <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                            <div class="flex justify-between">
+                                                <h4 class="font-semibold text-green-700">
+                                                    Today's Follow Up
+                                                </h4>
+                                                <span class="text-sm text-gray-500">
+                                                    Today • 11:00 AM
+                                                </span>
+                                            </div>
+
+                                            <p class="mt-2 text-gray-700">
+                                                <strong>Client:</strong> Rahul Sharma
+                                            </p>
+
+                                            <p class="text-gray-700">
+                                                <strong>Mobile:</strong> +91 9876543210
+                                            </p>
+
+                                            <p class="mt-2 text-gray-600">
+                                                Call the client regarding the website quotation and confirm
+                                                the final budget.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Tomorrow Follow Up -->
+                                    <div class="relative mb-6">
+                                        <div
+                                            class="absolute -left-[33px] top-1 w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center border-4 border-white shadow">
+                                            <span class="material-symbols-outlined text-[12px] text-white">event</span>
+                                        </div>
+
+                                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                            <div class="flex justify-between">
+                                                <h4 class="font-semibold text-blue-700">
+                                                    Tomorrow's Follow Up
+                                                </h4>
+                                                <span class="text-sm text-gray-500">
+                                                    Tomorrow • 03:30 PM
+                                                </span>
+                                            </div>
+
+                                            <p class="mt-2 text-gray-700">
+                                                <strong>Client:</strong> Priya Patel
+                                            </p>
+
+                                            <p class="text-gray-700">
+                                                <strong>Mobile:</strong> +91 9988776655
+                                            </p>
+
+                                            <p class="mt-2 text-gray-600">
+                                                Schedule a product demo and discuss the CRM implementation
+                                                process.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Completed Follow Up -->
+                                    <div class="relative">
+                                        <div
+                                            class="absolute -left-[33px] top-1 w-6 h-6 rounded-full bg-gray-600 flex items-center justify-center border-4 border-white shadow">
+                                            <span class="material-symbols-outlined text-[12px] text-white">check_circle</span>
+                                        </div>
+
+                                        <div class="bg-gray-50 p-4 rounded-lg border">
+                                            <div class="flex justify-between">
+                                                <h4 class="font-semibold">
+                                                    Completed Follow Up
+                                                </h4>
+                                                <span class="text-sm text-gray-500">
+                                                    Yesterday • 04:15 PM
+                                                </span>
+                                            </div>
+
+                                            <p class="mt-2 text-gray-700">
+                                                <strong>Client:</strong> Amit Verma
+                                            </p>
+
+                                            <p class="text-gray-700">
+                                                <strong>Mobile:</strong> +91 9123456789
+                                            </p>
+
+                                            <p class="mt-2 text-gray-600">
+                                                Discussed pricing and sent the proposal via WhatsApp. Client
+                                                will respond within two days.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -489,7 +596,7 @@
     <script>
     function switchTab(tabId) {
         // Hide all contents
-        const contents = ['overview', 'activity', 'notes', 'files'];
+        const contents = ['overview', 'activity', 'notes', 'files', 'followup'];
         contents.forEach(id => {
             document.getElementById(`content-${id}`).classList.add('hidden');
             document.getElementById(`tab-${id}`).classList.remove('active-tab');

@@ -52,16 +52,16 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     Customers
                 </a>
 
-                <a href="deals.php"
+                <a href="deal.php"
                     class="text-body-sm transition-colors duration-200
-                    <?= ($currentPage == 'deals.php') ? 'font-medium text-primary border-b-2 border-primary pb-1' : 'text-on-surface hover:text-primary'; ?>">
+                    <?= ($currentPage == 'deal.php') ? 'font-medium text-primary border-b-2 border-primary pb-1' : 'text-on-surface hover:text-primary'; ?>">
                     Deals
                 </a>
 
             </div>
         </div>
 
-        <div class="flex items-center gap-md relative">
+        <div class="flex items-center gap-sm relative">
             <!-- Create Button -->
             <div class="relative">
                 <button id="createBtn"
@@ -80,39 +80,234 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <!-- Menu Items -->
                     <div class="space-y-1">
 
-                        <a href="lead.php"
+                        <a href="createlead.php"
                             class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
                             <span class="text-lg">+</span>
                             <span>Lead</span>
                         </a>
 
-                        <a href="contact.php"
+                        <a href="customercreate.php"
                             class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
                             <span class="text-lg">+</span>
                             <span>Customer</span>
                         </a>
 
-                        
+                        <!-- Follow Up Button -->
+                        <a href="javascript:void(0)"
+                            onclick="openFollowUpModal()"
+                            class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
+                            <span class="text-lg">+</span>
+                            <span>Follow Up</span>
+                        </a>
+
+                        <!-- Follow Up Modal -->
+                        <div id="followUpModal"
+                            class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+
+                            <div class="bg-white rounded-xl shadow-xl w-full max-w-md p-6 relative">
+
+                                <!-- Header -->
+                                <div class="flex justify-between items-center mb-5">
+                                    <h2 class="text-xl font-semibold">Add Follow Up</h2>
+
+                                    <button onclick="closeFollowUpModal()"
+                                        class="text-gray-500 hover:text-red-500 text-2xl">
+                                        &times;
+                                    </button>
+                                </div>
+
+                                <!-- Form -->
+                                <form action="" method="POST">
+
+                                    <!-- Mobile Number -->
+                                    <div class="mb-4">
+                                        <label class="block mb-1 font-medium">
+                                            Mobile Number
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="mobile"
+                                            placeholder="Enter Mobile Number"
+                                            class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                                    </div>
+
+                                    <!-- Date -->
+                                    <div class="mb-4">
+                                        <label class="block mb-1 font-medium">
+                                            Follow Up Date
+                                        </label>
+                                        <input
+                                            type="date"
+                                            name="followup_date"
+                                            class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                                    </div>
+
+                                    <!-- Time -->
+                                    <div class="mb-4">
+                                        <label class="block mb-1 font-medium">
+                                            Follow Up Time
+                                        </label>
+                                        <input
+                                            type="time"
+                                            name="followup_time"
+                                            class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                                    </div>
+
+                                    <!-- Description -->
+                                    <div class="mb-5">
+                                        <label class="block mb-1 font-medium">
+                                            Description
+                                        </label>
+                                        <textarea
+                                            name="description"
+                                            rows="4"
+                                            placeholder="Enter Follow Up Details..."
+                                            class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                                    </div>
+
+                                    <!-- Buttons -->
+                                    <div class="flex justify-end gap-3">
+
+                                        <button
+                                            type="button"
+                                            onclick="closeFollowUpModal()"
+                                            class="px-4 py-2 rounded-lg border hover:bg-gray-100">
+                                            Cancel
+                                        </button>
+
+                                        <button
+                                            type="submit"
+                                            name="save_followup"
+                                            class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+                                            Save Follow Up
+                                        </button>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
 
                         <a href="deal.php"
                             class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
                             <span class="text-lg">+</span>
                             <span>Deal</span>
                         </a>
-
-                        <a href="task.php"
+                        <!-- task button -->
+                        <a href="javascript:void(0)"
+                            id="openTaskModal"
                             class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
+
                             <span class="text-lg">+</span>
                             <span>Task</span>
                         </a>
+                        <!-- Task Modal -->
+                        <div id="taskModal" class="fixed inset-0 bg-black/50 hidden z-50 flex items-center justify-center p-4">
+
+                            <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl">
+
+                                <!-- Header -->
+                                <div class="flex justify-between items-center px-6 py-5 border-b">
+                                    <h2 class="text-xl font-semibold">Create Task</h2>
+
+                                    <button id="closeTaskModal">
+                                        <span class="material-symbols-outlined">close</span>
+                                    </button>
+                                </div>
+
+                                <!-- Body -->
+                                <div class="p-6 space-y-5">
+
+                                    <!-- Title -->
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Task Title</label>
+
+                                        <input
+                                            type="text"
+                                            placeholder="Enter task title"
+                                            class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none">
+                                    </div>
+
+                                    <!-- Description -->
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Description</label>
+
+                                        <textarea
+                                            rows="4"
+                                            placeholder="Task description..."
+                                            class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                                    </div>
+
+                                    <div class="grid grid-cols-2 gap-4">
+
+                                        <!-- Assign -->
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2">Assign To</label>
+
+                                            <select class="w-full border rounded-lg px-4 py-3">
+                                                <option>Select Employee</option>
+                                                <option>Marcus K.</option>
+                                                <option>Sarah L.</option>
+                                                <option>Daniel R.</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Priority -->
+                                        <div>
+                                            <label class="block text-sm font-medium mb-2">Priority</label>
+
+                                            <select class="w-full border rounded-lg px-4 py-3">
+                                                <option>Low</option>
+                                                <option>Medium</option>
+                                                <option>High</option>
+                                                <option>Urgent</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Due Date -->
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Due Date</label>
+
+                                        <input
+                                            type="date"
+                                            class="w-full border rounded-lg px-4 py-3">
+                                    </div>
+
+                                </div>
+
+                                <!-- Footer -->
+                                <div class="flex justify-end gap-3 border-t px-6 py-4">
+
+                                    <button
+                                        id="cancelTask"
+                                        class="px-5 py-2 rounded-lg border hover:bg-gray-100">
+
+                                        Cancel
+
+                                    </button>
+
+                                    <button
+                                        class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+
+                                        Save Task
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
 
                         <a href="meeting.php"
                             class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
                             <span class="text-lg">+</span>
                             <span>Meeting</span>
                         </a>
-
-                        
 
                         <a href="campaign.php"
                             class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
@@ -334,19 +529,19 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
     <script>
         const searchBtn = document.getElementById("searchBtn");
-const searchMenu = document.getElementById("searchMenu");
+        const searchMenu = document.getElementById("searchMenu");
 
-searchBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    searchMenu.classList.toggle("hidden");
-});
+        searchBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            searchMenu.classList.toggle("hidden");
+        });
 
-// Close when clicking outside
-document.addEventListener("click", (e) => {
-    if (!searchMenu.contains(e.target) && !searchBtn.contains(e.target)) {
-        searchMenu.classList.add("hidden");
-    }
-});
+        // Close when clicking outside
+        document.addEventListener("click", (e) => {
+            if (!searchMenu.contains(e.target) && !searchBtn.contains(e.target)) {
+                searchMenu.classList.add("hidden");
+            }
+        });
     </script>
     <script>
         // Get elements
@@ -441,6 +636,49 @@ document.addEventListener("click", (e) => {
         document.addEventListener("click", function (e) {
             if (!createMenu.contains(e.target) && !createBtn.contains(e.target)) {
                 createMenu.classList.add("hidden");
+            }
+        });
+    </script>
+
+    <script>
+        function openFollowUpModal() {
+            const modal = document.getElementById('followUpModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeFollowUpModal() {
+            const modal = document.getElementById('followUpModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('followUpModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFollowUpModal();
+            }
+        });
+    </script>
+    <script>
+        const taskModal = document.getElementById("taskModal");
+
+        document.getElementById("openTaskModal").addEventListener("click", function () {
+            taskModal.classList.remove("hidden");
+        });
+
+        document.getElementById("closeTaskModal").addEventListener("click", function () {
+            taskModal.classList.add("hidden");
+        });
+
+        document.getElementById("cancelTask").addEventListener("click", function () {
+            taskModal.classList.add("hidden");
+        });
+
+        // Close when clicking outside the modal
+        taskModal.addEventListener("click", function (e) {
+            if (e.target === taskModal) {
+                taskModal.classList.add("hidden");
             }
         });
     </script>

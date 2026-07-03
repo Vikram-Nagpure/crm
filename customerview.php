@@ -367,7 +367,7 @@
                 <div class="col-span-12 lg:col-span-4 space-y-lg">
                     <!-- Customer Info Card -->
                     <section class="bg-white border border-outline-variant rounded-xl p-lg">
-                        <h3 class="font-headline-sm text-headline-sm mb-lg text-on-surface">Customer Info</h3>
+                        <h3 class="font-label-md text-label-md text-on-surface font-semibold mb-2">Customer Info</h3>
                         <div class="space-y-md">
                             <div class="flex items-start gap-md">
                                 <span class="material-symbols-outlined text-secondary">call</span>
@@ -402,10 +402,51 @@
                             </div>
                         </div>
                     </section>
+
+                    <!-- Related Contacts -->
+                    <div class="p-lg bg-white border border-outline-variant rounded-xl flex flex-col gap-lg">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-label-md text-label-md text-on-surface font-semibold">Related Contacts</h3>
+                            <span class="text-label-sm text-on-surface-variant">RS Tech (3)</span>
+                        </div>
+                        <div class="flex flex-col gap-md">
+                            <div class="flex items-center gap-md">
+                                <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+                                    <img class="w-full h-full object-cover"
+                                        data-alt="A portrait of a cheerful female professional with long dark hair, wearing a stylish beige blazer, smiling warmly in a bright and airy workspace with natural lighting. The image exudes professional friendliness and warmth."
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk7UyOiJliQ9UcCXjyI5E9jSLiZxjFMOTA1KnHjShjy8FRt4IwhXa6C65XoSwhrqbj9jcwAn5to9VesYrmNrX7LLvoEkyle5NpQXsFF28YKsYBA-S9VmEihyXPs6BkVM-AQe254RzEdXXKLWPh8uwMvd8xA7lVrHBY_xXJ7b_hqP9Y_PENXt5Hm7MtrBgw_-IRoQ4k8CBKZ_wbhui-d09iuYMPzerwPBDSCKYf4p8QvRNjLg4rzQJmCLbmlAUFu83UJVRJMuKvNLW6" />
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-label-md leading-tight">Priya Varma</p>
+                                    <p class="text-body-sm text-on-surface-variant">CTO</p>
+                                </div>
+                                <button
+                                    class="material-symbols-outlined text-secondary hover:text-primary transition-colors">mail</button>
+                            </div>
+                            <div class="flex items-center gap-md">
+                                <div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container">
+                                    <img class="w-full h-full object-cover"
+                                        data-alt="Close-up headshot of a middle-aged male manager with a professional haircut and glasses, wearing a light blue dress shirt, looking directly into the camera with a confident and approachable smile, soft office interior background."
+                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZZ7_3c_ty14j0SAnWzApE0RATgERSq5SSCgqHXhUhnBUn2cVZIf7SMTSQb__0xZxijwV5Maved4dWo9o7JJ6Oaz8YjgyBKoxINI0q7BB8CaJTwtgn3SPBcDMNGjKlYqiECz_lSeMCeOFoUH_-p656kf0052BXQ0kl8U2f8uM-BpQ8umf58Ahy4wULG_TSE8qLz7yBZbW_tN23AQhl68FX4bvi6GQs_h2zhKFzBytWFc96UkMxps4JKeFkFSEvcRyMD8_kiXqb0_Bi" />
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-label-md leading-tight">Vikram Singh</p>
+                                    <p class="text-body-sm text-on-surface-variant">Procurement</p>
+                                </div>
+                                <button
+                                    class="material-symbols-outlined text-secondary hover:text-primary transition-colors">mail</button>
+                            </div>
+                        </div>
+                        <button
+                            class="w-full py-2 text-primary border border-primary/20 rounded-lg font-label-md hover:bg-primary/5 transition-colors">
+                            Add Colleague
+                        </button>
+                    </div>
+
                     <!-- Recent Deals Card -->
                     <section class="bg-white border border-outline-variant rounded-xl p-lg">
                         <div class="flex justify-between items-center mb-lg">
-                            <h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Deals</h3>
+                            <h3 class="font-label-md text-label-md text-on-surface font-semibold">Recent Deals</h3>
                             <span
                                 class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors">add_circle</span>
                         </div>
@@ -440,6 +481,8 @@
                             </div>
                         </div>
                     </section>
+
+                    
                     <!-- Tags Card -->
                     <section class="bg-white border border-outline-variant rounded-xl p-lg">
                         <h3 class="font-headline-sm text-headline-sm mb-lg text-on-surface">Tags</h3>
