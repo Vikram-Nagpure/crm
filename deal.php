@@ -192,14 +192,25 @@
                         health monitoring</p>
                 </div>
                 <div class="flex items-center gap-3">
-                    <div
-                        class="flex items-center gap-2 px-3 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors">
-                        <span class="material-symbols-outlined !text-[18px] text-on-surface-variant"
-                            data-icon="calendar_today">calendar_today</span>
-                        <span class="font-label-md text-label-md">Oct 1 - Oct 31, 2024</span>
-                        <span class="material-symbols-outlined !text-[16px] text-on-surface-variant"
-                            data-icon="expand_more">expand_more</span>
-                    </div>
+                    <div id="dateRangeBox"
+    class="flex items-center gap-2 px-3 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors">
+
+    <span class="material-symbols-outlined text-[18px] text-on-surface-variant">
+        calendar_today
+    </span>
+
+    <span id="dateRangeText" class="font-label-md text-label-md">
+        Jul 4 - Jul 5, 2026
+    </span>
+
+    <span class="material-symbols-outlined text-[16px] text-on-surface-variant">
+        expand_more
+    </span>
+</div>
+
+<!-- Hidden Inputs -->
+<input type="date" id="fromDate" class="hidden">
+<input type="date" id="toDate" class="hidden">
                     <button
                         class="px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-lg font-label-md text-label-md flex items-center gap-2 hover:bg-surface-container-low transition-colors">
                         <span class="material-symbols-outlined !text-[18px]"
@@ -220,11 +231,11 @@
                         </div>
                     </div>
                     <div class="flex items-baseline gap-2">
-                        <h3 class="font-headline-md text-headline-md">$450,200</h3>
+                        <h3 class="font-headline-md text-headline-md">₹450,200</h3>
                         <span
                             class="text-[12px] font-bold text-[#10B981] bg-[#10B981]/10 px-1.5 py-0.5 rounded">+12%</span>
                     </div>
-                    <p class="text-on-surface-variant font-label-sm text-[11px] mt-1">vs. last month ($402k)</p>
+                    <p class="text-on-surface-variant font-label-sm text-[11px] mt-1">vs. last month (₹402k)</p>
                 </div>
                 <!-- KPI Card 2 -->
                 <div class="bg-surface-container-lowest p-md border border-outline-variant rounded-xl">
@@ -259,12 +270,12 @@
                             <span class="material-symbols-outlined !text-[18px]" data-icon="payments">payments</span>
                         </div>
                     </div>
-                    <h3 class="font-headline-md text-headline-md">$18,750</h3>
+                    <h3 class="font-headline-md text-headline-md">₹18,750</h3>
                     <p class="text-on-surface-variant font-label-sm text-[11px] mt-1">Maintaining Q3 baseline</p>
                 </div>
             </div>
             <!-- Pipeline Visual Stages -->
-            <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6">
+            <!-- <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6">
                 <div class="flex items-center justify-between mb-6">
                     <h3 class="font-headline-sm text-headline-sm">Sales Funnel</h3>
                     <button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
@@ -274,7 +285,6 @@
                     </button>
                 </div>
                 <div class="flex flex-col lg:flex-row items-stretch gap-2">
-                    <!-- Qualification -->
                     <div
                         class="flex-1 min-w-0 bg-surface-container-low/50 border border-outline-variant/50 rounded-lg p-4 group hover:bg-primary/5 transition-colors cursor-pointer">
                         <div class="flex justify-between items-center mb-3">
@@ -282,12 +292,11 @@
                                 class="font-label-sm text-[10px] uppercase tracking-wider text-on-surface-variant font-bold">Qualification</span>
                             <span class="text-primary bg-primary/10 px-2 py-0.5 rounded font-bold text-[12px]">8</span>
                         </div>
-                        <div class="text-headline-sm font-headline-sm">$84k</div>
+                        <div class="text-headline-sm font-headline-sm">₹84k</div>
                         <div class="mt-4 h-1 bg-primary/20 rounded-full overflow-hidden">
                             <div class="h-full bg-primary" style="width: 100%"></div>
                         </div>
                     </div>
-                    <!-- Discovery -->
                     <div
                         class="flex-1 min-w-0 bg-surface-container-low/50 border border-outline-variant/50 rounded-lg p-4 group hover:bg-primary/5 transition-colors cursor-pointer">
                         <div class="flex justify-between items-center mb-3">
@@ -295,12 +304,11 @@
                                 class="font-label-sm text-[10px] uppercase tracking-wider text-on-surface-variant font-bold">Discovery</span>
                             <span class="text-primary bg-primary/10 px-2 py-0.5 rounded font-bold text-[12px]">5</span>
                         </div>
-                        <div class="text-headline-sm font-headline-sm">$112k</div>
+                        <div class="text-headline-sm font-headline-sm">₹112k</div>
                         <div class="mt-4 h-1 bg-primary/20 rounded-full overflow-hidden">
                             <div class="h-full bg-primary" style="width: 80%"></div>
                         </div>
                     </div>
-                    <!-- Proposal -->
                     <div
                         class="flex-1 min-w-0 bg-surface-container-low/50 border border-outline-variant/50 rounded-lg p-4 group hover:bg-primary/5 transition-colors cursor-pointer">
                         <div class="flex justify-between items-center mb-3">
@@ -308,12 +316,11 @@
                                 class="font-label-sm text-[10px] uppercase tracking-wider text-on-surface-variant font-bold">Proposal</span>
                             <span class="text-primary bg-primary/10 px-2 py-0.5 rounded font-bold text-[12px]">6</span>
                         </div>
-                        <div class="text-headline-sm font-headline-sm">$156k</div>
+                        <div class="text-headline-sm font-headline-sm">₹156k</div>
                         <div class="mt-4 h-1 bg-primary/20 rounded-full overflow-hidden">
                             <div class="h-full bg-primary" style="width: 60%"></div>
                         </div>
                     </div>
-                    <!-- Negotiation -->
                     <div
                         class="flex-1 min-w-0 bg-surface-container-low/50 border border-outline-variant/50 rounded-lg p-4 group hover:bg-primary/5 transition-colors cursor-pointer">
                         <div class="flex justify-between items-center mb-3">
@@ -321,12 +328,11 @@
                                 class="font-label-sm text-[10px] uppercase tracking-wider text-on-surface-variant font-bold">Negotiation</span>
                             <span class="text-primary bg-primary/10 px-2 py-0.5 rounded font-bold text-[12px]">3</span>
                         </div>
-                        <div class="text-headline-sm font-headline-sm">$68k</div>
+                        <div class="text-headline-sm font-headline-sm">₹68k</div>
                         <div class="mt-4 h-1 bg-primary/20 rounded-full overflow-hidden">
                             <div class="h-full bg-primary" style="width: 40%"></div>
                         </div>
                     </div>
-                    <!-- Closing -->
                     <div
                         class="flex-1 min-w-0 bg-surface-container-low/50 border border-outline-variant/50 rounded-lg p-4 group hover:bg-primary/5 transition-colors cursor-pointer">
                         <div class="flex justify-between items-center mb-3">
@@ -334,13 +340,13 @@
                                 class="font-label-sm text-[10px] uppercase tracking-wider text-on-surface-variant font-bold">Closing</span>
                             <span class="text-primary bg-primary/10 px-2 py-0.5 rounded font-bold text-[12px]">2</span>
                         </div>
-                        <div class="text-headline-sm font-headline-sm">$30k</div>
+                        <div class="text-headline-sm font-headline-sm">₹30k</div>
                         <div class="mt-4 h-1 bg-primary/20 rounded-full overflow-hidden">
                             <div class="h-full bg-primary" style="width: 20%"></div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- Recent Opportunities Table -->
             <div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
                 <div class="px-6 py-4 border-b border-outline-variant flex items-center justify-between">
@@ -398,7 +404,7 @@
                                 </td>
                                 <td class="px-6 py-[14px] font-body-sm text-body-sm">Velox Dynamics</td>
                                 <td class="px-6 py-[14px] font-label-md text-label-md font-semibold text-on-surface">
-                                    $45,000</td>
+                                    ₹45,000</td>
                                 <td class="px-6 py-[14px]">
                                     <span
                                         class="px-2 py-1 bg-secondary-container/30 text-on-secondary-fixed-variant rounded-lg font-label-sm text-[11px] font-bold border border-secondary-container">Negotiation</span>
@@ -430,7 +436,7 @@
                                 </td>
                                 <td class="px-6 py-[14px] font-body-sm text-body-sm">Acme Corp</td>
                                 <td class="px-6 py-[14px] font-label-md text-label-md font-semibold text-on-surface">
-                                    $12,500</td>
+                                    ₹12,500</td>
                                 <td class="px-6 py-[14px]">
                                     <span
                                         class="px-2 py-1 bg-surface-container/50 text-on-surface-variant rounded-lg font-label-sm text-[11px] font-bold border border-outline-variant">Proposal</span>
@@ -462,7 +468,7 @@
                                 </td>
                                 <td class="px-6 py-[14px] font-body-sm text-body-sm">TechFlow Inc</td>
                                 <td class="px-6 py-[14px] font-label-md text-label-md font-semibold text-on-surface">
-                                    $28,000</td>
+                                    ₹28,000</td>
                                 <td class="px-6 py-[14px]">
                                     <span
                                         class="px-2 py-1 bg-primary/10 text-primary rounded-lg font-label-sm text-[11px] font-bold border border-primary/20">Discovery</span>
@@ -494,7 +500,7 @@
                                 </td>
                                 <td class="px-6 py-[14px] font-body-sm text-body-sm">Nova Sphere</td>
                                 <td class="px-6 py-[14px] font-label-md text-label-md font-semibold text-on-surface">
-                                    $15,000</td>
+                                    ₹15,000</td>
                                 <td class="px-6 py-[14px]">
                                     <span
                                         class="px-2 py-1 bg-[#10B981]/10 text-[#047857] rounded-lg font-label-sm text-[11px] font-bold border border-[#10B981]/20">Closing</span>
@@ -568,6 +574,55 @@
         });
     });
     </script>
+
+
+<script>
+const fromDate = document.getElementById("fromDate");
+const toDate = document.getElementById("toDate");
+const text = document.getElementById("dateRangeText");
+const box = document.getElementById("dateRangeBox");
+
+// Default: Today & Tomorrow
+const today = new Date();
+const tomorrow = new Date();
+tomorrow.setDate(today.getDate() + 1);
+
+function formatInput(date) {
+    return date.toISOString().split("T")[0];
+}
+
+function formatDisplay(dateStr) {
+    const d = new Date(dateStr);
+    return d.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+    });
+}
+
+function updateText() {
+    if (fromDate.value && toDate.value) {
+        text.textContent =
+            `${formatDisplay(fromDate.value)} - ${formatDisplay(toDate.value)}`;
+    }
+}
+
+// Set default values
+fromDate.value = formatInput(today);
+toDate.value = formatInput(tomorrow);
+updateText();
+
+// Click on box → select From Date
+box.addEventListener("click", () => fromDate.showPicker());
+
+// After selecting From Date → open To Date
+fromDate.addEventListener("change", () => {
+    updateText();
+    toDate.showPicker();
+});
+
+toDate.addEventListener("change", updateText);
+</script>
 </body>
 
 </html>

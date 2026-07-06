@@ -303,6 +303,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
                         </div>
 
+                        <a href="invoicecreate.php"
+                            class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
+                            <span class="text-lg">+</span>
+                            <span>Invoice</span>
+                        </a>
+
                         <a href="meeting.php"
                             class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 transition">
                             <span class="text-lg">+</span>
