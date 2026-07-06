@@ -234,7 +234,7 @@
                         class="px-md py-sm bg-tertiary text-white rounded-lg font-label-md flex items-center gap-2 active:opacity-70 transition-opacity">
                         <span class="material-symbols-outlined text-sm">check_circle</span>
                         Convert to Customer
-</a>
+                    </a>
                 </div>
             </div>
             <!-- Bento Layout / Content Grid -->
