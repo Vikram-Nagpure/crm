@@ -555,7 +555,90 @@
         } else if (tabName === 'activity') {
             // Re-render activity feed (simplification)
             content.innerHTML =
-                `<div class="bg-white border border-outline-variant rounded-xl p-lg"><p class="text-secondary">Full chronological activity log loading...</p></div>`;
+                `<div class="bg-white border border-outline-variant rounded-xl p-lg">
+                    <div class="space-y-md">
+                            <h2
+                                class="font-headline-sm text-headline-sm text-on-surface flex items-center justify-between">
+                                Recent Activity
+                                <button class="text-primary font-label-md text-label-md hover:underline">View
+                                    All</button>
+                            </h2>
+                            <div
+                                class="relative pl-8 space-y-lg before:absolute before:left-3 before:top-0 before:h-full before:w-[1px] before:bg-outline-variant">
+                                <!-- Activity Item 1 -->
+                                <div class="relative">
+                                    <div
+                                        class="absolute -left-8 top-1 w-6 h-6 rounded-full bg-primary-fixed flex items-center justify-center border-2 border-white ring-2 ring-background z-10">
+                                        <span class="material-symbols-outlined text-[14px] text-primary">call</span>
+                                    </div>
+                                    <div class="bg-white border border-outline-variant rounded-xl p-md">
+                                        <div class="flex justify-between items-start mb-sm">
+                                            <h4 class="font-label-md text-label-md font-bold">Follow-up Call: Contract
+                                                Renewal</h4>
+                                            <span class="text-label-sm font-label-sm text-secondary">Oct 14, 2:30
+                                                PM</span>
+                                        </div>
+                                        <p class="text-body-sm text-secondary">Discussed the upcoming renewal terms for
+                                            the Enterprise Plan. Elena requested a quote for 50 additional seats.
+                                            Meeting scheduled for next Tuesday to finalize.</p>
+                                        <div class="mt-md flex items-center gap-sm">
+                                            <span
+                                                class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded text-[11px] font-bold">Call
+                                                Log</span>
+                                            <span class="text-secondary text-[12px]">Recorded by David Chen</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Activity Item 2 -->
+                                <div class="relative">
+                                    <div
+                                        class="absolute -left-8 top-1 w-6 h-6 rounded-full bg-tertiary-fixed flex items-center justify-center border-2 border-white ring-2 ring-background z-10">
+                                        <span class="material-symbols-outlined text-[14px] text-tertiary">mail</span>
+                                    </div>
+                                    <div class="bg-white border border-outline-variant rounded-xl p-md">
+                                        <div class="flex justify-between items-start mb-sm">
+                                            <h4 class="font-label-md text-label-md font-bold">Email Sent: New Feature
+                                                Showcase</h4>
+                                            <span class="text-label-sm font-label-sm text-secondary">Oct 12, 10:15
+                                                AM</span>
+                                        </div>
+                                        <p class="text-body-sm text-secondary">Sent the requested documentation on the
+                                            new AI Analytics module. Included the whitepaper and integration guide.</p>
+                                        <div class="mt-md flex items-center gap-sm">
+                                            <span
+                                                class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded text-[11px] font-bold">Outgoing</span>
+                                            <span class="text-secondary text-[12px]">System Generated</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Activity Item 3 -->
+                                <div class="relative">
+                                    <div
+                                        class="absolute -left-8 top-1 w-6 h-6 rounded-full bg-secondary-fixed flex items-center justify-center border-2 border-white ring-2 ring-background z-10">
+                                        <span
+                                            class="material-symbols-outlined text-[14px] text-on-secondary-fixed-variant">groups</span>
+                                    </div>
+                                    <div class="bg-white border border-outline-variant rounded-xl p-md">
+                                        <div class="flex justify-between items-start mb-sm">
+                                            <h4 class="font-label-md text-label-md font-bold">QBR Meeting: Q3
+                                                Performance Review</h4>
+                                            <span class="text-label-sm font-label-sm text-secondary">Oct 10, 4:00
+                                                PM</span>
+                                        </div>
+                                        <p class="text-body-sm text-secondary">Quarterly Business Review with the Velox
+                                            operations team. Reported a 22% increase in system efficiency. Action items:
+                                            Follow up on security audit documentation.</p>
+                                        <div class="mt-md flex items-center gap-sm">
+                                            <span
+                                                class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded text-[11px] font-bold">Meeting</span>
+                                            <span class="text-secondary text-[12px]">Attended by David Chen, Marcus
+                                                Thorne</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>`;
         } else if (tabName === 'files') {
             content.innerHTML = `
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-md">

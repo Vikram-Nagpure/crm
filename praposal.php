@@ -130,7 +130,7 @@
     /* ---------- App bar ---------- */
     .appbar {
         position: sticky;
-        top: 0;
+        top: 65px;
         z-index: 40;
         display: flex;
         align-items: center;
@@ -834,6 +834,8 @@
 
 <body>
 
+
+    <?php include "include/header.php"?>
     <!-- ============ APP BAR ============ -->
     <header class="appbar">
         <div class="appbar-brand">

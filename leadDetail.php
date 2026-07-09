@@ -363,16 +363,373 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!-- Placeholder for Notes & Files -->
-                            <div class="hidden py-xl text-center" id="content-notes">
-                                <span class="material-symbols-outlined text-outline text-4xl mb-2">description</span>
-                                <p class="text-secondary font-body-md">No internal notes yet. Click 'Add Note' to begin.
-                                </p>
+                            <div id="content-notes">
+
+
+                                <!-- Notes Header -->
+                                <div class="flex items-center justify-between mb-6">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-800">
+                                            Internal Notes
+                                        </h3>
+                                        <p class="text-sm text-gray-500">
+                                            Keep important notes related to this lead.
+                                        </p>
+                                    </div>
+
+                                    <button id="openNoteModal"
+                                        class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition">
+                                        <span class="material-symbols-outlined text-[20px]">add</span>
+                                        <span>Add Note</span>
+                                    </button>
+                                </div>
+                                <!-- Empty State -->
+                                <!--
+                                <div class="py-xl text-center">
+                                    <span class="material-symbols-outlined text-outline text-5xl mb-3">description</span>
+                                    <p class="text-secondary font-body-md">
+                                        No internal notes yet. Click "Add Note" to begin.
+                                    </p>
+                                </div>
+                                -->
+
+                                <!-- Notes Timeline -->
+                                <div class="relative pl-8">
+
+                                    <!-- Timeline Line -->
+                                    <div class="absolute left-[11px] top-0 bottom-0 w-[2px] bg-gray-300"></div>
+
+                                    <!-- Note 1 -->
+                                    <div class="relative mb-6">
+                                        <div
+                                            class="absolute -left-[33px] top-1 w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center border-4 border-white shadow">
+                                            <span class="material-symbols-outlined text-[12px] text-white">
+                                                description
+                                            </span>
+                                        </div>
+
+                                        <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                                            <div class="flex justify-between items-start">
+                                                <h4 class="font-semibold text-orange-700">
+                                                    Website Requirement Discussion
+                                                </h4>
+
+                                                <span class="text-sm text-gray-500">
+                                                    Today • 11:45 AM
+                                                </span>
+                                            </div>
+
+                                            <p class="mt-3 text-gray-600 leading-relaxed">
+                                                Client needs a responsive CRM dashboard with Lead Management,
+                                                Follow-up, Proposal Generator, and WhatsApp integration.
+                                                Requested the first UI design before development starts.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Note 2 -->
+                                    <div class="relative mb-6">
+                                        <div
+                                            class="absolute -left-[33px] top-1 w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center border-4 border-white shadow">
+                                            <span class="material-symbols-outlined text-[12px] text-white">
+                                                sticky_note_2
+                                            </span>
+                                        </div>
+
+                                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                            <div class="flex justify-between items-start">
+                                                <h4 class="font-semibold text-blue-700">
+                                                    Proposal Sent
+                                                </h4>
+
+                                                <span class="text-sm text-gray-500">
+                                                    Yesterday • 04:30 PM
+                                                </span>
+                                            </div>
+
+                                            <p class="mt-3 text-gray-600 leading-relaxed">
+                                                Proposal PDF has been shared with the client on WhatsApp and
+                                                Email. Waiting for approval before starting development.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Note 3 -->
+                                    <div class="relative">
+                                        <div
+                                            class="absolute -left-[33px] top-1 w-6 h-6 rounded-full bg-green-600 flex items-center justify-center border-4 border-white shadow">
+                                            <span class="material-symbols-outlined text-[12px] text-white">
+                                                task_alt
+                                            </span>
+                                        </div>
+
+                                        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                            <div class="flex justify-between items-start">
+                                                <h4 class="font-semibold text-green-700">
+                                                    Meeting Completed
+                                                </h4>
+
+                                                <span class="text-sm text-gray-500">
+                                                    02 Jul 2026 • 03:15 PM
+                                                </span>
+                                            </div>
+
+                                            <p class="mt-3 text-gray-600 leading-relaxed">
+                                                Discussed project scope, timeline, and payment terms.
+                                                Client approved the UI concept and requested development to
+                                                begin next week.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
-                            <div class="hidden py-xl text-center" id="content-files">
-                                <span class="material-symbols-outlined text-outline text-4xl mb-2">folder_open</span>
-                                <p class="text-secondary font-body-md">No files uploaded. Drag and drop here.</p>
+
+                            <!-- file -->
+                            <div id="content-files">
+
+                                <!-- Header -->
+                                <div class="flex items-center justify-between mb-6">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-gray-800">
+                                            Uploaded Files
+                                        </h3>
+                                        <p class="text-sm text-gray-500">
+                                            Manage all documents related to this lead.
+                                        </p>
+                                    </div>
+
+                                    <button id="openFileModal"
+                                        class="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition">
+                                        <span class="material-symbols-outlined text-[20px]">upload_file</span>
+                                        Upload File
+                                    </button>
+                                </div>
+
+                                <!-- Files Timeline -->
+                                <!-- Files Grid -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                                    <!-- PDF File -->
+                                    <div
+                                        class="group flex items-center justify-between p-4 bg-white border border-blue-500 rounded-2xl hover:shadow-lg transition">
+
+                                        <div class="flex items-center gap-4 min-w-0">
+
+                                            <!-- Icon -->
+                                            <div
+                                                class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0">
+                                                <span class="material-symbols-outlined text-red-600 text-3xl">
+                                                    picture_as_pdf
+                                                </span>
+                                            </div>
+
+                                            <!-- File Info -->
+                                            <div class="min-w-0">
+                                                <h4 class="font-semibold text-gray-800 truncate">
+                                                    Service_Contract_2024.pdf
+                                                </h4>
+
+                                                <p class="text-sm text-gray-500 mt-1">
+                                                    2.4 MB • Oct 10
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- Actions -->
+                                        <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+
+                                            <button
+                                                class="w-9 h-9 rounded-lg hover:bg-blue-50 flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-blue-600">
+                                                    download
+                                                </span>
+                                            </button>
+
+                                            <button
+                                                class="w-9 h-9 rounded-lg hover:bg-red-50 flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-red-600">
+                                                    delete
+                                                </span>
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- PPT File -->
+                                    <div
+                                        class="group flex items-center justify-between p-4 bg-white border border-gray-300 rounded-2xl hover:border-blue-500 hover:shadow-lg transition">
+
+                                        <div class="flex items-center gap-4 min-w-0">
+
+                                            <div
+                                                class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+                                                <span class="material-symbols-outlined text-blue-600 text-3xl">
+                                                    slideshow
+                                                </span>
+                                            </div>
+
+                                            <div class="min-w-0">
+                                                <h4 class="font-semibold text-gray-800 truncate">
+                                                    Q3_Review_Slides.pptx
+                                                </h4>
+
+                                                <p class="text-sm text-gray-500 mt-1">
+                                                    8.1 MB • Oct 08
+                                                </p>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+
+                                            <button
+                                                class="w-9 h-9 rounded-lg hover:bg-blue-50 flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-blue-600">
+                                                    download
+                                                </span>
+                                            </button>
+
+                                            <button
+                                                class="w-9 h-9 rounded-lg hover:bg-red-50 flex items-center justify-center">
+                                                <span class="material-symbols-outlined text-red-600">
+                                                    delete
+                                                </span>
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
                             </div>
+
+                            <!-- file upload model -->
+                            <!-- Upload File Modal -->
+                            <div id="fileModal"
+                                class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+
+                                <div class="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+
+                                    <!-- Header -->
+                                    <div class="flex items-center justify-between px-6 py-5 border-b">
+                                        <div>
+                                            <h3 class="text-xl font-semibold text-gray-800">
+                                                Upload File
+                                            </h3>
+                                            <p class="text-sm text-gray-500 mt-1">
+                                                Upload documents related to this lead.
+                                            </p>
+                                        </div>
+
+                                        <button id="closeFileModal"
+                                            class="w-10 h-10 rounded-full hover:bg-gray-100 transition flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-gray-500">
+                                                close
+                                            </span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Body -->
+                                    <div class="p-6">
+
+                                        <!-- Upload Area -->
+                                        <label for="leadFile"
+                                            class="block cursor-pointer border-2 border-dashed border-gray-300 rounded-xl p-10 text-center hover:border-primary hover:bg-orange-50 transition">
+
+                                            <div
+                                                class="w-16 h-16 mx-auto rounded-full bg-orange-100 flex items-center justify-center mb-4">
+
+                                                <span class="material-symbols-outlined text-primary text-4xl">
+                                                    cloud_upload
+                                                </span>
+
+                                            </div>
+
+                                            <h4 class="font-semibold text-gray-800 text-lg">
+                                                Drag & Drop your file here
+                                            </h4>
+
+                                            <p class="text-gray-500 mt-2">
+                                                or <span class="text-primary font-medium">Browse Files</span>
+                                            </p>
+
+                                            <p class="text-xs text-gray-400 mt-4">
+                                                Supported: PDF, DOC, DOCX, XLS, XLSX, JPG, PNG, ZIP
+                                            </p>
+
+                                            <p class="text-xs text-gray-400">
+                                                Maximum file size: 20 MB
+                                            </p>
+
+                                            <input id="leadFile" type="file" class="hidden">
+                                        </label>
+
+                                        <!-- Selected File -->
+                                        <div class="mt-5">
+
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                Selected File
+                                            </label>
+
+                                            <input type="text"
+                                                id="selectedFileName"
+                                                class="w-full border rounded-lg px-4 py-3 bg-gray-50"
+                                                placeholder="No file selected"
+                                                readonly>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Footer -->
+                                    <div class="flex justify-end gap-3 px-6 py-5 border-t bg-gray-50">
+
+                                        <button id="cancelFileModal"
+                                            class="px-5 py-2.5 rounded-lg border border-gray-300 hover:bg-gray-100 transition">
+
+                                            Cancel
+
+                                        </button>
+
+                                        <button
+                                            class="px-6 py-2.5 rounded-lg bg-primary text-white hover:opacity-90 transition flex items-center gap-2">
+
+                                            <span class="material-symbols-outlined text-[18px]">
+                                                upload
+                                            </span>
+
+                                            Upload File
+
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <script>
+                            const leadFile = document.getElementById("leadFile");
+                            const selectedFileName = document.getElementById("selectedFileName");
+
+                            leadFile.addEventListener("change", function () {
+                                if (this.files.length > 0) {
+                                    selectedFileName.value = this.files[0].name;
+                                } else {
+                                    selectedFileName.value = "";
+                                }
+                            });
+                            </script>
+
+                            <!-- follow up -->
                             <div class="space-y-lg" id="content-followup">
                                 <div class="relative pl-8">
 
@@ -593,6 +950,128 @@
             <span class="material-symbols-outlined text-2xl">add</span>
         </button>
     </div>
+
+
+    <!-- Add Note Modal -->
+<div id="noteModal"
+    class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50">
+
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-lg mx-4">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between px-6 py-4 border-b">
+            <h3 class="text-lg font-semibold">
+                Add Internal Note
+            </h3>
+
+            <button id="closeNoteModal"
+                class="material-symbols-outlined text-gray-500 hover:text-red-500">
+                close
+            </button>
+        </div>
+
+        <!-- Body -->
+        <div class="p-6 space-y-5">
+
+            <!-- Title -->
+            <div>
+                <label class="block text-sm font-medium mb-2">
+                    Note Title
+                </label>
+
+                <input type="text"
+                    placeholder="Enter note title"
+                    class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label class="block text-sm font-medium mb-2">
+                    Description
+                </label>
+
+                <textarea rows="5"
+                    placeholder="Write note..."
+                    class="w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="flex justify-end gap-3 px-6 py-4 border-t">
+
+            <button id="cancelNoteModal"
+                class="px-5 py-2 rounded-lg border hover:bg-gray-100">
+                Cancel
+            </button>
+
+            <button
+                class="px-5 py-2 rounded-lg bg-primary text-white hover:bg-primary/90">
+                Save Note
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- note js -->
+<script>
+const noteModal = document.getElementById("noteModal");
+
+document.getElementById("openNoteModal").addEventListener("click", () => {
+    noteModal.classList.remove("hidden");
+    noteModal.classList.add("flex");
+});
+
+function closeNoteModal() {
+    noteModal.classList.remove("flex");
+    noteModal.classList.add("hidden");
+}
+
+document.getElementById("closeNoteModal").addEventListener("click", closeNoteModal);
+document.getElementById("cancelNoteModal").addEventListener("click", closeNoteModal);
+
+// Close on outside click
+noteModal.addEventListener("click", function(e) {
+    if (e.target === noteModal) {
+        closeNoteModal();
+    }
+});
+</script>
+
+<!-- file modal  -->
+
+<script>
+const fileModal = document.getElementById("fileModal");
+const openFileModal = document.getElementById("openFileModal");
+const closeFileModal = document.getElementById("closeFileModal");
+const cancelFileModal = document.getElementById("cancelFileModal");
+
+// Open Modal
+openFileModal.addEventListener("click", function () {
+    fileModal.classList.remove("hidden");
+    fileModal.classList.add("flex");
+});
+
+// Close Modal
+function hideFileModal() {
+    fileModal.classList.remove("flex");
+    fileModal.classList.add("hidden");
+}
+
+closeFileModal.addEventListener("click", hideFileModal);
+cancelFileModal.addEventListener("click", hideFileModal);
+
+// Close on outside click
+fileModal.addEventListener("click", function (e) {
+    if (e.target === fileModal) {
+        hideFileModal();
+    }
+});
+</script>
+
     <script>
     function switchTab(tabId) {
         // Hide all contents
