@@ -217,6 +217,18 @@ tailwind.config = {
           class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary">
         <p class="mt-2 font-body-sm text-body-sm text-outline">Exactly this many pages are always shown — short content leaves trailing pages blank, longer content is trimmed to fit. Use the "Add Page" button in the toolbar to force a break at the cursor.</p>
       </div>
+      <div class="mt-2.5 flex items-center justify-between">
+        <label class="flex items-center gap-1.5 font-body-sm text-body-sm text-on-surface-variant">
+          <input type="checkbox" id="chkPageIndex" checked onchange="onLayoutChange()">
+          Show page index (e.g. "Page 1 of 3")
+        </label>
+        <select id="selPageIndexPos" onchange="onLayoutChange()" disabled class="px-2.5 py-1.5 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary">
+          <option value="bottom-left" selected>Bottom Left</option>
+          <option value="bottom-center">Bottom Center</option>
+          <option value="bottom-right">Bottom Right</option>
+          <option value="top-right">Top Right</option>
+        </select>
+      </div>
     </div>
   </div>
 </div>
@@ -274,15 +286,16 @@ tailwind.config = {
    same artwork automatically repeats across every page of the document.
    Design it at (or proportional to) A4 — 210mm x 297mm — for the cleanest fit.
 ============================================================ */
-const LETTERHEAD_IMAGE_SRC = 'assets/images/letterhead.png';
+const LETTERHEAD_IMAGE_SRC = 'assets/images/letterhed2.png';
 
 /* ============================================================
    STATE
 ============================================================ */
 const settings = {
   width:'70%', height:'80%', justify:'center', textAlign:'left',
-  fontFamily:"'Inter', sans-serif", fontSize:14, lineHeight:1.65,
-  margin:0, padding:8, maxPages:2
+  fontFamily:"'Inter', sans-serif", fontSize:22, lineHeight:1.65,
+  margin:0, padding:8, maxPages:2,
+  showPageIndex:true, pageIndexPos:'bottom-left'
 };
 let panelCollapsed = false;
 let truncationWarned = false;
@@ -319,6 +332,9 @@ const initialBody = `
    fixed letterhead <img> as a full-page background layer, with the
    editable content area positioned over its blank space exactly as before
    (top-[34mm] / bottom-[16mm] reserved, unchanged from the original layout).
+   A page-index label ("Page X of Y") sits on top of the letterhead in the
+   reserved margin area — it is a plain, non-editable overlay so it always
+   renders in preview, print, and the exported PDF.
 ============================================================ */
 function buildPageSkeleton(){
   const frame = document.createElement('div');
@@ -332,6 +348,7 @@ function buildPageSkeleton(){
         </div>
         <span class="guide-label hidden absolute -translate-y-[130%] pointer-events-none font-code-sm text-[9.5px] text-primary bg-surface-container-lowest px-1.5 py-0.5 rounded border border-dashed border-primary"></span>
       </div>
+      <span class="page-index absolute font-code-sm text-[12.5px] tracking-wide text-on-surface-variant/80 pointer-events-none select-none"></span>
     </div>`;
   return frame;
 }
@@ -343,6 +360,30 @@ function positionGuideLabel(frame){
   const blockRect = block.getBoundingClientRect();
   label.style.left = Math.max(0, blockRect.left - slotRect.left) + 'px';
   label.style.top = '0px';
+}
+
+/* Position + content for the "Page X of Y" overlay, based on settings.pageIndexPos */
+const PAGE_INDEX_POSITIONS = {
+  'bottom-left':  { bottom:'6mm', left:'10mm', right:'auto', top:'auto', textAlign:'left' },
+  'bottom-center':{ bottom:'6mm', left:'0', right:'0', top:'auto', textAlign:'center' },
+  'bottom-right': { bottom:'6mm', right:'10mm', left:'auto', top:'auto', textAlign:'right' },
+  'top-right':    { top:'6mm', right:'10mm', left:'auto', bottom:'auto', textAlign:'right' }
+};
+function applyPageIndex(frame, idx, total){
+  const label = frame.querySelector('.page-index');
+  if(!settings.showPageIndex){
+    label.classList.add('hidden');
+    return;
+  }
+  label.classList.remove('hidden');
+  const pos = PAGE_INDEX_POSITIONS[settings.pageIndexPos] || PAGE_INDEX_POSITIONS['bottom-left'];
+  label.style.top = pos.top;
+  label.style.bottom = pos.bottom;
+  label.style.left = pos.left;
+  label.style.right = pos.right;
+  label.style.textAlign = pos.textAlign;
+  if(pos.left === '0' && pos.right === '0'){ label.style.width = '100%'; } else { label.style.width = 'auto'; }
+  label.textContent = 'Page ' + (idx+1) + ' of ' + total;
 }
 
 /* ============================================================
@@ -529,6 +570,8 @@ function repaginate(preserveCaret){
     const label = frame.querySelector('.guide-label');
     label.textContent = settings.width + ' × ' + settings.height;
 
+    applyPageIndex(frame, idx, total);
+
     if(isTruncated && idx === total - 1){
       const warn = document.createElement('div');
       warn.className = 'absolute inset-x-[12mm] bottom-[calc(16mm+4px)] z-10 text-center font-code-sm text-[9px] text-on-error bg-error-container border border-error rounded px-2 py-0.5';
@@ -622,7 +665,7 @@ function insertTable(){
 }
 
 /* ============================================================
-   LAYOUT SETTINGS CHANGE (unchanged)
+   LAYOUT SETTINGS CHANGE (unchanged, plus page-index options)
 ============================================================ */
 function onLayoutChange(){
   settings.width = document.getElementById('selWidth').value;
@@ -635,6 +678,8 @@ function onLayoutChange(){
   settings.margin = parseFloat(document.getElementById('inpMargin').value) || 0;
   settings.padding = parseFloat(document.getElementById('inpPadding').value) || 0;
   settings.maxPages = parseInt(document.getElementById('inpMaxPages').value, 10) || 2;
+  settings.showPageIndex = document.getElementById('chkPageIndex').checked;
+  settings.pageIndexPos = document.getElementById('selPageIndexPos').value;
   repaginate(false);
 }
 
