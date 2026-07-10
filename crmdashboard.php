@@ -555,8 +555,8 @@
                         <div class="flex items-center justify-between mb-lg">
                             <h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">
                                 Active Events</h3>
-                            <button class="p-1 rounded hover:bg-surface-container transition-colors"><span
-                                    class="material-symbols-outlined text-sm">settings</span></button>
+                            <!-- <button class="p-1 rounded hover:bg-surface-container transition-colors"><span
+                                    class="material-symbols-outlined text-sm">settings</span></button> -->
                         </div>
                         <div class="space-y-lg relative">
                             <!-- Timeline Line -->
@@ -607,8 +607,113 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Follow Up Activity Feed -->
+                    <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
+                        <div class="flex items-center justify-between mb-lg">
+                            <h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">
+                                Follow Up Activity
+                            </h3>
+
+                            <button class="p-1 rounded hover:bg-surface-container transition-colors">
+                                <span class="material-symbols-outlined text-sm">event_note</span>
+                            </button>
+                        </div>
+
+                        <div class="space-y-lg relative">
+
+                            <!-- Timeline -->
+                            <div class="absolute left-4 top-2 bottom-0 w-px bg-outline-variant"></div>
+
+                            <!-- Today's Follow Up -->
+                            <div class="relative pl-10">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center border border-primary/20 z-10">
+                                    <span class="material-symbols-outlined text-lg">today</span>
+                                </div>
+
+                                <p class="text-sm font-semibold">
+                                    Today's Follow Up
+                                </p>
+
+                                <p class="text-xs text-on-surface-variant mb-3">
+                                    Rahul Sharma • 03:30 PM • Product Demo
+                                </p>
+
+                                <div class="flex gap-2 flex-wrap">
+                                    <button
+                                        class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:opacity-90">
+                                        Open
+                                    </button>
+
+                                    <button
+                                        class="px-3 py-1 bg-surface-container-high text-on-surface text-[10px] font-bold rounded-lg">
+                                        Complete
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Upcoming Follow Up -->
+                            <div class="relative pl-10">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center border border-tertiary/20 z-10">
+                                    <span class="material-symbols-outlined text-lg">schedule</span>
+                                </div>
+
+                                <p class="text-sm font-semibold">
+                                    Upcoming Follow Up
+                                </p>
+
+                                <p class="text-xs text-on-surface-variant mb-3">
+                                    Priya Patel • Tomorrow 11:00 AM • Payment Discussion
+                                </p>
+
+                                <div class="flex gap-2 flex-wrap">
+                                    <button
+                                        class="px-3 py-1 bg-tertiary text-white text-[10px] font-bold rounded-lg hover:opacity-90">
+                                        View
+                                    </button>
+
+                                    <button
+                                        class="px-3 py-1 border border-outline-variant text-on-surface text-[10px] font-bold rounded-lg hover:bg-surface-container-low">
+                                        Reschedule
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Missed Follow Up -->
+                            <div class="relative pl-10">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 rounded-full bg-error-container/20 text-error flex items-center justify-center border border-error/20 z-10">
+                                    <span class="material-symbols-outlined text-lg">event_busy</span>
+                                </div>
+
+                                <p class="text-sm font-semibold">
+                                    Missed Follow Up
+                                </p>
+
+                                <p class="text-xs text-on-surface-variant mb-3">
+                                    Amit Verma • Yesterday 04:00 PM • Renewal Discussion
+                                </p>
+
+                                <div class="flex gap-2 flex-wrap">
+                                    <button
+                                        class="px-3 py-1 bg-error text-white text-[10px] font-bold rounded-lg hover:opacity-90">
+                                        Call Now
+                                    </button>
+
+                                    <button
+                                        class="px-3 py-1 bg-surface-container-high text-on-surface text-[10px] font-bold rounded-lg">
+                                        Reschedule
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <!-- Decorative Target Progress -->
-                    <div
+                    <!-- <div
                         class="relative overflow-hidden bg-primary rounded-xl p-lg text-on-primary-container h-40 flex flex-col justify-end">
                         <div class="absolute inset-0 opacity-10">
                             <svg height="100%" preserveaspectratio="none" viewbox="0 0 100 100" width="100%">
@@ -620,7 +725,7 @@
                         <div class="w-full bg-white/20 h-2 rounded-full relative z-10">
                             <div class="bg-white h-full w-[74%] rounded-full shadow-[0_0_8px_white]"></div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

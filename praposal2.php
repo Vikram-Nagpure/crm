@@ -103,10 +103,6 @@ tailwind.config = {
     </div>
   </div>
   <div class="flex flex-wrap items-center justify-center gap-sm">
-    <!-- <button class="hide-in-preview flex items-center gap-2 border border-white/20 bg-white/10 hover:bg-white/20 active:translate-y-px transition rounded-lg px-3 py-2 font-label-md text-label-md" onclick="saveDraft()">
-      <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/></svg>
-      <span class="hidden sm:inline">Save Draft</span>
-    </button> -->
     <button class="hide-in-preview flex items-center gap-2 border border-white/20 bg-white/10 hover:bg-white/20 active:translate-y-px transition rounded-lg px-3 py-2 font-label-md text-label-md" onclick="togglePreview(true)">
       <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
       <span class="hidden sm:inline">Preview</span>
@@ -128,11 +124,14 @@ tailwind.config = {
 </header>
 
 <!-- ============ SETTINGS PANEL ============ -->
+<!-- Proposal Title/Subject/Prepared For/Date and the Header & Footer (logo, company, address,
+     phone, email, website, GST, CIN) settings have been removed. The letterhead is now a fixed
+     image (see LETTERHEAD_IMAGE_SRC in the script below) instead of a dynamically generated header/footer. -->
 <div id="panelWrap" class="bg-surface-container-lowest border-b border-outline-variant mt-20">
   <div class="flex flex-wrap items-center justify-between gap-sm max-w-[1400px] mx-auto px-md md:px-margin py-sm">
     <button class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface-variant" id="panelToggleBtn" onclick="togglePanel()">
       <svg id="panelToggleIcon" class="w-3.5 h-3.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-      Proposal &amp; Layout Settings
+      Layout Settings
     </button>
     <label class="flex items-center gap-1.5 font-body-sm text-body-sm text-on-surface-variant">
       <input type="checkbox" id="chkGuides" onchange="toggleGuides(this.checked)">
@@ -140,36 +139,8 @@ tailwind.config = {
     </label>
   </div>
 
-  <div id="panel" class="max-w-[1400px] mx-auto px-md md:px-margin pb-lg grid grid-cols-1 lg:grid-cols-3 gap-gutter">
-    <!-- Proposal Settings -->
-    <div class="bg-surface-container-low border border-outline-variant rounded-xl p-md md:p-lg">
-      <h3 class="mb-md font-label-sm text-label-sm uppercase tracking-wide text-primary">Proposal Settings</h3>
-      <div class="mb-2.5">
-        <label class="block mb-1 font-label-md text-label-md text-on-surface-variant">Proposal Title</label>
-        <input type="text" id="propTitle" value="Service Proposal: Enterprise CRM Implementation" oninput="updateIdentity()"
-          class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15">
-      </div>
-      <div class="mb-2.5">
-        <label class="block mb-1 font-label-md text-label-md text-on-surface-variant">Subject</label>
-        <input type="text" id="propSubject" value="Digital Transformation &amp; CRM Integration" oninput="updateIdentity()"
-          class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15">
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-2.5">
-        <div>
-          <label class="block mb-1 font-label-md text-label-md text-on-surface-variant">Prepared For</label>
-          <input type="text" id="propClient" value="Acme Corporation" oninput="updateIdentity()"
-            class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15">
-        </div>
-        <div>
-          <label class="block mb-1 font-label-md text-label-md text-on-surface-variant">Date</label>
-          <input type="date" id="propDate" oninput="updateIdentity()"
-            class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15">
-        </div>
-      </div>
-      <p class="font-body-sm text-body-sm text-outline">Title and subject appear once at the top of the document. The paragraph area below them is fully editable — use the toolbar above the preview to format it.</p>
-    </div>
-
-    <!-- Content Area Settings -->
+  <div id="panel" class="max-w-[640px] mx-auto px-md md:px-margin pb-lg grid grid-cols-1 gap-gutter">
+    <!-- Content Area Settings (unchanged) -->
     <div class="bg-surface-container-low border border-outline-variant rounded-xl p-md md:p-lg">
       <h3 class="mb-md font-label-sm text-label-sm uppercase tracking-wide text-primary">Content Area Settings</h3>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-2.5">
@@ -247,61 +218,10 @@ tailwind.config = {
         <p class="mt-2 font-body-sm text-body-sm text-outline">Exactly this many pages are always shown — short content leaves trailing pages blank, longer content is trimmed to fit. Use the "Add Page" button in the toolbar to force a break at the cursor.</p>
       </div>
     </div>
-
-    <!-- Header & Footer Settings -->
-    <div class="bg-surface-container-low border border-outline-variant rounded-xl p-md md:p-lg">
-      <h3 class="mb-md font-label-sm text-label-sm uppercase tracking-wide text-primary">Header &amp; Footer (fixed on every page)</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-2.5">
-        <div>
-          <label class="block mb-1 font-label-md text-label-md text-on-surface-variant">Logo Initial</label>
-          <input type="text" id="hLogo" value="TC" maxlength="2" oninput="updateHeaderFooter()"
-            class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary">
-        </div>
-        <div>
-          <label class="block mb-1 font-label-md text-label-md text-on-surface-variant">Company Name</label>
-          <input type="text" id="hCompany" value="Three Coding" oninput="updateHeaderFooter()"
-            class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary">
-        </div>
-      </div>
-      <div class="mb-2.5">
-        <label class="block mb-1 font-label-md text-label-md text-on-surface-variant">Address</label>
-        <input type="text" id="hAddress" value="123 Innovation Way, Suite 500, San Francisco, CA 94107" oninput="updateHeaderFooter()"
-          class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary">
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-2.5">
-        <div>
-          <label class="block mb-1 font-label-md text-label-md text-on-surface-variant">Phone</label>
-          <input type="text" id="hPhone" value="+1 (555) 000-0000" oninput="updateHeaderFooter()"
-            class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary">
-        </div>
-        <div>
-          <label class="block mb-1 font-label-md text-label-md text-on-surface-variant">Email</label>
-          <input type="text" id="hEmail" value="hello@businessos.com" oninput="updateHeaderFooter()"
-            class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary">
-        </div>
-      </div>
-      <div class="mb-2.5">
-        <label class="block mb-1 font-label-md text-label-md text-on-surface-variant">Website</label>
-        <input type="text" id="hWebsite" value="www.businessos.com" oninput="updateHeaderFooter()"
-          class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary">
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-        <div>
-          <label class="block mb-1 font-label-md text-label-md text-on-surface-variant">GST Number</label>
-          <input type="text" id="fGST" value="27ABCDE1234F1Z5" oninput="updateHeaderFooter()"
-            class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary">
-        </div>
-        <div>
-          <label class="block mb-1 font-label-md text-label-md text-on-surface-variant">CIN Number</label>
-          <input type="text" id="fCIN" value="U72900CA2015PTC123456" oninput="updateHeaderFooter()"
-            class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary">
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
-<!-- ============ RICH TEXT TOOLBAR ============ -->
+<!-- ============ RICH TEXT TOOLBAR (unchanged) ============ -->
 <div class="print:hidden sticky top-[125px] z-30 flex items-center gap-0.5 overflow-x-auto whitespace-nowrap bg-surface-container-lowest border-b border-outline-variant px-md md:px-margin py-2" id="toolbar">
   <select class="mr-1 border border-outline-variant rounded font-body-sm text-body-sm px-2 py-1.5 bg-surface-container-lowest text-on-surface-variant" onmousedown="event.preventDefault()" onchange="exec('formatBlock', this.value); this.selectedIndex=0;">
     <option value="" selected disabled>Style</option>
@@ -336,7 +256,7 @@ tailwind.config = {
   <button class="w-8 h-8 shrink-0 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container" onmousedown="event.preventDefault()" onclick="exec('redo')" title="Redo"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7v6h-6"/><path d="M21 13a9 9 0 10-15-6.7L21 13"/></svg></button>
 </div>
 
-<!-- ============ LIVE PREVIEW CANVAS ============ -->
+<!-- ============ LIVE PREVIEW CANVAS (unchanged) ============ -->
 <div id="canvas" class="print:p-0 flex flex-col items-center px-2 sm:px-4 py-6 sm:py-11 pb-16 sm:pb-24 overflow-x-auto">
   <div class="flex flex-col items-center" id="pagesContainer"></div>
 </div>
@@ -348,6 +268,15 @@ tailwind.config = {
 
 <script>
 /* ============================================================
+   FIXED LETTERHEAD IMAGE
+   Set the path to your letterhead image here. It is placed as a full-bleed
+   background <img> on every page (behind the editable content area), so the
+   same artwork automatically repeats across every page of the document.
+   Design it at (or proportional to) A4 — 210mm x 297mm — for the cleanest fit.
+============================================================ */
+const LETTERHEAD_IMAGE_SRC = 'assets/images/letterhead.png';
+
+/* ============================================================
    STATE
 ============================================================ */
 const settings = {
@@ -357,7 +286,6 @@ const settings = {
 };
 let panelCollapsed = false;
 let truncationWarned = false;
-let draftStore = null; // in-memory save (session only, no browser storage per platform rules)
 
 const pagesContainer = document.getElementById('pagesContainer');
 const canvasEl = document.getElementById('canvas');
@@ -385,82 +313,25 @@ const initialBody = `
   <blockquote>Proposal valid for 30 days from date of issue. Scope changes post-agreement are billed at an hourly rate of $175.</blockquote>
 `;
 
-document.getElementById('propDate').value = new Date().toISOString().slice(0,10);
-
-/* ============================================================
-   HEADER / FOOTER RENDER
-============================================================ */
-function headerHTML(){
-  const logo = escapeHtml(val('hLogo')), company = escapeHtml(val('hCompany'));
-  const addr = escapeHtml(val('hAddress')), phone = escapeHtml(val('hPhone'));
-  const email = escapeHtml(val('hEmail')), site = escapeHtml(val('hWebsite'));
-  return `
-    <div class="flex gap-2.5 items-center">
-      <div class="w-[34px] h-[34px] rounded-lg shrink-0 bg-primary text-on-primary font-headline-sm font-bold flex items-center justify-center text-[16px]">${logo}</div>
-      <div>
-        <div class="font-headline-sm text-on-surface font-semibold text-[15px] leading-tight">${company}</div>
-        <div class="text-[8.5px] tracking-widest uppercase text-on-surface-variant mt-0.5">Enterprise Solutions</div>
-      </div>
-    </div>
-    <div class="text-right text-[9.5px] text-on-surface-variant leading-[1.55]">
-      <div>${addr}</div>
-      <div>${phone} &nbsp;·&nbsp; ${email}</div>
-      <div class="text-primary font-semibold">${site}</div>
-    </div>`;
-}
-function footerHTML(pageNum, total){
-  const addr = escapeHtml(val('hAddress')), gst = escapeHtml(val('fGST'));
-  const cin = escapeHtml(val('fCIN')), site = escapeHtml(val('hWebsite'));
-  return `
-    <div class="max-w-[70%] leading-[1.5]">${addr} &nbsp;|&nbsp; GST ${gst} &nbsp;|&nbsp; CIN ${cin} &nbsp;|&nbsp; ${site}</div>
-    <div class="text-right font-semibold text-primary">Page ${pageNum} of ${total}</div>`;
-}
-function titleBlockHTML(){
-  const title = escapeHtml(val('propTitle')), subject = escapeHtml(val('propSubject'));
-  const client = escapeHtml(val('propClient')), date = val('propDate');
-  return `
-    <div class="mb-3.5 pb-3 border-b border-outline-variant">
-      <h2 class="font-headline-md text-headline-md text-on-surface mb-2">${title}</h2>
-      <div class="font-label-md text-label-md text-primary">Subject: ${subject}</div>
-      <div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant gap-3 mt-2">
-        <span>Prepared for: <b class="text-on-surface">${client}</b></span>
-        <span>Date: <b class="text-on-surface">${formatDate(date)}</b></span>
-      </div>
-    </div>`;
-}
-function val(id){ return document.getElementById(id).value; }
-function escapeHtml(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
-function formatDate(iso){
-  if(!iso) return '';
-  const d = new Date(iso+'T00:00:00');
-  return d.toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
-}
-
-function updateIdentity(){ repaginate(true); }
-function updateHeaderFooter(){
-  const pages = document.querySelectorAll('.a4-page');
-  pages.forEach((pg, i)=>{
-    pg.querySelector('.page-header').innerHTML = headerHTML();
-    pg.querySelector('.page-footer').innerHTML = footerHTML(i+1, pages.length);
-  });
-}
-
 /* ============================================================
    PAGE SKELETON  (Tailwind utility classes only — no custom CSS)
+   The dynamic header/footer bars are gone. Every page now gets the same
+   fixed letterhead <img> as a full-page background layer, with the
+   editable content area positioned over its blank space exactly as before
+   (top-[34mm] / bottom-[16mm] reserved, unchanged from the original layout).
 ============================================================ */
 function buildPageSkeleton(){
   const frame = document.createElement('div');
   frame.className = 'page-frame relative mx-auto mb-lg shrink-0';
   frame.innerHTML = `
     <div class="a4-page absolute top-0 left-0 origin-top-left w-[210mm] h-[297mm] bg-surface-container-lowest shadow-[0_1px_3px_rgba(20,30,50,.08),0_18px_45px_-12px_rgba(20,30,50,.28)] rounded overflow-hidden [page-break-after:always] last:[page-break-after:auto] print:shadow-none print:rounded-none">
-      <div class="page-header absolute top-0 inset-x-0 h-[34mm] px-[12mm] pt-[9mm] border-b border-outline-variant flex justify-between items-start"></div>
+      <img src="${LETTERHEAD_IMAGE_SRC}" alt="Letterhead" draggable="false" class="absolute inset-0 w-full h-full object-cover pointer-events-none select-none">
       <div class="content-slot absolute top-[34mm] bottom-[16mm] inset-x-0 flex p-[12mm]">
-        <div class="content-block relative overflow-hidden bg-surface-container-lowest text-on-surface focus-within:ring-2 focus-within:ring-primary-container focus-within:ring-inset">
+        <div class="content-block relative overflow-hidden bg-transparent text-on-surface focus-within:ring-2 focus-within:ring-primary-container focus-within:ring-inset">
           <div class="editable-inner h-full outline-none prose prose-sm max-w-none prose-headings:font-headline-sm prose-headings:text-on-surface prose-p:text-on-surface prose-strong:text-on-surface prose-a:text-primary prose-blockquote:border-primary prose-blockquote:text-on-surface-variant prose-th:border prose-th:border-outline-variant prose-td:border prose-td:border-outline-variant prose-li:text-on-surface" contenteditable="true" spellcheck="false"></div>
         </div>
         <span class="guide-label hidden absolute -translate-y-[130%] pointer-events-none font-code-sm text-[9.5px] text-primary bg-surface-container-lowest px-1.5 py-0.5 rounded border border-dashed border-primary"></span>
       </div>
-      <div class="page-footer absolute bottom-0 inset-x-0 h-[16mm] px-[12mm] pb-[6mm] border-t border-outline-variant flex items-center justify-between font-code-sm text-[8px] text-on-surface-variant"></div>
     </div>`;
   return frame;
 }
@@ -475,8 +346,8 @@ function positionGuideLabel(frame){
 }
 
 /* ============================================================
-   RESPONSIVE PAGE SCALING (keeps true A4 px for pagination math,
-   visually shrinks with a CSS transform so it fits small screens)
+   RESPONSIVE PAGE SCALING (unchanged — keeps true A4 px for pagination
+   math, visually shrinks with a CSS transform so it fits small screens)
 ============================================================ */
 function updatePageScale(){
   const pages = document.querySelectorAll('.a4-page');
@@ -494,6 +365,7 @@ function updatePageScale(){
   pages.forEach(pg=>{ pg.style.transform = 'scale(' + scale + ')'; });
 }
 window.addEventListener('resize', ()=>{
+  if(isExportingPDF) return;
   clearTimeout(scaleTimer);
   scaleTimer = setTimeout(updatePageScale, 150);
 });
@@ -501,6 +373,7 @@ window.addEventListener('resize', ()=>{
 // changes (e.g. embedded inside a CRM layout) that don't fire a window resize
 if(typeof ResizeObserver !== 'undefined'){
   new ResizeObserver(()=>{
+    if(isExportingPDF) return;
     clearTimeout(scaleTimer);
     scaleTimer = setTimeout(updatePageScale, 120);
   }).observe(canvasEl);
@@ -510,17 +383,16 @@ if(document.fonts && document.fonts.ready){ document.fonts.ready.then(()=>setTim
 setTimeout(updatePageScale, 300);
 
 /* ============================================================
-   MEASUREMENT (uses h-full editable so it reflects real available space)
+   MEASUREMENT (unchanged — uses h-full editable so it reflects real
+   available space; the withTitleBlock branch is now a no-op since the
+   title block no longer exists, but the function signature/call sites
+   are left as-is so the pagination logic itself is untouched)
 ============================================================ */
 function measureEditableHeight(withTitleBlock){
   const probeFrame = buildPageSkeleton();
   probeFrame.style.position = 'absolute';
   probeFrame.style.left = '-99999px';
   probeFrame.style.top = '0';
-  if(withTitleBlock){
-    const block = probeFrame.querySelector('.content-block');
-    block.insertAdjacentHTML('afterbegin', titleBlockHTML());
-  }
   const block = probeFrame.querySelector('.content-block');
   block.style.width = settings.width;
   block.style.height = settings.height;
@@ -535,7 +407,7 @@ function measureEditableHeight(withTitleBlock){
 }
 
 /* ============================================================
-   PAGINATION ENGINE
+   PAGINATION ENGINE (unchanged)
 ============================================================ */
 function repaginate(preserveCaret){
   let markerId = null;
@@ -636,8 +508,6 @@ function repaginate(preserveCaret){
   pagesData.forEach((nodeList, idx)=>{
     const frame = buildPageSkeleton();
     const page = frame.querySelector('.a4-page');
-    page.querySelector('.page-header').innerHTML = headerHTML();
-    page.querySelector('.page-footer').innerHTML = footerHTML(idx+1, total);
 
     const slot = frame.querySelector('.content-slot');
     const block = frame.querySelector('.content-block');
@@ -652,7 +522,6 @@ function repaginate(preserveCaret){
     editable.style.lineHeight = settings.lineHeight;
     editable.style.textAlign = settings.textAlign;
 
-    if(idx === 0){ block.insertAdjacentHTML('afterbegin', titleBlockHTML()); }
     const wrap = document.createElement('div');
     nodeList.forEach(n=>wrap.appendChild(n.cloneNode(true)));
     editable.innerHTML = wrap.innerHTML;
@@ -680,7 +549,7 @@ function repaginate(preserveCaret){
   if(preserveCaret && markerId){ restoreCaretMarker(markerId); }
 }
 
-/* ---------- caret marker helpers ---------- */
+/* ---------- caret marker helpers (unchanged) ---------- */
 function insertCaretMarker(){
   const sel = window.getSelection();
   if(!sel || sel.rangeCount===0) return null;
@@ -708,7 +577,7 @@ function restoreCaretMarker(id){
 }
 
 /* ============================================================
-   EVENT DELEGATION — typing
+   EVENT DELEGATION — typing (unchanged)
 ============================================================ */
 pagesContainer.addEventListener('input', ()=>{
   clearTimeout(repagTimer);
@@ -721,7 +590,7 @@ pagesContainer.addEventListener('focusin', (e)=>{
 });
 
 /* ============================================================
-   TOOLBAR COMMANDS
+   TOOLBAR COMMANDS (unchanged)
 ============================================================ */
 function exec(cmd, value){
   if(lastFocusedEditable) lastFocusedEditable.focus();
@@ -753,7 +622,7 @@ function insertTable(){
 }
 
 /* ============================================================
-   LAYOUT SETTINGS CHANGE
+   LAYOUT SETTINGS CHANGE (unchanged)
 ============================================================ */
 function onLayoutChange(){
   settings.width = document.getElementById('selWidth').value;
@@ -770,7 +639,7 @@ function onLayoutChange(){
 }
 
 /* ============================================================
-   PANEL / GUIDES TOGGLES
+   PANEL / GUIDES TOGGLES (unchanged)
 ============================================================ */
 function togglePanel(){
   panelCollapsed = !panelCollapsed;
@@ -796,16 +665,6 @@ function showToast(msg){
   clearTimeout(t._timer);
   t._timer = setTimeout(()=>t.classList.add('opacity-0','translate-y-5','pointer-events-none'), 2600);
 }
-function saveDraft(){
-  draftStore = {
-    settings: {...settings},
-    header: { logo:val('hLogo'), company:val('hCompany'), address:val('hAddress'), phone:val('hPhone'), email:val('hEmail'), website:val('hWebsite'), gst:val('fGST'), cin:val('fCIN') },
-    identity: { title:val('propTitle'), subject:val('propSubject'), client:val('propClient'), date:val('propDate') },
-    pages: document.querySelectorAll('.editable-inner').length,
-    savedAt: new Date().toISOString()
-  };
-  showToast('Draft saved for this session · ' + draftStore.pages + ' page(s)');
-}
 function togglePreview(on){
   document.getElementById('panelWrap').classList.toggle('hidden', on);
   document.getElementById('toolbar').classList.toggle('hidden', on);
@@ -817,16 +676,20 @@ function togglePreview(on){
   setTimeout(updatePageScale, 50);
 }
 function sendProposal(){
-  showToast('Proposal sent to ' + val('propClient'));
+  showToast('Proposal sent successfully');
 }
+let isExportingPDF = false;
 async function downloadPDF(){
   showToast('Preparing PDF…');
   const btn = document.querySelector('[onclick="downloadPDF()"]');
   if(btn) btn.disabled = true;
+  isExportingPDF = true;
 
-  // Capture each physical page as its own image and place it on its own PDF
-  // page directly — rather than handing one tall composite canvas to a
-  // "pagebreak" auto-slicer (which is what was cropping/misaligning content).
+  // Capture each physical page inside an isolated, fixed, unscrolled "stage"
+  // pinned at the document origin (0,0) — this sidesteps scroll-position and
+  // viewport-width quirks that can otherwise misrender pages further down a
+  // scrollable page (most noticeable on mobile, where stacked pages need
+  // much more scrolling to reach).
   const frames = Array.from(pagesContainer.querySelectorAll('.page-frame'));
   const pages = Array.from(pagesContainer.querySelectorAll('.a4-page'));
   const editables = Array.from(pagesContainer.querySelectorAll('.editable-inner'));
@@ -838,20 +701,27 @@ async function downloadPDF(){
   const prevTransform = pages.map(p => p.style.transform);
   const prevEditable = editables.map(e => e.getAttribute('contenteditable'));
   const prevGuideDisplay = guideLabels.map(l => l.style.display);
+  const scrollX = window.scrollX, scrollY = window.scrollY;
 
   guideLabels.forEach(l => l.style.display = 'none');
   blocks.forEach(b => b.classList.remove('border','border-dashed','border-primary'));
   editables.forEach(e => e.setAttribute('contenteditable','false'));
-  // undo the responsive on-screen scaling — export at true, full A4 size
   frames.forEach(f => { f.style.width = '210mm'; f.style.height = '297mm'; f.style.marginBottom = '0'; });
   pages.forEach(p => { p.style.transform = 'none'; });
 
+  const stage = document.createElement('div');
+  stage.style.cssText = 'position:fixed;top:0;left:0;z-index:2147483647;background:#ffffff;overflow:hidden;pointer-events:none;';
+  document.body.appendChild(stage);
+
   const restore = ()=>{
-    frames.forEach((f,i)=>{ f.style.width = prevFrame[i].w; f.style.height = prevFrame[i].h; f.style.marginBottom = prevFrame[i].mb; });
+    if(stage.parentNode) document.body.removeChild(stage);
+    frames.forEach((f,i)=>{ pagesContainer.appendChild(f); f.style.width = prevFrame[i].w; f.style.height = prevFrame[i].h; f.style.marginBottom = prevFrame[i].mb; });
     pages.forEach((p,i)=>{ p.style.transform = prevTransform[i]; });
     editables.forEach((e,i)=>{ prevEditable[i]===null ? e.removeAttribute('contenteditable') : e.setAttribute('contenteditable', prevEditable[i]); });
     guideLabels.forEach((l,i)=>{ l.style.display = prevGuideDisplay[i]; });
     if(wasGuidesOn){ toggleGuides(true); }
+    window.scrollTo(scrollX, scrollY);
+    isExportingPDF = false;
     updatePageScale();
     if(btn) btn.disabled = false;
   };
@@ -859,29 +729,35 @@ async function downloadPDF(){
   try{
     const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
     await fontsReady;
-    // give the browser two paint frames to actually apply the un-scaled sizing above
+    window.scrollTo(0, 0);
     await new Promise(r => requestAnimationFrame(()=> requestAnimationFrame(r)));
 
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF({ unit:'mm', format:'a4', orientation:'portrait' });
 
-    for(let i=0; i<pages.length; i++){
+    for(let i=0; i<frames.length; i++){
+      const frame = frames[i];
       const pageEl = pages[i];
+      stage.appendChild(frame); // moves this page to the isolated (0,0) stage
+      await new Promise(r => requestAnimationFrame(()=> requestAnimationFrame(r)));
+
       const canvas = await html2canvas(pageEl, {
         scale: 2,
         useCORS: true,
         backgroundColor: '#ffffff',
-        width: pageEl.offsetWidth,
-        height: pageEl.offsetHeight,
-        windowWidth: pageEl.offsetWidth,
-        windowHeight: pageEl.offsetHeight
+        scrollX: 0,
+        scrollY: 0,
+        windowWidth: 900,
+        windowHeight: 1250
       });
       const imgData = canvas.toDataURL('image/jpeg', 0.98);
       if(i > 0) pdf.addPage();
       pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
+
+      pagesContainer.appendChild(frame); // move back in order before the next page
     }
 
-    pdf.save((val('propTitle')||'proposal').replace(/[^a-z0-9]+/gi,'_').toLowerCase() + '.pdf');
+    pdf.save('proposal_' + new Date().toISOString().slice(0,10) + '.pdf');
     showToast('PDF downloaded');
   } catch(err){
     console.error('PDF export failed:', err);
