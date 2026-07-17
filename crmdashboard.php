@@ -174,7 +174,7 @@
 
 <body class="bg-surface text-on-surface">
     <!-- TopNavBar -->
-    
+
     <?php include "include/header.php"?>
     <!-- Main Content Canvas -->
     <main class="lg:ml-0 mt-16 p-lg bg-background min-h-[calc(100vh-64px)]">
@@ -215,10 +215,10 @@
                                         class="material-symbols-outlined text-xl">group</span></span>
                                 <div class="con">
                                     <p class="text-xs text-on-surface-variant">Total Leads</p>
-                            <p class="font-headline-sm text-headline-sm text-on-surface">1,240</p>
+                                    <p class="font-headline-sm text-headline-sm text-on-surface">1,240</p>
                                 </div>
                             </div>
-                            
+
                             <span class="text-[10px] text-tertiary font-bold">+12.5% vs LW</span>
                         </div>
                         <!-- Qualified -->
@@ -229,10 +229,10 @@
                                         class="material-symbols-outlined text-xl">verified</span></span>
                                 <div class="con">
                                     <p class="text-xs text-on-surface-variant">Qualified</p>
-                            <p class="font-headline-sm text-headline-sm text-on-surface">450</p>
+                                    <p class="font-headline-sm text-headline-sm text-on-surface">450</p>
                                 </div>
                             </div>
-                            
+
                             <span class="text-[10px] text-tertiary font-bold">+5.2% vs LW</span>
                         </div>
                         <!-- Deals -->
@@ -243,10 +243,10 @@
                                         class="material-symbols-outlined text-xl">handshake</span></span>
                                 <div class="con">
                                     <p class="text-xs text-on-surface-variant">Won Deals</p>
-                            <p class="font-headline-sm text-headline-sm text-on-surface">82</p>
+                                    <p class="font-headline-sm text-headline-sm text-on-surface">82</p>
                                 </div>
                             </div>
-                            
+
                             <span class="text-[10px] text-tertiary font-bold">+18.3% vs LW</span>
                         </div>
                         <!-- Avg Deal Size -->
@@ -257,10 +257,10 @@
                                         class="material-symbols-outlined text-xl">attach_money</span></span>
                                 <div class="con">
                                     <p class="text-xs text-on-surface-variant">Avg. Deal Size</p>
-                            <p class="font-headline-sm text-headline-sm text-on-surface">$12,400</p>
+                                    <p class="font-headline-sm text-headline-sm text-on-surface">$12,400</p>
                                 </div>
                             </div>
-                            
+
                             <span class="text-[10px] text-tertiary font-bold">+2.4% vs LW</span>
                         </div>
                         <!-- Follow-ups -->
@@ -271,102 +271,431 @@
                                         class="material-symbols-outlined text-xl">schedule</span></span>
                                 <div class="con">
                                     <p class="text-xs text-on-surface-variant">Pending</p>
-                            <p class="font-headline-sm text-headline-sm text-on-surface">24</p>
+                                    <p class="font-headline-sm text-headline-sm text-on-surface">24</p>
                                 </div>
                             </div>
-                            
+
                             <span class="text-[10px] text-error font-bold">Action Needed</span>
                         </div>
                     </div>
-                    <!-- Main Sales Performance Chart -->
-                   <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
-
-    <!-- Header -->
-    <div class="flex justify-between items-start mb-lg flex-wrap gap-md">
-        <div>
-            <h3 class="font-headline-sm text-headline-sm text-on-surface">Sales Performance</h3>
-            <p class="text-sm text-on-surface-variant">Closed Deals vs. Revenue Targets</p>
-        </div>
-
-        <div class="flex items-center gap-md">
-            <!-- Quick stat -->
-            <div class="text-right pr-md border-r border-outline-variant">
-                <p class="text-xs text-on-surface-variant">Current</p>
-                <p class="text-sm font-semibold text-on-surface">$30k <span class="text-green-600 font-medium">+18%</span></p>
-            </div>
-
-            <button id="actualBtn"
-                class="flex items-center gap-xs px-3 py-1.5 rounded-lg bg-primary text-white transition shadow-sm">
-                <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
-                <span class="text-xs font-medium">Actual</span>
-            </button>
-
-            <button id="targetBtn"
-                class="flex items-center gap-xs px-3 py-1.5 rounded-lg bg-primary text-white transition shadow-sm">
-                <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
-                <span class="text-xs font-medium">Target</span>
-            </button>
-        </div>
-    </div>
-
-    <!-- Chart -->
-    <div class="h-64 w-full relative">
-        <svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 1000 200">
-            <defs>
-                <linearGradient id="actualFill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#2563eb" stop-opacity="0.25" />
-                    <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
-                </linearGradient>
-            </defs>
-
-            <!-- Grid lines -->
-            <g stroke="currentColor" class="text-outline-variant" stroke-width="1" opacity="0.4">
-                <line x1="0" y1="40" x2="1000" y2="40" />
-                <line x1="0" y1="90" x2="1000" y2="90" />
-                <line x1="0" y1="140" x2="1000" y2="140" />
-                <line x1="0" y1="190" x2="1000" y2="190" />
-            </g>
-
-            <!-- Target line (dashed) -->
-            <path id="targetLine"
-                d="M0 170 L100 150 L200 130 L300 110 L400 90 L500 70 L600 50 L700 30 L800 20 L900 10 L1000 5"
-                fill="none" stroke="#737686" stroke-dasharray="8 4" stroke-opacity="0.5"
-                stroke-width="2" stroke-linecap="round" />
-
-            <!-- Actual area fill -->
-            <path id="actualFillArea"
-                d="M0 180 L100 160 L200 170 L300 120 L400 140 L500 80 L600 100 L700 40 L800 60 L900 20 L1000 30 L1000 200 L0 200 Z"
-                fill="url(#actualFill)" stroke="none" />
-
-            <!-- Actual line -->
-            <path id="actualLine"
-                d="M0 180 L100 160 L200 170 L300 120 L400 140 L500 80 L600 100 L700 40 L800 60 L900 20 L1000 30"
-                fill="none" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
-
-            <!-- Actual data points -->
-            <g id="actualDots" fill="#2563eb">
-                <circle cx="0" cy="180" r="4" />
-                <circle cx="100" cy="160" r="4" />
-                <circle cx="200" cy="170" r="4" />
-                <circle cx="300" cy="120" r="4" />
-                <circle cx="400" cy="140" r="4" />
-                <circle cx="500" cy="80" r="4" />
-                <circle cx="600" cy="100" r="4" />
-                <circle cx="700" cy="40" r="4" />
-                <circle cx="800" cy="60" r="4" />
-                <circle cx="900" cy="20" r="4" />
-                <circle cx="1000" cy="30" r="4" />
-            </g>
-        </svg>
-
-        <div class="absolute bottom-0 w-full flex justify-between pt-4 text-[10px] text-on-surface-variant font-medium border-t border-outline-variant">
-            <span>OCT 12</span><span>OCT 19</span><span>OCT 26</span><span>NOV 02</span><span>NOV 11</span>
-        </div>
-    </div>
-</div>
+                   
                     <!-- Pipeline & Deals Table Combined Layout -->
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-lg">
                         <!-- Detailed Pipeline -->
+                       
+                        <!-- Top High-Value Opportunities Table -->
+                        <div
+                            class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg overflow-hidden">
+                            <div class="flex justify-between items-center mb-lg">
+                                <h3 class="font-headline-sm text-headline-sm text-on-surface">Top Opportunities</h3>
+                                <a class="text-primary text-xs font-semibold hover:underline" href="#">View All
+                                    Deals</a>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm text-left">
+                                    <thead
+                                        class="text-xs text-on-surface-variant border-b border-outline-variant uppercase">
+                                        <tr>
+                                            <th class="pb-3 pr-4 font-semibold">Deal Name</th>
+                                            <th class="pb-3 pr-4 font-semibold text-center">Stage</th>
+                                            <th class="pb-3 pr-4 font-semibold text-right">Value</th>
+                                            <th class="pb-3 pr-4 font-semibold">Prob.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-outline-variant">
+                                        <tr class="group hover:bg-surface-container-lowest transition-colors">
+                                            <td class="py-4 pr-4">
+                                                <div class="font-semibold text-on-surface">Global Logistics Expansion
+                                                </div>
+                                                <div class="text-xs text-on-surface-variant">Acme Corp</div>
+                                            </td>
+                                            <td class="py-4 pr-4 text-center">
+                                                <span
+                                                    class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full">PROPOSAL</span>
+                                            </td>
+                                            <td class="py-4 pr-4 text-right font-medium">$45,000</td>
+                                            <td class="py-4 pr-4">
+                                                <div
+                                                    class="w-20 bg-surface-container h-1.5 rounded-full overflow-hidden">
+                                                    <div class="bg-primary h-full w-[70%]"></div>
+                                                </div>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr class="group hover:bg-surface-container-lowest transition-colors">
+                                            <td class="py-4 pr-4">
+                                                <div class="font-semibold text-on-surface">Enterprise SaaS Migration
+                                                </div>
+                                                <div class="text-xs text-on-surface-variant">TechFlow Inc.</div>
+                                            </td>
+                                            <td class="py-4 pr-4 text-center">
+                                                <span
+                                                    class="px-2 py-1 bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-bold rounded-full">NEGOTIATION</span>
+                                            </td>
+                                            <td class="py-4 pr-4 text-right font-medium">$120,000</td>
+                                            <td class="py-4 pr-4">
+                                                <div
+                                                    class="w-20 bg-surface-container h-1.5 rounded-full overflow-hidden">
+                                                    <div class="bg-primary h-full w-[90%]"></div>
+                                                </div>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr class="group hover:bg-surface-container-lowest transition-colors">
+                                            <td class="py-4 pr-4">
+                                                <div class="font-semibold text-on-surface">Infrastructure Overhaul</div>
+                                                <div class="text-xs text-on-surface-variant">Core Systems</div>
+                                            </td>
+                                            <td class="py-4 pr-4 text-center">
+                                                <span
+                                                    class="px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold rounded-full">QUALIFIED</span>
+                                            </td>
+                                            <td class="py-4 pr-4 text-right font-medium">$28,500</td>
+                                            <td class="py-4 pr-4">
+                                                <div
+                                                    class="w-20 bg-surface-container h-1.5 rounded-full overflow-hidden">
+                                                    <div class="bg-primary h-full w-[40%]"></div>
+                                                </div>
+                                            </td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+
+                        <div class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-outline-variant overflow-hidden">
+
+                            <!-- Header -->
+                            <div class="flex justify-between items-center p-lg border-b border-outline-variant">
+                                <h3 class="font-headline-sm text-headline-sm text-on-surface">
+                                    Follow Ups
+                                </h3>
+
+                                <a href="#" class="text-primary text-xs font-semibold hover:underline">
+                                    View All
+                                </a>
+                            </div>
+
+                            <!-- Tabs -->
+                            <div class="flex border-b border-outline-variant bg-surface-container-low">
+                                <button class="followupTab active px-5 py-3 text-sm font-semibold text-primary border-b-2 border-primary"
+                                    data-tab="today">
+                                    Today
+                                </button>
+
+                                <button class="followupTab px-5 py-3 text-sm font-semibold text-on-surface-variant hover:text-primary"
+                                    data-tab="missed">
+                                    Missed
+                                </button>
+
+                                <button class="followupTab px-5 py-3 text-sm font-semibold text-on-surface-variant hover:text-primary"
+                                    data-tab="upcoming">
+                                    Upcoming
+                                </button>
+                            </div>
+
+                            <!-- ================= TODAY ================= -->
+                            <div id="today" class="tabContent">
+
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm">
+                                        <thead class="border-b border-outline-variant text-xs uppercase text-on-surface-variant">
+                                            <tr>
+                                                <th class="p-4 text-left">Lead</th>
+                                                <th class="p-4">Mobile</th>
+                                                <th class="p-4">Time</th>
+                                                <th class="p-4">Status</th>
+                                                <th class="p-4 text-center">Action</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody class="divide-y divide-outline-variant">
+
+                                            <tr class="hover:bg-surface-container-low">
+                                                <td class="p-4">
+                                                    <div class="font-semibold">Acme Corporation</div>
+                                                    <div class="text-xs text-on-surface-variant">
+                                                        Website Development
+                                                    </div>
+                                                </td>
+
+                                                <td class="p-4">9876543210</td>
+
+                                                <td class="p-4">
+                                                    11:30 AM
+                                                </td>
+
+                                                <td class="p-4">
+                                                    <span
+                                                        class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
+                                                        Today
+                                                    </span>
+                                                </td>
+                                                <td class="p-4 text-center">
+                                                    <button
+                                                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-medium hover:opacity-90 transition">
+
+                                                        <span class="material-symbols-outlined !text-[16px]">
+                                                            visibility
+                                                        </span>
+
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="hover:bg-surface-container-low">
+                                                <td class="p-4">
+                                                    <div class="font-semibold">ABC Pvt Ltd</div>
+                                                    <div class="text-xs text-on-surface-variant">
+                                                        CRM Software
+                                                    </div>
+                                                </td>
+
+                                                <td class="p-4">9876500000</td>
+
+                                                <td class="p-4">
+                                                    4:00 PM
+                                                </td>
+
+                                                <td class="p-4">
+                                                    <span
+                                                        class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
+                                                        Today
+                                                    </span>
+                                                </td>
+                                                <td class="p-4 text-center">
+                                                    <button
+                                                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-medium hover:opacity-90 transition">
+
+                                                        <span class="material-symbols-outlined !text-[16px]">
+                                                            visibility
+                                                        </span>
+
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <!-- ================= MISSED ================= -->
+
+                            <div id="missed" class="tabContent hidden">
+
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm">
+                                        <thead class="border-b border-outline-variant text-xs uppercase text-on-surface-variant">
+                                            <tr>
+                                                <th class="p-4 text-left">Lead</th>
+                                                <th class="p-4">Mobile</th>
+                                                <th class="p-4">Due Date</th>
+                                                <th class="p-4">Status</th>
+                                                <th class="p-4 text-center">Action</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody class="divide-y divide-outline-variant">
+
+                                            <tr class="hover:bg-surface-container-low">
+                                                <td class="p-4">
+                                                    <div class="font-semibold">Global Tech</div>
+                                                    <div class="text-xs text-on-surface-variant">
+                                                        Digital Marketing
+                                                    </div>
+                                                </td>
+
+                                                <td class="p-4">
+                                                    9898989898
+                                                </td>
+
+                                                <td class="p-4">
+                                                    Yesterday
+                                                </td>
+
+                                                <td class="p-4">
+                                                    <span
+                                                        class="px-3 py-1 rounded-full bg-red-100 text-red-700 text-xs font-semibold">
+                                                        Missed
+                                                    </span>
+                                                </td>
+                                                <td class="p-4 text-center">
+                                                    <button
+                                                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-medium hover:opacity-90 transition">
+
+                                                        <span class="material-symbols-outlined !text-[16px]">
+                                                            visibility
+                                                        </span>
+
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                            <!-- ================= UPCOMING ================= -->
+
+                            <div id="upcoming" class="tabContent hidden">
+
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm">
+                                        <thead class="border-b border-outline-variant text-xs uppercase text-on-surface-variant">
+                                            <tr>
+                                                <th class="p-4 text-left">Lead</th>
+                                                <th class="p-4">Mobile</th>
+                                                <th class="p-4">Date & Time</th>
+                                                <th class="p-4">Status</th>
+                                                <th class="p-4 text-center">Action</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody class="divide-y divide-outline-variant">
+
+                                            <tr class="hover:bg-surface-container-low">
+                                                <td class="p-4">
+                                                    <div class="font-semibold">Future Solutions</div>
+                                                    <div class="text-xs text-on-surface-variant">
+                                                        Mobile App
+                                                    </div>
+                                                </td>
+
+                                                <td class="p-4">
+                                                    9988776655
+                                                </td>
+
+                                                <td class="p-4">
+                                                    Tomorrow 10:00 AM
+                                                </td>
+
+                                                <td class="p-4">
+                                                    <span
+                                                        class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold">
+                                                        Upcoming
+                                                    </span>
+                                                </td>
+                                                <td class="p-4 text-center">
+                                                    <button
+                                                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-medium hover:opacity-90 transition">
+
+                                                        <span class="material-symbols-outlined !text-[16px]">
+                                                            visibility
+                                                        </span>
+
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                     <!-- Main Sales Performance Chart -->
+                    <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
+
+                        <!-- Header -->
+                        <div class="flex justify-between items-start mb-lg flex-wrap gap-md">
+                            <div>
+                                <h3 class="font-headline-sm text-headline-sm text-on-surface">Sales Performance</h3>
+                                <p class="text-sm text-on-surface-variant">Closed Deals vs. Revenue Targets</p>
+                            </div>
+
+                            <div class="flex items-center gap-md">
+                                <!-- Quick stat -->
+                                <div class="text-right pr-md border-r border-outline-variant">
+                                    <p class="text-xs text-on-surface-variant">Current</p>
+                                    <p class="text-sm font-semibold text-on-surface">$30k <span
+                                            class="text-green-600 font-medium">+18%</span></p>
+                                </div>
+
+                                <button id="actualBtn"
+                                    class="flex items-center gap-xs px-3 py-1.5 rounded-lg bg-primary text-white transition shadow-sm">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+                                    <span class="text-xs font-medium">Actual</span>
+                                </button>
+
+                                <button id="targetBtn"
+                                    class="flex items-center gap-xs px-3 py-1.5 rounded-lg bg-primary text-white transition shadow-sm">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-white"></span>
+                                    <span class="text-xs font-medium">Target</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Chart -->
+                        <div class="h-64 w-full relative">
+                            <svg class="w-full h-full overflow-visible" preserveAspectRatio="none"
+                                viewBox="0 0 1000 200">
+                                <defs>
+                                    <linearGradient id="actualFill" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#2563eb" stop-opacity="0.25" />
+                                        <stop offset="100%" stop-color="#2563eb" stop-opacity="0" />
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- Grid lines -->
+                                <g stroke="currentColor" class="text-outline-variant" stroke-width="1" opacity="0.4">
+                                    <line x1="0" y1="40" x2="1000" y2="40" />
+                                    <line x1="0" y1="90" x2="1000" y2="90" />
+                                    <line x1="0" y1="140" x2="1000" y2="140" />
+                                    <line x1="0" y1="190" x2="1000" y2="190" />
+                                </g>
+
+                                <!-- Target line (dashed) -->
+                                <path id="targetLine"
+                                    d="M0 170 L100 150 L200 130 L300 110 L400 90 L500 70 L600 50 L700 30 L800 20 L900 10 L1000 5"
+                                    fill="none" stroke="#737686" stroke-dasharray="8 4" stroke-opacity="0.5"
+                                    stroke-width="2" stroke-linecap="round" />
+
+                                <!-- Actual area fill -->
+                                <path id="actualFillArea"
+                                    d="M0 180 L100 160 L200 170 L300 120 L400 140 L500 80 L600 100 L700 40 L800 60 L900 20 L1000 30 L1000 200 L0 200 Z"
+                                    fill="url(#actualFill)" stroke="none" />
+
+                                <!-- Actual line -->
+                                <path id="actualLine"
+                                    d="M0 180 L100 160 L200 170 L300 120 L400 140 L500 80 L600 100 L700 40 L800 60 L900 20 L1000 30"
+                                    fill="none" stroke="#2563eb" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="3" />
+
+                                <!-- Actual data points -->
+                                <g id="actualDots" fill="#2563eb">
+                                    <circle cx="0" cy="180" r="4" />
+                                    <circle cx="100" cy="160" r="4" />
+                                    <circle cx="200" cy="170" r="4" />
+                                    <circle cx="300" cy="120" r="4" />
+                                    <circle cx="400" cy="140" r="4" />
+                                    <circle cx="500" cy="80" r="4" />
+                                    <circle cx="600" cy="100" r="4" />
+                                    <circle cx="700" cy="40" r="4" />
+                                    <circle cx="800" cy="60" r="4" />
+                                    <circle cx="900" cy="20" r="4" />
+                                    <circle cx="1000" cy="30" r="4" />
+                                </g>
+                            </svg>
+
+                            <div
+                                class="absolute bottom-0 w-full flex justify-between pt-4 text-[10px] text-on-surface-variant font-medium border-t border-outline-variant">
+                                <span>OCT 12</span><span>OCT 19</span><span>OCT 26</span><span>NOV 02</span><span>NOV
+                                    11</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right Sidebar (Activity & Intelligence) -->
+                <div class="col-span-12 lg:col-span-3 space-y-lg">
+                    <!-- Detailed Pipeline -->
                         <div
                             class="lg:col-span-1 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
                             <h3 class="font-headline-sm text-headline-sm text-on-surface mb-xl">Pipeline Distribution
@@ -410,146 +739,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Top High-Value Opportunities Table -->
-                        <div
-                            class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg overflow-hidden">
-                            <div class="flex justify-between items-center mb-lg">
-                                <h3 class="font-headline-sm text-headline-sm text-on-surface">Top Opportunities</h3>
-                                <a class="text-primary text-xs font-semibold hover:underline" href="#">View All
-                                    Deals</a>
-                            </div>
-                            <div class="overflow-x-auto">
-                                <table class="w-full text-sm text-left">
-                                    <thead
-                                        class="text-xs text-on-surface-variant border-b border-outline-variant uppercase">
-                                        <tr>
-                                            <th class="pb-3 pr-4 font-semibold">Deal Name</th>
-                                            <th class="pb-3 pr-4 font-semibold text-center">Stage</th>
-                                            <th class="pb-3 pr-4 font-semibold text-right">Value</th>
-                                            <th class="pb-3 pr-4 font-semibold">Prob.</th>
-                                            <th class="pb-3 font-semibold text-right">Owner</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-outline-variant">
-                                        <tr class="group hover:bg-surface-container-lowest transition-colors">
-                                            <td class="py-4 pr-4">
-                                                <div class="font-semibold text-on-surface">Global Logistics Expansion
-                                                </div>
-                                                <div class="text-xs text-on-surface-variant">Acme Corp</div>
-                                            </td>
-                                            <td class="py-4 pr-4 text-center">
-                                                <span
-                                                    class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full">PROPOSAL</span>
-                                            </td>
-                                            <td class="py-4 pr-4 text-right font-medium">$45,000</td>
-                                            <td class="py-4 pr-4">
-                                                <div
-                                                    class="w-20 bg-surface-container h-1.5 rounded-full overflow-hidden">
-                                                    <div class="bg-primary h-full w-[70%]"></div>
-                                                </div>
-                                            </td>
-                                            <td class="py-4 text-right">
-                                                <img alt="rep"
-                                                    class="h-6 w-6 rounded-full inline-block border border-outline-variant"
-                                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbQ4TwXrRNua4IkSuQNmw9IFHwnKI-fiU1v6DWUylxupBdrQmPpvK6zX8Wo0Qb5OtV7GiBFKfoE4Tiu7Lby_zN1a4kZf4-zYjSzcgCnp_BRbgUXKaQ08_u8SIqkuZsEOuD-E5rihNbWwuXijiBVzFEMTFpnIwy-OHZSmqKrks8NCz6HVVKMSS7sKVw43r7jJq9wKTNs2H0MTmHYUcNhaJHk_A_PW0bgvokNfIFkwbOfuaNKiU9s5XvjUodQQu6UaBsLTq69uZAOR9f" />
-                                            </td>
-                                        </tr>
-                                        <tr class="group hover:bg-surface-container-lowest transition-colors">
-                                            <td class="py-4 pr-4">
-                                                <div class="font-semibold text-on-surface">Enterprise SaaS Migration
-                                                </div>
-                                                <div class="text-xs text-on-surface-variant">TechFlow Inc.</div>
-                                            </td>
-                                            <td class="py-4 pr-4 text-center">
-                                                <span
-                                                    class="px-2 py-1 bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-bold rounded-full">NEGOTIATION</span>
-                                            </td>
-                                            <td class="py-4 pr-4 text-right font-medium">$120,000</td>
-                                            <td class="py-4 pr-4">
-                                                <div
-                                                    class="w-20 bg-surface-container h-1.5 rounded-full overflow-hidden">
-                                                    <div class="bg-primary h-full w-[90%]"></div>
-                                                </div>
-                                            </td>
-                                            <td class="py-4 text-right">
-                                                <div
-                                                    class="h-6 w-6 rounded-full bg-secondary-fixed-dim text-[10px] flex items-center justify-center font-bold inline-block border border-outline-variant">
-                                                    SK</div>
-                                            </td>
-                                        </tr>
-                                        <tr class="group hover:bg-surface-container-lowest transition-colors">
-                                            <td class="py-4 pr-4">
-                                                <div class="font-semibold text-on-surface">Infrastructure Overhaul</div>
-                                                <div class="text-xs text-on-surface-variant">Core Systems</div>
-                                            </td>
-                                            <td class="py-4 pr-4 text-center">
-                                                <span
-                                                    class="px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold rounded-full">QUALIFIED</span>
-                                            </td>
-                                            <td class="py-4 pr-4 text-right font-medium">$28,500</td>
-                                            <td class="py-4 pr-4">
-                                                <div
-                                                    class="w-20 bg-surface-container h-1.5 rounded-full overflow-hidden">
-                                                    <div class="bg-primary h-full w-[40%]"></div>
-                                                </div>
-                                            </td>
-                                            <td class="py-4 text-right">
-                                                <div
-                                                    class="h-6 w-6 rounded-full bg-primary-fixed text-[10px] flex items-center justify-center font-bold inline-block border border-outline-variant">
-                                                    JD</div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Right Sidebar (Activity & Intelligence) -->
-                <div class="col-span-12 lg:col-span-3 space-y-lg">
-                    <!-- Sales Intelligence (Leaderboard) -->
-                    <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
-                        <h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-lg">
-                            Top Performers</h3>
-                        <div class="space-y-md">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-sm">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs border border-primary/20">
-                                        1</div>
-                                    <div>
-                                        <p class="text-sm font-semibold">Sarah Jenkins</p>
-                                        <p class="text-[10px] text-on-surface-variant">114% of Target</p>
-                                    </div>
-                                </div>
-                                <span class="text-sm font-bold">$1.2M</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-sm">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-surface-container text-secondary flex items-center justify-center font-bold text-xs border border-outline-variant">
-                                        2</div>
-                                    <div>
-                                        <p class="text-sm font-semibold">David Miller</p>
-                                        <p class="text-[10px] text-on-surface-variant">98% of Target</p>
-                                    </div>
-                                </div>
-                                <span class="text-sm font-bold">$942k</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-sm">
-                                    <div
-                                        class="w-8 h-8 rounded-full bg-surface-container text-secondary flex items-center justify-center font-bold text-xs border border-outline-variant">
-                                        3</div>
-                                    <div>
-                                        <p class="text-sm font-semibold">Priya Kapoor</p>
-                                        <p class="text-[10px] text-on-surface-variant">92% of Target</p>
-                                    </div>
-                                </div>
-                                <span class="text-sm font-bold">$880k</span>
-                            </div>
-                        </div>
-                    </div>
                     <!-- Enhanced Activity Feed -->
                     <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
                         <div class="flex items-center justify-between mb-lg">
@@ -609,108 +798,7 @@
                     </div>
 
                     <!-- Follow Up Activity Feed -->
-                    <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-lg">
-                        <div class="flex items-center justify-between mb-lg">
-                            <h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">
-                                Follow Up Activity
-                            </h3>
-
-                            <button class="p-1 rounded hover:bg-surface-container transition-colors">
-                                <span class="material-symbols-outlined text-sm">event_note</span>
-                            </button>
-                        </div>
-
-                        <div class="space-y-lg relative">
-
-                            <!-- Timeline -->
-                            <div class="absolute left-4 top-2 bottom-0 w-px bg-outline-variant"></div>
-
-                            <!-- Today's Follow Up -->
-                            <div class="relative pl-10">
-                                <div
-                                    class="absolute left-0 top-1 w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center border border-primary/20 z-10">
-                                    <span class="material-symbols-outlined text-lg">today</span>
-                                </div>
-
-                                <p class="text-sm font-semibold">
-                                    Today's Follow Up
-                                </p>
-
-                                <p class="text-xs text-on-surface-variant mb-3">
-                                    Rahul Sharma • 03:30 PM • Product Demo
-                                </p>
-
-                                <div class="flex gap-2 flex-wrap">
-                                    <button
-                                        class="px-3 py-1 bg-primary text-white text-[10px] font-bold rounded-lg hover:opacity-90">
-                                        Open
-                                    </button>
-
-                                    <button
-                                        class="px-3 py-1 bg-surface-container-high text-on-surface text-[10px] font-bold rounded-lg">
-                                        Complete
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Upcoming Follow Up -->
-                            <div class="relative pl-10">
-                                <div
-                                    class="absolute left-0 top-1 w-8 h-8 rounded-full bg-tertiary/10 text-tertiary flex items-center justify-center border border-tertiary/20 z-10">
-                                    <span class="material-symbols-outlined text-lg">schedule</span>
-                                </div>
-
-                                <p class="text-sm font-semibold">
-                                    Upcoming Follow Up
-                                </p>
-
-                                <p class="text-xs text-on-surface-variant mb-3">
-                                    Priya Patel • Tomorrow 11:00 AM • Payment Discussion
-                                </p>
-
-                                <div class="flex gap-2 flex-wrap">
-                                    <button
-                                        class="px-3 py-1 bg-tertiary text-white text-[10px] font-bold rounded-lg hover:opacity-90">
-                                        View
-                                    </button>
-
-                                    <button
-                                        class="px-3 py-1 border border-outline-variant text-on-surface text-[10px] font-bold rounded-lg hover:bg-surface-container-low">
-                                        Reschedule
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Missed Follow Up -->
-                            <div class="relative pl-10">
-                                <div
-                                    class="absolute left-0 top-1 w-8 h-8 rounded-full bg-error-container/20 text-error flex items-center justify-center border border-error/20 z-10">
-                                    <span class="material-symbols-outlined text-lg">event_busy</span>
-                                </div>
-
-                                <p class="text-sm font-semibold">
-                                    Missed Follow Up
-                                </p>
-
-                                <p class="text-xs text-on-surface-variant mb-3">
-                                    Amit Verma • Yesterday 04:00 PM • Renewal Discussion
-                                </p>
-
-                                <div class="flex gap-2 flex-wrap">
-                                    <button
-                                        class="px-3 py-1 bg-error text-white text-[10px] font-bold rounded-lg hover:opacity-90">
-                                        Call Now
-                                    </button>
-
-                                    <button
-                                        class="px-3 py-1 bg-surface-container-high text-on-surface text-[10px] font-bold rounded-lg">
-                                        Reschedule
-                                    </button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    
 
                     <!-- Decorative Target Progress -->
                     <!-- <div
@@ -730,41 +818,68 @@
             </div>
         </div>
     </main>
-   <script>
-const actualBtn = document.getElementById('actualBtn');
-const targetBtn = document.getElementById('targetBtn');
+    <script>
+    const actualBtn = document.getElementById('actualBtn');
+    const targetBtn = document.getElementById('targetBtn');
 
-const actualLine = document.getElementById('actualLine');
-const actualFillArea = document.getElementById('actualFillArea');
-const actualDots = document.getElementById('actualDots');
-const targetLine = document.getElementById('targetLine');
+    const actualLine = document.getElementById('actualLine');
+    const actualFillArea = document.getElementById('actualFillArea');
+    const actualDots = document.getElementById('actualDots');
+    const targetLine = document.getElementById('targetLine');
 
-let showActual = true;
-let showTarget = true;
+    let showActual = true;
+    let showTarget = true;
 
-actualBtn.addEventListener('click', () => {
-    showActual = !showActual;
+    actualBtn.addEventListener('click', () => {
+        showActual = !showActual;
 
-    actualLine.style.display = showActual ? '' : 'none';
-    actualFillArea.style.display = showActual ? '' : 'none';
-    actualDots.style.display = showActual ? '' : 'none';
+        actualLine.style.display = showActual ? '' : 'none';
+        actualFillArea.style.display = showActual ? '' : 'none';
+        actualDots.style.display = showActual ? '' : 'none';
 
-    actualBtn.classList.toggle('bg-primary', showActual);
-    actualBtn.classList.toggle('text-white', showActual);
-    actualBtn.classList.toggle('shadow-sm', showActual);
-    actualBtn.classList.toggle('bg-surface-container-high', !showActual);
-    actualBtn.classList.toggle('border', !showActual);
-    actualBtn.classList.toggle('border-outline', !showActual);
-    actualBtn.classList.toggle('opacity-50', !showActual);
+        actualBtn.classList.toggle('bg-primary', showActual);
+        actualBtn.classList.toggle('text-white', showActual);
+        actualBtn.classList.toggle('shadow-sm', showActual);
+        actualBtn.classList.toggle('bg-surface-container-high', !showActual);
+        actualBtn.classList.toggle('border', !showActual);
+        actualBtn.classList.toggle('border-outline', !showActual);
+        actualBtn.classList.toggle('opacity-50', !showActual);
+    });
+
+    targetBtn.addEventListener('click', () => {
+        showTarget = !showTarget;
+
+        targetLine.style.display = showTarget ? '' : 'none';
+        targetBtn.classList.toggle('opacity-50', !showTarget);
+    });
+    </script>
+
+    <script>
+        const tabs = document.querySelectorAll(".followupTab");
+const contents = document.querySelectorAll(".tabContent");
+
+tabs.forEach(tab => {
+
+    tab.addEventListener("click", function () {
+
+        tabs.forEach(btn => {
+            btn.classList.remove("active", "text-primary", "border-primary", "border-b-2");
+            btn.classList.add("text-on-surface-variant");
+        });
+
+        contents.forEach(content => {
+            content.classList.add("hidden");
+        });
+
+        this.classList.add("active", "text-primary", "border-primary", "border-b-2");
+        this.classList.remove("text-on-surface-variant");
+
+        document.getElementById(this.dataset.tab).classList.remove("hidden");
+
+    });
+
 });
-
-targetBtn.addEventListener('click', () => {
-    showTarget = !showTarget;
-
-    targetLine.style.display = showTarget ? '' : 'none';
-    targetBtn.classList.toggle('opacity-50', !showTarget);
-});
-</script>
+    </script>
 </body>
 
 </html>

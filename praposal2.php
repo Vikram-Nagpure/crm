@@ -124,9 +124,6 @@ tailwind.config = {
 </header>
 
 <!-- ============ SETTINGS PANEL ============ -->
-<!-- Proposal Title/Subject/Prepared For/Date and the Header & Footer (logo, company, address,
-     phone, email, website, GST, CIN) settings have been removed. The letterhead is now a fixed
-     image (see LETTERHEAD_IMAGE_SRC in the script below) instead of a dynamically generated header/footer. -->
 <div id="panelWrap" class="bg-surface-container-lowest border-b border-outline-variant mt-20">
   <div class="flex flex-wrap items-center justify-between gap-sm max-w-[1400px] mx-auto px-md md:px-margin py-sm">
     <button class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface-variant" id="panelToggleBtn" onclick="togglePanel()">
@@ -217,6 +214,13 @@ tailwind.config = {
           class="w-full px-2.5 py-2 border border-outline-variant rounded font-body-sm text-body-sm bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary">
         <p class="mt-2 font-body-sm text-body-sm text-outline">Exactly this many pages are always shown — short content leaves trailing pages blank, longer content is trimmed to fit. Use the "Add Page" button in the toolbar to force a break at the cursor.</p>
       </div>
+      <div class="mt-2.5">
+        <label class="flex items-center gap-1.5 font-body-sm text-body-sm text-on-surface-variant">
+          <input type="checkbox" id="chkAutoShrink" checked onchange="onLayoutChange()">
+          Auto-shrink text to fit (instead of overflowing to a new page)
+        </label>
+        <p class="mt-1 font-body-sm text-body-sm text-outline" id="autoShrinkNote">When content doesn't fit, font size is reduced automatically until it fits within the Maximum Pages limit.</p>
+      </div>
       <div class="mt-2.5 flex items-center justify-between">
         <label class="flex items-center gap-1.5 font-body-sm text-body-sm text-on-surface-variant">
           <input type="checkbox" id="chkPageIndex" checked onchange="onLayoutChange()">
@@ -236,7 +240,7 @@ tailwind.config = {
 <!-- ============ RICH TEXT TOOLBAR (unchanged) ============ -->
 <div class="print:hidden sticky top-[125px] z-30 flex items-center gap-0.5 overflow-x-auto whitespace-nowrap bg-surface-container-lowest border-b border-outline-variant px-md md:px-margin py-2" id="toolbar">
   <select class="mr-1 border border-outline-variant rounded font-body-sm text-body-sm px-2 py-1.5 bg-surface-container-lowest text-on-surface-variant" onmousedown="event.preventDefault()" onchange="exec('formatBlock', this.value); this.selectedIndex=0;">
-    <option value="" selected disabled>Style</option>
+    <option value="">Style</option>
     <option value="p">Paragraph</option>
     <option value="h1">Heading 1</option>
     <option value="h2">Heading 2</option>
@@ -273,7 +277,7 @@ tailwind.config = {
   <div class="flex flex-col items-center" id="pagesContainer"></div>
 </div>
 
-<div id="measurer" class="absolute -left-[99999px] top-0 invisible h-auto"></div>
+<div id="measurer" class="absolute -left-[99999px] top-0 invisible h-auto prose prose-sm max-w-none prose-headings:font-headline-sm prose-headings:text-on-surface prose-p:text-on-surface prose-strong:text-on-surface prose-a:text-primary prose-blockquote:border-primary prose-blockquote:text-on-surface-variant prose-th:border prose-th:border-outline-variant prose-td:border prose-td:border-outline-variant prose-li:text-on-surface"></div>
 <div id="toast" class="fixed bottom-6 right-6 z-[100] flex items-center gap-2.5 bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-lg font-body-sm text-body-sm shadow-2xl translate-y-5 opacity-0 pointer-events-none transition-all duration-300">
   <span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span><span id="toastMsg">Saved</span>
 </div>
@@ -281,10 +285,6 @@ tailwind.config = {
 <script>
 /* ============================================================
    FIXED LETTERHEAD IMAGE
-   Set the path to your letterhead image here. It is placed as a full-bleed
-   background <img> on every page (behind the editable content area), so the
-   same artwork automatically repeats across every page of the document.
-   Design it at (or proportional to) A4 — 210mm x 297mm — for the cleanest fit.
 ============================================================ */
 const LETTERHEAD_IMAGE_SRC = 'assets/images/letterhed2.png';
 
@@ -295,10 +295,12 @@ const settings = {
   width:'70%', height:'80%', justify:'center', textAlign:'left',
   fontFamily:"'Inter', sans-serif", fontSize:22, lineHeight:1.65,
   margin:0, padding:8, maxPages:2,
-  showPageIndex:true, pageIndexPos:'bottom-left'
+  showPageIndex:true, pageIndexPos:'bottom-left',
+  autoShrink:true, minFontSize:8
 };
 let panelCollapsed = false;
 let truncationWarned = false;
+let lastAppliedFontSize = settings.fontSize;
 
 const pagesContainer = document.getElementById('pagesContainer');
 const canvasEl = document.getElementById('canvas');
@@ -328,13 +330,6 @@ const initialBody = `
 
 /* ============================================================
    PAGE SKELETON  (Tailwind utility classes only — no custom CSS)
-   The dynamic header/footer bars are gone. Every page now gets the same
-   fixed letterhead <img> as a full-page background layer, with the
-   editable content area positioned over its blank space exactly as before
-   (top-[34mm] / bottom-[16mm] reserved, unchanged from the original layout).
-   A page-index label ("Page X of Y") sits on top of the letterhead in the
-   reserved margin area — it is a plain, non-editable overlay so it always
-   renders in preview, print, and the exported PDF.
 ============================================================ */
 function buildPageSkeleton(){
   const frame = document.createElement('div');
@@ -362,7 +357,6 @@ function positionGuideLabel(frame){
   label.style.top = '0px';
 }
 
-/* Position + content for the "Page X of Y" overlay, based on settings.pageIndexPos */
 const PAGE_INDEX_POSITIONS = {
   'bottom-left':  { bottom:'6mm', left:'10mm', right:'auto', top:'auto', textAlign:'left' },
   'bottom-center':{ bottom:'6mm', left:'0', right:'0', top:'auto', textAlign:'center' },
@@ -387,18 +381,17 @@ function applyPageIndex(frame, idx, total){
 }
 
 /* ============================================================
-   RESPONSIVE PAGE SCALING (unchanged — keeps true A4 px for pagination
-   math, visually shrinks with a CSS transform so it fits small screens)
+   RESPONSIVE PAGE SCALING (unchanged)
 ============================================================ */
 function updatePageScale(){
   const pages = document.querySelectorAll('.a4-page');
   if(pages.length === 0) return;
   const naturalW = pages[0].offsetWidth;
   const naturalH = pages[0].offsetHeight;
-  if(!naturalW || !naturalH) return; // not laid out yet — try again next tick
+  if(!naturalW || !naturalH) return;
   const available = canvasEl.clientWidth - 24;
   let scale = available > 0 ? available / naturalW : 1;
-  scale = Math.min(1, Math.max(scale, 0.18)); // never fully collapse; fall back to horizontal scroll instead
+  scale = Math.min(1, Math.max(scale, 0.18));
   document.querySelectorAll('.page-frame').forEach(frame=>{
     frame.style.width = Math.round(naturalW*scale) + 'px';
     frame.style.height = Math.round(naturalH*scale) + 'px';
@@ -410,8 +403,6 @@ window.addEventListener('resize', ()=>{
   clearTimeout(scaleTimer);
   scaleTimer = setTimeout(updatePageScale, 150);
 });
-// also watch the canvas element itself — catches container/sidebar-driven width
-// changes (e.g. embedded inside a CRM layout) that don't fire a window resize
 if(typeof ResizeObserver !== 'undefined'){
   new ResizeObserver(()=>{
     if(isExportingPDF) return;
@@ -419,15 +410,11 @@ if(typeof ResizeObserver !== 'undefined'){
     scaleTimer = setTimeout(updatePageScale, 120);
   }).observe(canvasEl);
 }
-// safety net: re-run once fonts/styles have fully settled after first paint
 if(document.fonts && document.fonts.ready){ document.fonts.ready.then(()=>setTimeout(updatePageScale, 50)); }
 setTimeout(updatePageScale, 300);
 
 /* ============================================================
-   MEASUREMENT (unchanged — uses h-full editable so it reflects real
-   available space; the withTitleBlock branch is now a no-op since the
-   title block no longer exists, but the function signature/call sites
-   are left as-is so the pagination logic itself is untouched)
+   MEASUREMENT (unchanged — box dimensions don't depend on font size)
 ============================================================ */
 function measureEditableHeight(withTitleBlock){
   const probeFrame = buildPageSkeleton();
@@ -448,7 +435,139 @@ function measureEditableHeight(withTitleBlock){
 }
 
 /* ============================================================
-   PAGINATION ENGINE (unchanged)
+   OVERSIZED-NODE SPLITTER
+   Some content ends up as ONE top-level node that is itself taller than
+   a full page (e.g. the user pressed Enter inside a <blockquote> or <li>,
+   which keeps adding lines to that same element instead of starting a
+   new top-level block). The main splitter below can only break BETWEEN
+   top-level nodes, so a single oversized node used to get dumped whole
+   onto a page and simply clipped by the box's overflow — it never moved
+   to page 2. This function recurses INTO such a node's children so it
+   can still be broken into page-sized pieces.
+   Returns an array of clones of `node` (same tag/attributes), each one
+   short enough to fit in `budget` px on its own, in original order.
+============================================================ */
+function splitOversizedNode(node, budget, width){
+  if(node.nodeType !== 1 || !node.childNodes || node.childNodes.length === 0){
+    return [node]; // leaf (e.g. a text node, or empty element) — nothing left to split
+  }
+  const children = Array.from(node.childNodes).filter(c => !(c.nodeType===3 && !c.textContent.trim()));
+  if(children.length <= 1){
+    return [node]; // only one child inside — can't break this any further
+  }
+
+  function makeWrapper(childList){
+    const wrapper = node.cloneNode(false); // shallow: keep the tag + attributes, no children
+    childList.forEach(c => wrapper.appendChild(c.cloneNode(true)));
+    return wrapper;
+  }
+
+  measurer.innerHTML = '';
+  measurer.style.width = width + 'px';
+
+  const results = [];
+  let currentChildren = [];
+
+  for(let i=0; i<children.length; i++){
+    const child = children[i];
+    const testChildren = currentChildren.concat([child]);
+    measurer.innerHTML = '';
+    measurer.appendChild(makeWrapper(testChildren));
+
+    if(measurer.scrollHeight > budget){
+      if(currentChildren.length === 0){
+        // even a single child alone is too tall — recurse one level deeper
+        const subPieces = splitOversizedNode(child, budget, width);
+        subPieces.forEach(sp => results.push(makeWrapper([sp])));
+        currentChildren = [];
+      } else {
+        results.push(makeWrapper(currentChildren));
+        currentChildren = [child];
+      }
+    } else {
+      currentChildren = testChildren;
+    }
+  }
+  if(currentChildren.length > 0){ results.push(makeWrapper(currentChildren)); }
+  return results.length > 0 ? results : [node];
+}
+
+/* ============================================================
+   NODE → PAGES SPLITTER
+   Pure function: given the node list and a trial font size, returns how
+   the content splits across pages at that size (page box dimensions,
+   page1Dims/otherDims, are fixed and passed in from the closure).
+============================================================ */
+function splitNodesIntoPages(nodes, fontSizePx, page1Dims, otherDims){
+  measurer.style.fontFamily = settings.fontFamily;
+  measurer.style.fontSize = fontSizePx + 'px';
+  measurer.style.lineHeight = settings.lineHeight;
+  measurer.style.textAlign = settings.textAlign;
+
+  const pagesData = [];
+  let buffer = [];
+  let pageIndex = 0;
+  const SAFETY_MARGIN_PX = 6; // guards against sub-pixel/rounding mismatches between measurer and real render
+
+  function currentBudget(){ return (pageIndex === 0 ? page1Dims.h : otherDims.h) - SAFETY_MARGIN_PX; }
+  function currentWidth(){ return pageIndex === 0 ? page1Dims.w : otherDims.w; }
+
+  measurer.innerHTML = '';
+  measurer.style.width = currentWidth() + 'px';
+
+  for(let i=0; i<nodes.length; i++){
+    const node = nodes[i];
+
+    if(node.nodeType===1 && node.classList && node.classList.contains('manual-break')){
+      pagesData.push(buffer);
+      buffer = [];
+      pageIndex++;
+      measurer.innerHTML = '';
+      measurer.style.width = currentWidth() + 'px';
+      continue;
+    }
+
+    measurer.appendChild(node.cloneNode(true));
+    if(measurer.scrollHeight > currentBudget()){
+      measurer.removeChild(measurer.lastChild);
+      if(buffer.length === 0){
+        // This single node is taller than a whole empty page on its own.
+        // Try to break INSIDE it (e.g. a blockquote with many lines) so the
+        // extra content flows to more pages instead of being clipped.
+        const pieces = splitOversizedNode(node, currentBudget(), currentWidth());
+        if(pieces.length > 1){
+          pieces.forEach(piece => {
+            pagesData.push([piece]);
+            pageIndex++;
+          });
+        } else {
+          pagesData.push([node]);
+          pageIndex++;
+        }
+        measurer.innerHTML = '';
+        measurer.style.width = currentWidth() + 'px';
+      } else {
+        pagesData.push(buffer);
+        buffer = [];
+        pageIndex++;
+        measurer.innerHTML = '';
+        measurer.style.width = currentWidth() + 'px';
+        i--;
+      }
+    } else {
+      buffer.push(node);
+    }
+  }
+  if(buffer.length > 0 || pagesData.length === 0){ pagesData.push(buffer); }
+  return pagesData;
+}
+
+/* ============================================================
+   PAGINATION ENGINE
+   If settings.autoShrink is on, we search downward from settings.fontSize
+   for the largest size that still fits within Maximum Pages, instead of
+   letting the split spill onto extra pages. Only falls back to the old
+   "truncate" behavior if content still doesn't fit at the minimum size.
 ============================================================ */
 function repaginate(preserveCaret){
   let markerId = null;
@@ -471,58 +590,21 @@ function repaginate(preserveCaret){
     }
   });
 
-  measurer.style.fontFamily = settings.fontFamily;
-  measurer.style.fontSize = settings.fontSize + 'px';
-  measurer.style.lineHeight = settings.lineHeight;
-  measurer.style.textAlign = settings.textAlign;
-
-  const pagesData = [];
-  let buffer = [];
-  let pageIndex = 0;
-
-  function currentBudget(){ return pageIndex === 0 ? page1Dims.h : otherDims.h; }
-  function currentWidth(){ return pageIndex === 0 ? page1Dims.w : otherDims.w; }
-
-  measurer.innerHTML = '';
-  measurer.style.width = currentWidth() + 'px';
-
-  for(let i=0; i<nodes.length; i++){
-    const node = nodes[i];
-
-    if(node.nodeType===1 && node.classList && node.classList.contains('manual-break')){
-      pagesData.push(buffer);
-      buffer = [];
-      pageIndex++;
-      measurer.innerHTML = '';
-      measurer.style.width = currentWidth() + 'px';
-      continue;
-    }
-
-    measurer.appendChild(node.cloneNode(true));
-    if(measurer.scrollHeight > currentBudget()){
-      measurer.removeChild(measurer.lastChild);
-      if(buffer.length === 0){
-        buffer.push(node);
-        pagesData.push(buffer);
-        buffer = [];
-        pageIndex++;
-        measurer.innerHTML = '';
-        measurer.style.width = currentWidth() + 'px';
-      } else {
-        pagesData.push(buffer);
-        buffer = [];
-        pageIndex++;
-        measurer.innerHTML = '';
-        measurer.style.width = currentWidth() + 'px';
-        i--;
-      }
-    } else {
-      buffer.push(node);
-    }
-  }
-  if(buffer.length > 0 || pagesData.length === 0){ pagesData.push(buffer); }
-
   const maxPages = Math.max(1, parseInt(settings.maxPages, 10) || 2);
+
+  let appliedFontSize = settings.fontSize;
+  let pagesData = splitNodesIntoPages(nodes, appliedFontSize, page1Dims, otherDims);
+
+  if(settings.autoShrink){
+    const minSize = Math.max(settings.minFontSize, 1);
+    let trial = settings.fontSize;
+    while(pagesData.length > maxPages && trial > minSize){
+      trial -= 0.5;
+      pagesData = splitNodesIntoPages(nodes, trial, page1Dims, otherDims);
+    }
+    appliedFontSize = Math.max(trial, minSize);
+  }
+
   const isTruncated = pagesData.length > maxPages;
   if(isTruncated){
     const kept = pagesData.slice(0, maxPages - 1);
@@ -531,14 +613,19 @@ function repaginate(preserveCaret){
     pagesData.length = 0;
     pagesData.push(...kept);
   }
-  // always show exactly "Maximum Pages" pages — pad with blank pages if content is shorter
   while(pagesData.length < maxPages){ pagesData.push([]); }
+
   if(isTruncated && !truncationWarned){
-    showToast('Content exceeds ' + maxPages + ' page(s) — extra content is hidden. Raise Maximum Pages or trim the text.');
+    showToast('Content still exceeds ' + maxPages + ' page(s) even at ' + appliedFontSize.toFixed(1) + 'px — extra content is hidden. Raise Maximum Pages, lower the minimum font size, or trim the text.');
     truncationWarned = true;
   } else if(!isTruncated){
     truncationWarned = false;
+    if(settings.autoShrink && appliedFontSize < settings.fontSize){
+      showToast('Text auto-shrunk to ' + appliedFontSize.toFixed(1) + 'px to fit ' + maxPages + ' page(s)');
+    }
   }
+  lastAppliedFontSize = appliedFontSize;
+
   const addBtn = document.getElementById('addPageBtn');
   addBtn.disabled = pagesData.length >= maxPages;
 
@@ -559,7 +646,7 @@ function repaginate(preserveCaret){
     block.style.margin = settings.margin + 'mm';
     block.style.padding = settings.padding + 'mm';
     editable.style.fontFamily = settings.fontFamily;
-    editable.style.fontSize = settings.fontSize + 'px';
+    editable.style.fontSize = appliedFontSize + 'px';
     editable.style.lineHeight = settings.lineHeight;
     editable.style.textAlign = settings.textAlign;
 
@@ -665,7 +752,7 @@ function insertTable(){
 }
 
 /* ============================================================
-   LAYOUT SETTINGS CHANGE (unchanged, plus page-index options)
+   LAYOUT SETTINGS CHANGE (now also reads autoShrink)
 ============================================================ */
 function onLayoutChange(){
   settings.width = document.getElementById('selWidth').value;
@@ -680,6 +767,7 @@ function onLayoutChange(){
   settings.maxPages = parseInt(document.getElementById('inpMaxPages').value, 10) || 2;
   settings.showPageIndex = document.getElementById('chkPageIndex').checked;
   settings.pageIndexPos = document.getElementById('selPageIndexPos').value;
+  settings.autoShrink = document.getElementById('chkAutoShrink').checked;
   repaginate(false);
 }
 
@@ -730,11 +818,6 @@ async function downloadPDF(){
   if(btn) btn.disabled = true;
   isExportingPDF = true;
 
-  // Capture each physical page inside an isolated, fixed, unscrolled "stage"
-  // pinned at the document origin (0,0) — this sidesteps scroll-position and
-  // viewport-width quirks that can otherwise misrender pages further down a
-  // scrollable page (most noticeable on mobile, where stacked pages need
-  // much more scrolling to reach).
   const frames = Array.from(pagesContainer.querySelectorAll('.page-frame'));
   const pages = Array.from(pagesContainer.querySelectorAll('.a4-page'));
   const editables = Array.from(pagesContainer.querySelectorAll('.editable-inner'));
@@ -783,7 +866,7 @@ async function downloadPDF(){
     for(let i=0; i<frames.length; i++){
       const frame = frames[i];
       const pageEl = pages[i];
-      stage.appendChild(frame); // moves this page to the isolated (0,0) stage
+      stage.appendChild(frame);
       await new Promise(r => requestAnimationFrame(()=> requestAnimationFrame(r)));
 
       const canvas = await html2canvas(pageEl, {
@@ -799,7 +882,7 @@ async function downloadPDF(){
       if(i > 0) pdf.addPage();
       pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
 
-      pagesContainer.appendChild(frame); // move back in order before the next page
+      pagesContainer.appendChild(frame);
     }
 
     pdf.save('proposal_' + new Date().toISOString().slice(0,10) + '.pdf');
