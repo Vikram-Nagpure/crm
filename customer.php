@@ -206,83 +206,91 @@
 
         <!-- Action Bar -->
         <div
-            class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md mb-lg flex flex-wrap items-center justify-between gap-md">
-            <div class="flex items-center gap-md flex-1 min-w-[300px]">
-                <div class="relative w-full max-w-sm">
-                    <span
-                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
-                    <input id="customerSearch"
-                        class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none text-body-sm transition-all"
-                        placeholder="Search customers by name, email, or ID..." type="text" />
-                </div>
-                <div class="flex items-center gap-sm">
+    class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md mb-lg flex flex-col md:flex-row md:flex-wrap items-stretch md:items-center justify-between gap-md">
 
-                    <div class="flex gap-4">
+    <div class="flex flex-col md:flex-row md:items-center gap-md flex-1 min-w-0 md:min-w-[300px]">
 
-                        <!-- Status Dropdown -->
-                        <div class="relative custom-dropdown w-52" data-filter="status">
-                            <button type="button"
-                                class="dropdown-btn w-full h-11 px-4 bg-white border border-gray-300 rounded-xl flex items-center justify-between text-gray-700 shadow-sm hover:border-blue-500 transition">
-                                <span class="selected-text">All Status</span>
-                                <span class="material-symbols-outlined transition-transform duration-200">
-                                    expand_more
-                                </span>
-                            </button>
+        <!-- Search -->
+        <div class="relative w-full md:max-w-sm">
+            <span
+                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+            <input id="customerSearch"
+                class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none text-body-sm transition-all"
+                placeholder="Search customers by name, email, or ID..." type="text" />
+        </div>
 
-                            <div
-                                class="dropdown-menu absolute left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden opacity-0 invisible scale-95 transition-all duration-200 z-50">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-sm w-full md:w-auto">
 
-                                <button class="dropdown-option" data-value="All Status">All Status</button>
-                                <button class="dropdown-option" data-value="Active">Active</button>
-                                <button class="dropdown-option" data-value="Pending">Pending</button>
-                                <button class="dropdown-option" data-value="Inactive">Inactive</button>
-                                <button class="dropdown-option" data-value="Closed">Closed</button>
+            <!-- Status + Assigned dropdowns: side by side even on small phones -->
+            <div class="grid grid-cols-2 sm:flex gap-4 w-full sm:w-auto">
 
-                            </div>
-                        </div>
-
-                        <!-- Source Dropdown -->
-                        <div class="relative custom-dropdown w-52" data-filter="assigned">
-                            <button type="button"
-                                class="dropdown-btn w-full h-11 px-4 bg-white border border-gray-300 rounded-xl flex items-center justify-between text-gray-700 shadow-sm hover:border-blue-500 transition">
-                                <span class="selected-text">All Assigned</span>
-                                <span class="material-symbols-outlined transition-transform duration-200">
-                                    expand_more
-                                </span>
-                            </button>
-
-                            <div
-                                class="dropdown-menu absolute left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden opacity-0 invisible scale-95 transition-all duration-200 z-50">
-
-                                <button class="dropdown-option" data-value="All Assigned">All Assigned</button>
-                                <button class="dropdown-option" data-value="Marcus K.">Marcus K.</button>
-                                <button class="dropdown-option" data-value="Sarah L.">Sarah L.</button>
-                                <button class="dropdown-option" data-value="Daniel R.">Daniel R.</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="relative">
-                        <span
-                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-gray-500">
-                            calendar_today
+                <!-- Status Dropdown -->
+                <div class="relative custom-dropdown w-full sm:w-52" data-filter="status">
+                    <button type="button"
+                        class="dropdown-btn w-full h-11 px-4 bg-white border border-gray-300 rounded-xl flex items-center justify-between text-gray-700 shadow-sm hover:border-blue-500 transition">
+                        <span class="selected-text truncate">All Status</span>
+                        <span class="material-symbols-outlined transition-transform duration-200 shrink-0">
+                            expand_more
                         </span>
-                        <input type="text" id="dateRange" placeholder="Select Date Range"
-                            class="pl-10 pr-4 py-2 border border-outline-variant rounded-lg text-label-md bg-white w-72 focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
-                            readonly>
+                    </button>
+
+                    <div
+                        class="dropdown-menu absolute left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden opacity-0 invisible scale-95 transition-all duration-200 z-50">
+
+                        <button class="dropdown-option" data-value="All Status">All Status</button>
+                        <button class="dropdown-option" data-value="Active">Active</button>
+                        <button class="dropdown-option" data-value="Pending">Pending</button>
+                        <button class="dropdown-option" data-value="Inactive">Inactive</button>
+                        <button class="dropdown-option" data-value="Closed">Closed</button>
+
                     </div>
                 </div>
+
+                <!-- Assigned Dropdown -->
+                <div class="relative custom-dropdown w-full sm:w-52" data-filter="assigned">
+                    <button type="button"
+                        class="dropdown-btn w-full h-11 px-4 bg-white border border-gray-300 rounded-xl flex items-center justify-between text-gray-700 shadow-sm hover:border-blue-500 transition">
+                        <span class="selected-text truncate">All Assigned</span>
+                        <span class="material-symbols-outlined transition-transform duration-200 shrink-0">
+                            expand_more
+                        </span>
+                    </button>
+
+                    <div
+                        class="dropdown-menu absolute left-0 right-0 mt-2 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden opacity-0 invisible scale-95 transition-all duration-200 z-50">
+
+                        <button class="dropdown-option" data-value="All Assigned">All Assigned</button>
+                        <button class="dropdown-option" data-value="Marcus K.">Marcus K.</button>
+                        <button class="dropdown-option" data-value="Sarah L.">Sarah L.</button>
+                        <button class="dropdown-option" data-value="Daniel R.">Daniel R.</button>
+
+                    </div>
+                </div>
+
             </div>
-            <div class="flex items-center gap-md">
-                <a href="customercreate.php"
-                    class="flex items-center gap-2 px-xl py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:shadow-lg transition-all active:scale-95">
-                    <span class="material-symbols-outlined text-[18px]">add</span>
-                    Add Customer
-                </a>
+
+            <!-- Date Range -->
+            <div class="relative w-full sm:w-72">
+                <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-gray-500">
+                    calendar_today
+                </span>
+                <input type="text" id="dateRange" placeholder="Select Date Range"
+                    class="pl-10 pr-4 py-2 border border-outline-variant rounded-lg text-label-md bg-white w-full sm:w-72 focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
+                    readonly>
             </div>
         </div>
+    </div>
+
+    <!-- Add Customer -->
+    <div class="flex items-center gap-md">
+        <a href="customercreate.php"
+            class="flex items-center justify-center gap-2 w-full md:w-auto px-xl py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:shadow-lg transition-all active:scale-95">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+            Add Customer
+        </a>
+    </div>
+</div>
 
         <!-- Data Table Section -->
         <div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">

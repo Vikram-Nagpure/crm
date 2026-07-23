@@ -438,6 +438,7 @@
                             </div>
                         </div>
                         <button
+                            onclick="openColleagueModal()"
                             class="w-full py-2 text-primary border border-primary/20 rounded-lg font-label-md hover:bg-primary/5 transition-colors">
                             Add Colleague
                         </button>
@@ -506,6 +507,226 @@
             </div>
         </div>
     </main>
+
+
+    <!-- Add Colleague Modal -->
+<div id="colleagueModal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+
+    <div class="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between px-6 py-4 border-b">
+            <div>
+                <h2 class="text-xl font-semibold">Add Colleague</h2>
+                <p class="text-sm text-gray-500 mt-1">
+                    Add a contact related to this company.
+                </p>
+            </div>
+
+            <button onclick="closeColleagueModal()"
+                class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <!-- Body -->
+        <div class="p-6 space-y-5">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Full Name</label>
+                    <input type="text"
+                        class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="Enter full name">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Designation</label>
+                    <input type="text"
+                        class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="e.g. Manager">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Email</label>
+                    <input type="email"
+                        class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="example@email.com">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Mobile</label>
+                    <input type="tel"
+                        class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="+91 9876543210">
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium mb-2">Department</label>
+                    <input type="text"
+                        class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="Sales / HR / Accounts">
+                </div>
+
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-medium mb-2">Notes</label>
+                    <textarea rows="3"
+                        class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="Additional information..."></textarea>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="flex justify-end gap-3 px-6 py-4 border-t bg-gray-50">
+
+            <button onclick="closeColleagueModal()"
+                class="px-5 py-2.5 rounded-xl border border-gray-300 hover:bg-gray-100">
+                Cancel
+            </button>
+
+            <button
+                class="px-5 py-2.5 rounded-xl bg-primary text-white hover:opacity-90">
+                Save Colleague
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Upload File Modal -->
+                            <div id="fileModal"
+                                class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+
+                                <div class="w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden">
+
+                                    <!-- Header -->
+                                    <div class="flex items-center justify-between px-6 py-5 border-b">
+                                        <div>
+                                            <h3 class="text-xl font-semibold text-gray-800">
+                                                Upload File
+                                            </h3>
+                                            <p class="text-sm text-gray-500 mt-1">
+                                                Upload documents related to this lead.
+                                            </p>
+                                        </div>
+
+                                        <button id="closeFileModal"
+                                            class="w-10 h-10 rounded-full hover:bg-gray-100 transition flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-gray-500">
+                                                close
+                                            </span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Body -->
+                                    <div class="p-6">
+
+                                        <!-- Upload Area -->
+                                        <label for="leadFile"
+                                            class="block cursor-pointer border-2 border-dashed border-gray-300 rounded-xl p-10 text-center hover:border-primary hover:bg-orange-50 transition">
+
+                                            <div
+                                                class="w-16 h-16 mx-auto rounded-full bg-orange-100 flex items-center justify-center mb-4">
+
+                                                <span class="material-symbols-outlined text-primary text-4xl">
+                                                    cloud_upload
+                                                </span>
+
+                                            </div>
+
+                                            <h4 class="font-semibold text-gray-800 text-lg">
+                                                Drag & Drop your file here
+                                            </h4>
+
+                                            <p class="text-gray-500 mt-2">
+                                                or <span class="text-primary font-medium">Browse Files</span>
+                                            </p>
+
+                                            <p class="text-xs text-gray-400 mt-4">
+                                                Supported: PDF, DOC, DOCX, XLS, XLSX, JPG, PNG, ZIP
+                                            </p>
+
+                                            <p class="text-xs text-gray-400">
+                                                Maximum file size: 20 MB
+                                            </p>
+
+                                            <input id="leadFile" type="file" class="hidden">
+                                        </label>
+
+                                        <!-- Selected File -->
+                                        <div class="mt-5">
+
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">
+                                                Selected File
+                                            </label>
+
+                                            <input type="text"
+                                                id="selectedFileName"
+                                                class="w-full border rounded-lg px-4 py-3 bg-gray-50"
+                                                placeholder="No file selected"
+                                                readonly>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Footer -->
+                                    <div class="flex justify-end gap-3 px-6 py-5 border-t bg-gray-50">
+
+                                        <button id="cancelFileModal"
+                                            class="px-5 py-2.5 rounded-lg border border-gray-300 hover:bg-gray-100 transition">
+
+                                            Cancel
+
+                                        </button>
+
+                                        <button
+                                            class="px-6 py-2.5 rounded-lg bg-primary text-white hover:opacity-90 transition flex items-center gap-2">
+
+                                            <span class="material-symbols-outlined text-[18px]">
+                                                upload
+                                            </span>
+
+                                            Upload File
+
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+<!-- Colleague Modal js -->
+<script>
+function openColleagueModal() {
+    const modal = document.getElementById("colleagueModal");
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+}
+
+function closeColleagueModal() {
+    const modal = document.getElementById("colleagueModal");
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+}
+
+// Close when clicking outside
+document.getElementById("colleagueModal").addEventListener("click", function (e) {
+    if (e.target === this) {
+        closeColleagueModal();
+    }
+});
+</script>
+
+
     <script>
     function switchTab(tabName) {
         const tabs = document.querySelectorAll('.tab-btn');
@@ -640,28 +861,92 @@
                         </div>
                 </div>`;
         } else if (tabName === 'files') {
-            content.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
-                        <div class="p-md bg-white border border-outline-variant rounded-xl flex items-center gap-md hover:border-primary transition-all cursor-pointer">
-                            <span class="material-symbols-outlined text-[32px] text-error">picture_as_pdf</span>
-                            <div class="overflow-hidden">
-                                <h4 class="font-label-md text-label-md truncate">Service_Contract_2024.pdf</h4>
-                                <span class="text-label-sm font-label-sm text-secondary">2.4 MB • Oct 10</span>
-                            </div>
-                        </div>
-                        <div class="p-md bg-white border border-outline-variant rounded-xl flex items-center gap-md hover:border-primary transition-all cursor-pointer">
-                            <span class="material-symbols-outlined text-[32px] text-primary">description</span>
-                            <div class="overflow-hidden">
-                                <h4 class="font-label-md text-label-md truncate">Q3_Review_Slides.pptx</h4>
-                                <span class="text-label-sm font-label-sm text-secondary">8.1 MB • Oct 08</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-        } else {
+    content.innerHTML = `
+        <div class="flex justify-end mb-5">
+    <button
+        onclick="openFileModal()"
+        class="inline-flex items-center gap-2 px-5 py-3 bg-primary text-white rounded-xl font-medium shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
+
+        <span class="material-symbols-outlined text-[20px]">
+            upload_file
+        </span>
+
+        Upload File
+    </button>
+</div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+
+            <div class="p-md bg-white border border-outline-variant rounded-xl flex items-center gap-md hover:border-primary transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-[32px] text-error">
+                    picture_as_pdf
+                </span>
+
+                <div class="overflow-hidden">
+                    <h4 class="font-label-md text-label-md truncate">
+                        Service_Contract_2024.pdf
+                    </h4>
+
+                    <span class="text-label-sm font-label-sm text-secondary">
+                        2.4 MB • Oct 10
+                    </span>
+                </div>
+            </div>
+
+            <div class="p-md bg-white border border-outline-variant rounded-xl flex items-center gap-md hover:border-primary transition-all cursor-pointer">
+                <span class="material-symbols-outlined text-[32px] text-primary">
+                    description
+                </span>
+
+                <div class="overflow-hidden">
+                    <h4 class="font-label-md text-label-md truncate">
+                        Q3_Review_Slides.pptx
+                    </h4>
+
+                    <span class="text-label-sm font-label-sm text-secondary">
+                        8.1 MB • Oct 08
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    `;
+} else {
             location.reload(); // Quick reset for "Overview"
         }
     }
+    </script>
+
+    <!-- modal js -->
+
+    <script>
+        function openFileModal() {
+    const modal = document.getElementById("fileModal");
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+}
+
+function closeFileModal() {
+    const modal = document.getElementById("fileModal");
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+}
+
+document.getElementById("closeFileModal").onclick = closeFileModal;
+document.getElementById("cancelFileModal").onclick = closeFileModal;
+
+// Close when clicking outside
+document.getElementById("fileModal").addEventListener("click", function (e) {
+    if (e.target === this) {
+        closeFileModal();
+    }
+});
+
+// Show selected file name
+document.getElementById("leadFile").addEventListener("change", function () {
+    document.getElementById("selectedFileName").value =
+        this.files.length ? this.files[0].name : "";
+});
     </script>
 </body>
 

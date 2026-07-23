@@ -184,9 +184,9 @@
     <!-- TopNavBar (Shared Component) -->
     <?php include "include/header.php"?>
     <div class="flex">
-        
+
         <!-- Main Content -->
-        <main class="flex-1 p-margin lg:p-xl max-w-[1440px] mx-auto overflow-hidden">
+        <main class="flex-1 p-margin mt-12 lg:p-xl max-w-[1440px] mx-auto overflow-hidden">
             <header class="mb-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
                 <div>
                     <h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">Manage Labels</h2>
@@ -228,7 +228,7 @@
                                         Actions</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-outline-variant">
+                            <tbody class="divide-y divide-outline-variant" id="label-table-body">
                                 <!-- Row: Hot Lead -->
                                 <tr class="hover:bg-surface-container transition-colors group">
                                     <td class="px-md py-4">
@@ -397,8 +397,13 @@
                 id="lead-status-full-table">
                 <div
                     class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
-                    <h3 class="font-headline-sm text-headline-sm font-bold">Lead Status</h3><button
-                        class="text-primary font-label-sm text-label-sm hover:underline">+ Create Status</button>
+                    <h3 class="font-headline-sm text-headline-sm font-bold">Lead Status</h3>
+                    <button
+                        class="flex items-center gap-2 bg-primary text-on-primary px-lg py-2.5 rounded-xl font-label-md text-label-md hover:opacity-90 transition-all shadow-sm"
+                        onclick="openStatusModal()">
+                        <span class="material-symbols-outlined">add</span>
+                        Create Status
+                    </button>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left">
@@ -410,12 +415,10 @@
                                 <th
                                     class="px-md py-3 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
                                     Status Name</th>
-                                <!-- <th
+
+                                <th
                                     class="px-md py-3 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
-                                    Order</th> -->
-                                <!-- <th
-                                    class="px-md py-3 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
-                                    Default</th> -->
+                                    Created</th>
                                 <th
                                     class="px-md py-3 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">
                                     Status</th>
@@ -424,7 +427,7 @@
                                     Actions</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-outline-variant">
+                        <tbody class="divide-y divide-outline-variant" id="status-table-body">
                             <tr class="hover:bg-surface-container transition-colors">
                                 <td class="px-md py-4">
                                     <div class="w-2.5 h-2.5 rounded-full bg-blue-500"></div>
@@ -432,7 +435,9 @@
                                 <td class="px-md py-4"><span
                                         class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-md font-label-sm text-label-sm">New</span>
                                 </td>
-                                
+                                <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">Oct 12,
+                                    2023</td>
+
                                 <td class="px-md py-4">
                                     <div class="relative inline-block w-10 h-5 bg-primary rounded-full cursor-pointer">
                                         <div class="absolute left-5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
@@ -454,7 +459,9 @@
                                 <td class="px-md py-4"><span
                                         class="bg-purple-100 text-purple-700 px-2 py-0.5 rounded-md font-label-sm text-label-sm">Contacted</span>
                                 </td>
-                                
+                                <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">Oct 12,
+                                    2023</td>
+
                                 <td class="px-md py-4">
                                     <div class="relative inline-block w-10 h-5 bg-primary rounded-full cursor-pointer">
                                         <div class="absolute left-5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
@@ -476,7 +483,9 @@
                                 <td class="px-md py-4"><span
                                         class="bg-teal-100 text-teal-700 px-2 py-0.5 rounded-md font-label-sm text-label-sm">Qualified</span>
                                 </td>
-                                
+                                <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">Oct 12,
+                                    2023</td>
+
                                 <td class="px-md py-4">
                                     <div class="relative inline-block w-10 h-5 bg-primary rounded-full cursor-pointer">
                                         <div class="absolute left-5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
@@ -498,7 +507,10 @@
                                 <td class="px-md py-4"><span
                                         class="bg-green-100 text-green-700 px-2 py-0.5 rounded-md font-label-sm text-label-sm">Won</span>
                                 </td>
-                                
+
+                                <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">Oct 12,
+                                    2023</td>
+
                                 <td class="px-md py-4">
                                     <div class="relative inline-block w-10 h-5 bg-primary rounded-full cursor-pointer">
                                         <div class="absolute left-5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
@@ -538,21 +550,21 @@
             <div class="px-xl py-xl space-y-lg">
                 <div>
                     <label class="block font-label-md text-label-md mb-2 text-on-surface">Label Name</label>
-                    <input
+                    <input id="label-name-input"
                         class="w-full px-md py-3 rounded-xl border border-outline-variant bg-surface focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
                         placeholder="e.g. High Priority" type="text" />
                 </div>
                 <div>
                     <label class="block font-label-md text-label-md mb-3 text-on-surface">Choose Color</label>
-                    <div class="flex flex-wrap gap-3">
-                        <button class="w-8 h-8 rounded-full bg-red-500 ring-4 ring-primary/20 ring-offset-2"></button>
-                        <button class="w-8 h-8 rounded-full bg-blue-500"></button>
-                        <button class="w-8 h-8 rounded-full bg-green-500"></button>
-                        <button class="w-8 h-8 rounded-full bg-purple-500"></button>
-                        <button class="w-8 h-8 rounded-full bg-orange-500"></button>
-                        <button class="w-8 h-8 rounded-full bg-teal-500"></button>
-                        <button class="w-8 h-8 rounded-full bg-pink-500"></button>
-                        <button class="w-8 h-8 rounded-full bg-slate-500"></button>
+                    <div class="flex flex-wrap gap-3" id="label-color-swatches">
+                        <button data-color="red" class="w-8 h-8 rounded-full bg-red-500 ring-4 ring-primary/20 ring-offset-2"></button>
+                        <button data-color="blue" class="w-8 h-8 rounded-full bg-blue-500"></button>
+                        <button data-color="green" class="w-8 h-8 rounded-full bg-green-500"></button>
+                        <button data-color="purple" class="w-8 h-8 rounded-full bg-purple-500"></button>
+                        <button data-color="orange" class="w-8 h-8 rounded-full bg-orange-500"></button>
+                        <button data-color="teal" class="w-8 h-8 rounded-full bg-teal-500"></button>
+                        <button data-color="pink" class="w-8 h-8 rounded-full bg-pink-500"></button>
+                        <button data-color="slate" class="w-8 h-8 rounded-full bg-slate-500"></button>
                         <button
                             class="w-8 h-8 rounded-full border-2 border-dashed border-outline-variant flex items-center justify-center"><span
                                 class="material-symbols-outlined text-[16px]">add</span></button>
@@ -560,7 +572,7 @@
                 </div>
                 <div>
                     <label class="block font-label-md text-label-md mb-2 text-on-surface">Description (Optional)</label>
-                    <textarea
+                    <textarea id="label-description-input"
                         class="w-full px-md py-3 rounded-xl border border-outline-variant bg-surface focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none resize-none"
                         placeholder="Describe when to use this label..." rows="3"></textarea>
                 </div>
@@ -587,12 +599,81 @@
                 <button
                     class="px-lg py-2.5 rounded-xl border border-outline-variant text-on-surface-variant font-label-md hover:bg-surface-variant transition-colors"
                     onclick="closeModal()">Cancel</button>
-                <button
+                <button id="create-label-btn"
                     class="px-xl py-2.5 rounded-xl bg-primary text-on-primary font-label-md hover:opacity-90 shadow-lg active:scale-95 transition-all">Create
                     Label</button>
             </div>
         </div>
     </div>
+
+    <!-- Modal Overlay: Create Status -->
+    <div class="fixed inset-0 z-[100] bg-on-background/40 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+        id="modal-overlay-status">
+        <div class="bg-surface-container-lowest w-full max-w-lg rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300"
+            id="modal-content-status">
+            <!-- Modal Header -->
+            <div class="px-xl py-lg border-b border-outline-variant flex justify-between items-center">
+                <h3 class="font-headline-md text-headline-md font-bold text-on-surface">Create New Status</h3>
+                <button class="p-2 hover:bg-surface-variant/30 rounded-full transition-colors" onclick="closeStatusModal()">
+                    <span class="material-symbols-outlined text-on-surface-variant">close</span>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="px-xl py-xl space-y-lg">
+                <div>
+                    <label class="block font-label-md text-label-md mb-2 text-on-surface">Status Name</label>
+                    <input id="status-name-input"
+                        class="w-full px-md py-3 rounded-xl border border-outline-variant bg-surface focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all outline-none"
+                        placeholder="e.g. Proposal Sent" type="text" />
+                </div>
+                <div>
+                    <label class="block font-label-md text-label-md mb-3 text-on-surface">Choose Color</label>
+                    <div class="flex flex-wrap gap-3" id="status-color-swatches">
+                        <button data-color="blue" class="w-8 h-8 rounded-full bg-blue-500 ring-4 ring-primary/20 ring-offset-2"></button>
+                        <button data-color="red" class="w-8 h-8 rounded-full bg-red-500"></button>
+                        <button data-color="green" class="w-8 h-8 rounded-full bg-green-500"></button>
+                        <button data-color="purple" class="w-8 h-8 rounded-full bg-purple-500"></button>
+                        <button data-color="orange" class="w-8 h-8 rounded-full bg-orange-500"></button>
+                        <button data-color="teal" class="w-8 h-8 rounded-full bg-teal-500"></button>
+                        <button data-color="pink" class="w-8 h-8 rounded-full bg-pink-500"></button>
+                        <button data-color="slate" class="w-8 h-8 rounded-full bg-slate-500"></button>
+                        <button
+                            class="w-8 h-8 rounded-full border-2 border-dashed border-outline-variant flex items-center justify-center"><span
+                                class="material-symbols-outlined text-[16px]">add</span></button>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between p-md bg-surface-container rounded-xl">
+                    <div>
+                        <p class="font-label-md text-label-md font-bold">Active Status</p>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Make this status available for
+                            leads immediately.</p>
+                    </div>
+                    <div
+                        class="relative inline-block w-12 h-6 bg-primary rounded-full transition-colors cursor-pointer">
+                        <div class="absolute left-6 top-1 w-4 h-4 bg-white rounded-full transition-transform"></div>
+                    </div>
+                </div>
+                <div class="pt-2 border-t border-outline-variant/50">
+                    <p class="font-label-sm text-label-sm text-on-surface-variant mb-2">Live Preview</p>
+                    <span
+                        class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-md font-label-sm text-label-sm inline-block"
+                        id="preview-status-badge">Proposal Sent</span>
+                </div>
+            </div>
+            <!-- Modal Footer -->
+            <div class="px-xl py-lg bg-surface-container-low flex justify-end gap-md border-t border-outline-variant">
+                <button
+                    class="px-lg py-2.5 rounded-xl border border-outline-variant text-on-surface-variant font-label-md hover:bg-surface-variant transition-colors"
+                    onclick="closeStatusModal()">Cancel</button>
+                <button id="create-status-btn"
+                    class="px-xl py-2.5 rounded-xl bg-primary text-on-primary font-label-md hover:opacity-90 shadow-lg active:scale-95 transition-all">Create
+                    Status</button>
+            </div>
+        </div>
+    </div>
+
+
+    
     <script>
     function openModal() {
         const overlay = document.getElementById('modal-overlay');
@@ -610,12 +691,31 @@
         content.classList.remove('scale-100');
     }
 
-    // Close on ESC
+    function openStatusModal() {
+        const overlay = document.getElementById('modal-overlay-status');
+        const content = document.getElementById('modal-content-status');
+        overlay.classList.remove('opacity-0', 'pointer-events-none');
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+    }
+
+    function closeStatusModal() {
+        const overlay = document.getElementById('modal-overlay-status');
+        const content = document.getElementById('modal-content-status');
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        content.classList.add('scale-95');
+        content.classList.remove('scale-100');
+    }
+
+    // Close on ESC (whichever modal is open)
     window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Escape') {
+            closeModal();
+            closeStatusModal();
+        }
     });
 
-    // Toggle micro-interaction
+    // Toggle micro-interaction (shared by every on/off switch on the page)
     document.querySelectorAll('.relative.inline-block.w-10, .relative.inline-block.w-12').forEach(toggle => {
         toggle.addEventListener('click', function() {
             const dot = this.querySelector('div');
@@ -632,6 +732,169 @@
                 dot.classList.remove('left-1');
             }
         });
+    });
+
+    // Shared color palette used by both modals
+    const SWATCH_COLORS = {
+        red:    { bg: 'bg-red-100',    text: 'text-red-700',    dot: 'bg-red-500' },
+        blue:   { bg: 'bg-blue-100',   text: 'text-blue-700',   dot: 'bg-blue-500' },
+        green:  { bg: 'bg-green-100',  text: 'text-green-700',  dot: 'bg-green-500' },
+        purple: { bg: 'bg-purple-100', text: 'text-purple-700', dot: 'bg-purple-500' },
+        orange: { bg: 'bg-orange-100', text: 'text-orange-700', dot: 'bg-orange-500' },
+        teal:   { bg: 'bg-teal-100',   text: 'text-teal-700',   dot: 'bg-teal-500' },
+        pink:   { bg: 'bg-pink-100',   text: 'text-pink-700',   dot: 'bg-pink-500' },
+        slate:  { bg: 'bg-slate-100',  text: 'text-slate-700',  dot: 'bg-slate-500' },
+    };
+
+    function todayFormatted() {
+        return new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' });
+    }
+
+    // --- Create Label modal: working color selection + live preview ---
+    let selectedLabelColor = 'red';
+    const labelNameInput = document.getElementById('label-name-input');
+    const previewBadge = document.getElementById('preview-badge');
+    const labelSwatches = document.querySelectorAll('#label-color-swatches button[data-color]');
+
+    function updateLabelPreview() {
+        const name = labelNameInput.value.trim() || 'High Priority';
+        const c = SWATCH_COLORS[selectedLabelColor];
+        previewBadge.textContent = name;
+        previewBadge.className = `${c.bg} ${c.text} px-4 py-1.5 rounded-full font-label-md text-label-md font-bold shadow-sm inline-block`;
+    }
+
+    labelNameInput.addEventListener('input', updateLabelPreview);
+
+    labelSwatches.forEach(btn => {
+        btn.addEventListener('click', () => {
+            labelSwatches.forEach(b => b.classList.remove('ring-4', 'ring-primary/20', 'ring-offset-2'));
+            btn.classList.add('ring-4', 'ring-primary/20', 'ring-offset-2');
+            selectedLabelColor = btn.dataset.color;
+            updateLabelPreview();
+        });
+    });
+
+    document.getElementById('create-label-btn').addEventListener('click', () => {
+        const name = labelNameInput.value.trim();
+        if (!name) { labelNameInput.focus(); return; }
+        const description = document.getElementById('label-description-input').value.trim() || '—';
+        const c = SWATCH_COLORS[selectedLabelColor];
+
+        const tbody = document.getElementById('label-table-body');
+        const row = document.createElement('tr');
+        row.className = 'hover:bg-surface-container transition-colors group';
+        row.innerHTML = `
+            <td class="px-md py-4">
+                <div class="w-3 h-3 rounded-full ${c.dot}"></div>
+            </td>
+            <td class="px-md py-4"><span class="${c.bg} ${c.text} px-2.5 py-0.5 rounded-full font-label-sm text-label-sm">${name}</span></td>
+            <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">${description}</td>
+            <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">${todayFormatted()}</td>
+            <td class="px-md py-4">
+                <div class="relative inline-block w-10 h-5 bg-primary rounded-full transition-colors cursor-pointer">
+                    <div class="absolute left-5 top-0.5 w-4 h-4 bg-white rounded-full transition-transform"></div>
+                </div>
+            </td>
+            <td class="px-md py-4 text-right">
+                <div class="flex justify-end gap-2 transition-opacity">
+                    <button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+                    <button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+                </div>
+            </td>`;
+        tbody.appendChild(row);
+
+        row.querySelector('.relative.inline-block').addEventListener('click', function() {
+            const dot = this.querySelector('div');
+            const isActive = this.classList.contains('bg-primary');
+            if (isActive) {
+                this.classList.remove('bg-primary'); this.classList.add('bg-outline-variant');
+                dot.classList.remove('left-5'); dot.classList.add('left-1');
+            } else {
+                this.classList.add('bg-primary'); this.classList.remove('bg-outline-variant');
+                dot.classList.add('left-5'); dot.classList.remove('left-1');
+            }
+        });
+        row.querySelector('.hover\\:text-error').addEventListener('click', () => row.remove());
+
+        labelNameInput.value = '';
+        document.getElementById('label-description-input').value = '';
+        selectedLabelColor = 'red';
+        labelSwatches.forEach(b => b.classList.remove('ring-4', 'ring-primary/20', 'ring-offset-2'));
+        labelSwatches[0].classList.add('ring-4', 'ring-primary/20', 'ring-offset-2');
+        updateLabelPreview();
+        closeModal();
+    });
+
+    // --- Create Status modal: color selection + live preview + row insertion ---
+    let selectedStatusColor = 'blue';
+    const statusNameInput = document.getElementById('status-name-input');
+    const previewStatusBadge = document.getElementById('preview-status-badge');
+    const statusSwatches = document.querySelectorAll('#status-color-swatches button[data-color]');
+
+    function updateStatusPreview() {
+        const name = statusNameInput.value.trim() || 'Proposal Sent';
+        const c = SWATCH_COLORS[selectedStatusColor];
+        previewStatusBadge.textContent = name;
+        previewStatusBadge.className = `${c.bg} ${c.text} px-2 py-0.5 rounded-md font-label-sm text-label-sm inline-block`;
+    }
+
+    statusNameInput.addEventListener('input', updateStatusPreview);
+
+    statusSwatches.forEach(btn => {
+        btn.addEventListener('click', () => {
+            statusSwatches.forEach(b => b.classList.remove('ring-4', 'ring-primary/20', 'ring-offset-2'));
+            btn.classList.add('ring-4', 'ring-primary/20', 'ring-offset-2');
+            selectedStatusColor = btn.dataset.color;
+            updateStatusPreview();
+        });
+    });
+
+    document.getElementById('create-status-btn').addEventListener('click', () => {
+        const name = statusNameInput.value.trim();
+        if (!name) { statusNameInput.focus(); return; }
+        const c = SWATCH_COLORS[selectedStatusColor];
+
+        const tbody = document.getElementById('status-table-body');
+        const row = document.createElement('tr');
+        row.className = 'hover:bg-surface-container transition-colors';
+        row.innerHTML = `
+            <td class="px-md py-4">
+                <div class="w-2.5 h-2.5 rounded-full ${c.dot}"></div>
+            </td>
+            <td class="px-md py-4"><span class="${c.bg} ${c.text} px-2 py-0.5 rounded-md font-label-sm text-label-sm">${name}</span></td>
+            <td class="px-md py-4 font-body-sm text-body-sm text-on-surface-variant">${todayFormatted()}</td>
+            <td class="px-md py-4">
+                <div class="relative inline-block w-10 h-5 bg-primary rounded-full transition-colors cursor-pointer">
+                    <div class="absolute left-5 top-0.5 w-4 h-4 bg-white rounded-full transition-transform"></div>
+                </div>
+            </td>
+            <td class="px-md py-4 text-right">
+                <div class="flex justify-end gap-2">
+                    <button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+                    <button class="p-1 hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+                </div>
+            </td>`;
+        tbody.appendChild(row);
+
+        row.querySelector('.relative.inline-block').addEventListener('click', function() {
+            const dot = this.querySelector('div');
+            const isActive = this.classList.contains('bg-primary');
+            if (isActive) {
+                this.classList.remove('bg-primary'); this.classList.add('bg-outline-variant');
+                dot.classList.remove('left-5'); dot.classList.add('left-1');
+            } else {
+                this.classList.add('bg-primary'); this.classList.remove('bg-outline-variant');
+                dot.classList.add('left-5'); dot.classList.remove('left-1');
+            }
+        });
+        row.querySelector('.hover\\:text-error').addEventListener('click', () => row.remove());
+
+        statusNameInput.value = '';
+        selectedStatusColor = 'blue';
+        statusSwatches.forEach(b => b.classList.remove('ring-4', 'ring-primary/20', 'ring-offset-2'));
+        statusSwatches[0].classList.add('ring-4', 'ring-primary/20', 'ring-offset-2');
+        updateStatusPreview();
+        closeStatusModal();
     });
     </script>
 </body>

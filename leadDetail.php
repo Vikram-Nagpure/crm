@@ -733,6 +733,103 @@
                             <div class="space-y-lg" id="content-followup">
                                 <div class="relative pl-8">
 
+                                    <div class="flex justify-end mb-6">
+                                        <button
+                                            onclick="openfollowUpModal1()"
+                                            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white font-medium shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-200">
+                                            <span class="material-symbols-outlined text-[18px]">add</span>
+                                            Follow Up
+                                        </button>
+                                    </div>
+                        <!-- Follow Up Modal -->
+                        <div id="followUpModal1"
+                            class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+
+                            <div class="bg-white rounded-xl shadow-xl w-full max-w-md p-6 relative">
+
+                                <!-- Header -->
+                                <div class="flex justify-between items-center mb-5">
+                                    <h2 class="text-xl font-semibold">Add Follow Up</h2>
+
+                                    <button onclick="closefollowUpModal1()"
+                                        class="text-gray-500 hover:text-red-500 text-2xl">
+                                        &times;
+                                    </button>
+                                </div>
+
+                                <!-- Form -->
+                                <form action="" method="POST">
+
+                                    <!-- Mobile Number -->
+                                    <div class="mb-4">
+                                        <label class="block mb-1 font-medium">
+                                            Mobile Number
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="mobile"
+                                            placeholder="Enter Mobile Number"
+                                            class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                                    </div>
+
+                                    <!-- Date -->
+                                    <div class="mb-4">
+                                        <label class="block mb-1 font-medium">
+                                            Follow Up Date
+                                        </label>
+                                        <input
+                                            type="date"
+                                            name="followup_date"
+                                            class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                                    </div>
+
+                                    <!-- Time -->
+                                    <div class="mb-4">
+                                        <label class="block mb-1 font-medium">
+                                            Follow Up Time
+                                        </label>
+                                        <input
+                                            type="time"
+                                            name="followup_time"
+                                            class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                                    </div>
+
+                                    <!-- Description -->
+                                    <div class="mb-5">
+                                        <label class="block mb-1 font-medium">
+                                            Description
+                                        </label>
+                                        <textarea
+                                            name="description"
+                                            rows="4"
+                                            placeholder="Enter Follow Up Details..."
+                                            class="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                                    </div>
+
+                                    <!-- Buttons -->
+                                    <div class="flex justify-end gap-3">
+
+                                        <button
+                                            type="button"
+                                            onclick="closefollowUpModal1()"
+                                            class="px-4 py-2 rounded-lg border hover:bg-gray-100">
+                                            Cancel
+                                        </button>
+
+                                        <button
+                                            type="submit"
+                                            name="save_followup"
+                                            class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+                                            Save Follow Up
+                                        </button>
+
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
                                     <!-- Timeline Line -->
                                     <div class="absolute left-[11px] top-0 bottom-0 w-[2px] bg-gray-300"></div>
 
@@ -1015,7 +1112,27 @@
     </div>
 
 </div>
+<!-- follow up modal -->
+<script>
+        function openfollowUpModal1() {
+            const modal = document.getElementById('followUpModal1');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
 
+        function closefollowUpModal1() {
+            const modal = document.getElementById('followUpModal1');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('followUpModal1').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closefollowUpModal1();
+            }
+        });
+    </script>
 <!-- note js -->
 <script>
 const noteModal = document.getElementById("noteModal");

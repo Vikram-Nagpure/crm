@@ -28,7 +28,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 </span>
             </button>
             
-            <span class="font-headline-md text-headline-md font-bold text-primary">Business OS</span>
+            <span class="hidden md:block font-headline-md text-headline-md font-bold text-primary">
+                Business OS
+            </span>
         </div>
 
         <div class="relative w-full max-w-md hidden lg:block">
@@ -449,7 +451,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                         <span class="material-symbols-outlined text-sm">person</span>
                         My Profile
                     </a>
-                    <a href="#"
+                    <a href="setting.php"
                         class="flex items-center gap-2 px-4 py-3 hover:bg-gray-100 transition">
                         <span class="material-symbols-outlined text-sm">settings</span>
                         Settings
